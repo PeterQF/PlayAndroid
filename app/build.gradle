@@ -21,6 +21,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -31,4 +36,14 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // QMUI
+    implementation 'com.qmuiteam:qmui:1.4.4'
+    // retrofit2 + okhttp3 + rxjava2
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.4'
+    implementation 'com.squareup.retrofit2:retrofit:2.7.0'
+    implementation 'com.squareup.retrofit2:retrofit-converters:2.7.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.0'
 }
