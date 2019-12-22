@@ -1,20 +1,21 @@
 package com.df.playandroid.main.activity
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
 import com.df.playandroid.R
-import com.df.playandroid.utils.LogUtil
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
+import com.df.playandroid.article.presenter.ArticlePresenter
+import com.df.playandroid.article.view.IArticleView
+import com.df.playandroid.base.activity.BaseMvpActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseMvpActivity<IArticleView, ArticlePresenter>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+    override fun getLayoutId() = R.layout.activity_main
+
+    override fun setupPresenter() = ArticlePresenter(this)
+
+    override fun initView() {
+    }
+
+    override fun initData() {
+        mPresenter?.getArticles()
     }
 }
