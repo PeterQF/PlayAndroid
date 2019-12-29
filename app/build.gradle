@@ -5,14 +5,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion Versions.compileSdkVersion
-    buildToolsVersion Versions.buildToolsVersion
+    compileSdkVersion Versions.compile_sdk
+    buildToolsVersion Versions.build_tools
     defaultConfig {
-        applicationId Package.applicationId
-        minSdkVersion Versions.minSdkVersion
-        targetSdkVersion Versions.targetSdkVersion
-        versionCode Versions.versionCode
-        versionName Versions.versionName
+        applicationId "com.df.playandroid"
+        minSdkVersion Versions.min_sdk
+        targetSdkVersion Versions.target_sdk
+        versionCode Versions.version_code
+        versionName Versions.version_name
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -30,7 +30,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation Libs.kotlin_stdlib
     implementation Libs.support_appcompat_v7
     implementation Libs.support_constraint
     testImplementation Libs.junit
@@ -49,4 +49,5 @@ dependencies {
     implementation Libs.retrofit2_adapter
     implementation Libs.rxjava2
     implementation Libs.rxandroid
+    implementation Libs.BRVAH
 }

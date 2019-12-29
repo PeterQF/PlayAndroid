@@ -19,4 +19,5 @@ class MainActivity : BaseMvpActivity<IArticleView, ArticlePresenter>() {
     override fun initData() {
         mPresenter?.getArticles()
     }
+
 }
