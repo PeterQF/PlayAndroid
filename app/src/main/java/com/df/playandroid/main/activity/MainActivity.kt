@@ -4,6 +4,7 @@ import com.df.playandroid.R
 import com.df.playandroid.article.presenter.ArticlePresenter
 import com.df.playandroid.article.view.IArticleView
 import com.df.playandroid.base.activity.BaseMvpActivity
+import com.qmuiteam.qmui.widget.popup.QMUIBasePopup
 
 class MainActivity : BaseMvpActivity<IArticleView, ArticlePresenter>() {
 
