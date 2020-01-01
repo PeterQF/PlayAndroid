@@ -4,6 +4,7 @@ import com.df.playandroid.R
 import com.df.playandroid.article.presenter.ArticlePresenter
 import com.df.playandroid.article.view.IArticleView
 import com.df.playandroid.base.activity.BaseMvpActivity
+import com.df.playandroid.utils.SPUtil
 import com.qmuiteam.qmui.widget.popup.QMUIBasePopup
 
 class MainActivity : BaseMvpActivity<IArticleView, ArticlePresenter>() {
@@ -13,11 +14,7 @@ class MainActivity : BaseMvpActivity<IArticleView, ArticlePresenter>() {
 
     override fun setupPresenter() = ArticlePresenter(this)
 
-    override fun initView() {
-    }
+    override fun initView() {}
 
-    override fun initData() {
-        mPresenter?.getArticles()
-    }
-
+    override fun initData() {}
 }

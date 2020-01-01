@@ -1,12 +1,11 @@
 package com.df.playandroid.base.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import com.df.playandroid.base.presenter.BasePresenter
 
-abstract class BaseMvpActivity<V, P: BasePresenter<V>> : AppCompatActivity() {
+abstract class BaseMvpActivity<V, P: BasePresenter<V>> : BaseActivity() {
 
-    protected var mPresenter: P? = null
+    private var mPresenter: P? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

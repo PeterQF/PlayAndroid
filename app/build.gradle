@@ -50,4 +50,5 @@ dependencies {
     implementation Libs.rxjava2
     implementation Libs.rxandroid
     implementation Libs.BRVAH
+    implementation Libs.ImmersionBar
 }

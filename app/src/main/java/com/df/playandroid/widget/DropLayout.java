@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 import com.df.playandroid.R;
 import com.df.playandroid.utils.LogUtil;
+import com.df.playandroid.utils.SPUtil;
 import com.qmuiteam.qmui.util.QMUIViewOffsetHelper;
 
 public class DropLayout extends RelativeLayout {
@@ -48,7 +49,6 @@ public class DropLayout extends RelativeLayout {
         mIv.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Aika啊", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -19,6 +19,7 @@ object Versions {
     const val rxjava2 = "2.2.16"
     const val rxandroid = "2.1.1"
     const val brvah = "2.9.50"
+    const val immersionBar = "3.0.0"
 }
 
 object Package {
@@ -43,4 +44,5 @@ object Libs {
     const val rxjava2 = "io.reactivex.rxjava2:rxjava:${Versions.rxjava2}"
     const val rxandroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxandroid}"
     const val BRVAH = "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Versions.brvah}"
+    const val ImmersionBar = "com.gyf.immersionbar:immersionbar:${Versions.immersionBar}"
 }
