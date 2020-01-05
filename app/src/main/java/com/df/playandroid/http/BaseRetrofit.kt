@@ -22,27 +22,7 @@ open class BaseRetrofit {
         OkHttpClient
             .Builder()
             .addInterceptor(httpLog)
-            .retryOnConnectionFailure(true)
-            .readTimeout(15, TimeUnit.SECONDS)
-            .connectTimeout(15, TimeUnit.SECONDS)
-            .build()
-    }
-
-    val LoginClient: OkHttpClient by lazy {
-        OkHttpClient
-            .Builder()
-            .addInterceptor(httpLog)
             .addInterceptor(ReceivedCookiesInterceptor())
-            .retryOnConnectionFailure(true)
-            .readTimeout(15, TimeUnit.SECONDS)
-            .connectTimeout(15, TimeUnit.SECONDS)
-            .build()
-    }
-
-    val CookieClient: OkHttpClient by lazy {
-        OkHttpClient
-            .Builder()
-            .addInterceptor(httpLog)
             .addInterceptor(AddCookiesInterceptor())
             .retryOnConnectionFailure(true)
             .readTimeout(15, TimeUnit.SECONDS)

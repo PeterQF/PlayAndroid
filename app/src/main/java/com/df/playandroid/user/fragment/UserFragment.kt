@@ -4,6 +4,7 @@ import com.df.playandroid.R
 import com.df.playandroid.base.fragment.BaseFragment
 import com.df.playandroid.user.presenter.UserPresenter
 import com.df.playandroid.user.view.IUserView
+import com.df.playandroid.utils.LogUtil
 
 /**
  * 作者：PeterWu
@@ -16,8 +17,12 @@ class UserFragment : BaseFragment<IUserView, UserPresenter>() {
     override fun setupPresenter() = UserPresenter(requireContext())
 
     override fun initView() {
+        LogUtil.info("fragment ---> UserFragment init view")
     }
 
     override fun initData() {
+        LogUtil.info("fragment ---> UserFragment init data")
     }
+
+    override fun isWithViewPager() = false
 }

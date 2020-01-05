@@ -8,17 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import com.df.playandroid.base.presenter.BasePresenter
 
+
 /**
  * 作者：PeterWu
  * 时间：2020/1/1
  * 描述：
  */
-abstract class BaseFragment<V, P: BasePresenter<V>> : Fragment() {
+abstract class BaseFragment<V, P : BasePresenter<V>> : Fragment() {
 
     private var isViewCreated = false // 界面是否已创建完成
     private var isVisibleToUser = false // fragment是否对用户可见
     private var isDataLoaded = false // 数据是否已请求
-    private var mPresenter: P? = null
+    protected var mPresenter: P? = null
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
@@ -43,6 +44,7 @@ abstract class BaseFragment<V, P: BasePresenter<V>> : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        userVisibleHint = !isWithViewPager()
         isViewCreated = true
         initView()
         lazyLoad()
@@ -68,4 +70,5 @@ abstract class BaseFragment<V, P: BasePresenter<V>> : Fragment() {
     abstract fun setupPresenter(): P?
     abstract fun initView()
     abstract fun initData()
+    open fun isWithViewPager() = true
 }

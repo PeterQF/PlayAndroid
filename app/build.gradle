@@ -51,4 +51,6 @@ dependencies {
     implementation Libs.rxandroid
     implementation Libs.BRVAH
     implementation Libs.ImmersionBar
+    implementation Libs.glide
+    implementation Libs.support_design
 }

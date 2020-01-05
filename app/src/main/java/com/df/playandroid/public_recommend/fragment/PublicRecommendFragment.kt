@@ -4,6 +4,7 @@ import com.df.playandroid.R
 import com.df.playandroid.base.fragment.BaseFragment
 import com.df.playandroid.public_recommend.presenter.PublicRecommendPresenter
 import com.df.playandroid.public_recommend.view.IPublicRecommendView
+import com.df.playandroid.utils.LogUtil
 
 /**
  * 作者：PeterWu
@@ -16,8 +17,12 @@ class PublicRecommendFragment : BaseFragment<IPublicRecommendView, PublicRecomme
     override fun setupPresenter() = PublicRecommendPresenter(requireContext())
 
     override fun initView() {
+        LogUtil.info("fragment ---> PublicRecommendFragment init view")
     }
 
     override fun initData() {
+        LogUtil.info("fragment ---> PublicRecommendFragment init data")
     }
+
+    override fun isWithViewPager() = false
 }

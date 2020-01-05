@@ -4,6 +4,7 @@ import com.df.playandroid.R
 import com.df.playandroid.base.fragment.BaseFragment
 import com.df.playandroid.project_system.presenter.ProjectSystemPresenter
 import com.df.playandroid.project_system.view.IProjectSystemView
+import com.df.playandroid.utils.LogUtil
 
 /**
  * 作者：PeterWu
@@ -13,15 +14,15 @@ import com.df.playandroid.project_system.view.IProjectSystemView
 class ProjectSystemFragment : BaseFragment<IProjectSystemView, ProjectSystemPresenter>() {
     override fun getLayoutId() = R.layout.fragment_project_system
 
-    override fun setupPresenter(): ProjectSystemPresenter? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun setupPresenter() = ProjectSystemPresenter(requireContext())
 
     override fun initView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        LogUtil.info("fragment ---> ProjectSystemFragment init view")
     }
 
     override fun initData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        LogUtil.info("fragment ---> ProjectSystemFragment init data")
     }
+
+    override fun isWithViewPager() = false
 }

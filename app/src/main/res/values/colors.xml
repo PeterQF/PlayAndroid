@@ -7,4 +7,8 @@
     <color name="mainColor">#58B2DC</color>
     <color name="main_text_color">#707070</color>
     <color name="white">#ffffff</color>
+    <!--搜索框颜色-->
+    <color name="color_EBEDF9">#EBEDF9</color>
+    <!--Toast背景色-->
+    <color name="color_213335">#91989F</color>
 </resources>

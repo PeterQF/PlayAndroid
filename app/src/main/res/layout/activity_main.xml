@@ -28,6 +28,7 @@
 
 
         <RadioButton
+            android:id="@+id/main_home"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -44,6 +45,7 @@
 
 
         <RadioButton
+            android:id="@+id/main_project_recommend"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -60,6 +62,7 @@
 
 
         <RadioButton
+            android:id="@+id/main_public_recommend"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -76,6 +79,7 @@
 
 
         <RadioButton
+            android:id="@+id/main_project_system"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -91,6 +95,7 @@
             android:layout_marginBottom="2dp" />
 
         <RadioButton
+            android:id="@+id/main_user"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
