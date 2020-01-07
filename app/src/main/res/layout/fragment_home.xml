@@ -1,64 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <android.support.design.widget.AppBarLayout
+    <RelativeLayout
+        android:id="@+id/home_banner_rl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="15dp">
 
-        <android.support.design.widget.CollapsingToolbarLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:titleEnabled="false">
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="20dp"
+            android:layout_toStartOf="@id/home_hot_iv"
+            android:background="@drawable/shape_search"
+            android:drawableStart="@mipmap/icon_search"
+            android:padding="@dimen/dp_10" />
 
-            <com.df.playandroid.widget.banner.JYLooperPager
-                android:id="@+id/home_banner"
+        <ImageView
+            android:id="@+id/home_hot_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_hot" />
+
+    </RelativeLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/home_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnableNestedScrolling="false">
+
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="250dp" />
+                android:layout_height="wrap_content">
 
-
-            <android.support.v7.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                app:contentInsetStart="0dp"
-                app:layout_collapseMode="pin">
-
-                <RelativeLayout
+                <com.df.playandroid.widget.banner.JYLooperPager
+                    android:id="@+id/home_banner"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="@dimen/dp_10">
+                    android:layout_height="180dp"/>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginEnd="20dp"
-                        android:layout_toStartOf="@id/home_hot_iv"
-                        android:background="@drawable/shape_search"
-                        android:drawableStart="@mipmap/icon_search"
-                        android:padding="@dimen/dp_10" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/home_article_rv"
+                    android:padding="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-                    <ImageView
-                        android:id="@+id/home_hot_iv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:src="@mipmap/icon_hot" />
+            </LinearLayout>
 
-                </RelativeLayout>
+        </android.support.v4.widget.NestedScrollView>
 
-            </android.support.v7.widget.Toolbar>
+        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlTextFinish=""/>
 
-        </android.support.design.widget.CollapsingToolbarLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-    </android.support.design.widget.AppBarLayout>
-
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

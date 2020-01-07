@@ -53,4 +53,5 @@ dependencies {
     implementation Libs.ImmersionBar
     implementation Libs.glide
     implementation Libs.support_design
+    implementation Libs.smartRefresh
 }

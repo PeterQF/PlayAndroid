@@ -1,7 +1,5 @@
 package com.df.playandroid.base.response
 
-import okhttp3.Response
-
 /**
  * 作者：PeterWu
  * 时间：2020/1/5

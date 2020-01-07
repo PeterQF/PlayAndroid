@@ -6,9 +6,13 @@
 
     <color name="mainColor">#58B2DC</color>
     <color name="main_text_color">#707070</color>
-    <color name="white">#ffffff</color>
+    <color name="white">#FFFFFF</color>
     <!--搜索框颜色-->
     <color name="color_EBEDF9">#EBEDF9</color>
     <!--Toast背景色-->
     <color name="color_213335">#91989F</color>
+    <!--布局背景色-->
+    <color name="color_FBFBFB">#FBFBFB</color>
+    <!--字体颜色（黑色）-->
+    <color name="color_1A1A1A">#1A1A1A</color>
 </resources>

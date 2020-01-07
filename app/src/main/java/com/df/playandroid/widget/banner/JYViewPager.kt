@@ -39,7 +39,7 @@ class JYViewPager : ViewPager, View.OnTouchListener {
         override fun run() {
             var currentItem = currentItem
             currentItem++
-            setCurrentItem(currentItem, true)
+            setCurrentItem(currentItem)
             postDelayed(this, mDelayTime)
         }
     }

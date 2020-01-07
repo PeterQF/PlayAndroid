@@ -14,9 +14,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.df.playandroid.R;
 import com.df.playandroid.home.response.BannerResponse;
 import com.df.playandroid.utils.DeviceUtil;
+import com.df.playandroid.widget.roundimage.RoundRectImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,7 +120,8 @@ public class JYLooperPager extends LinearLayout {
     // 创建ImageView
     private void setupImageView() {
         for (int i = 0; i < mItems.size(); i++) {
-            ImageView iv = new ImageView(getContext());
+//            ImageView iv = new ImageView(getContext());
+            RoundRectImageView iv = new RoundRectImageView(getContext());
             iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
             mViewpagerViews.add(iv);
         }

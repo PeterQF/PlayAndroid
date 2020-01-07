@@ -1,0 +1,27 @@
+package com.df.playandroid.home.adapter
+
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.BaseViewHolder
+import com.df.playandroid.R
+import com.df.playandroid.home.response.HomeArticleResponse
+
+/**
+ * 作者：PeterWu
+ * 时间：2020/1/6
+ * 描述：首页文章Adapter
+ */
+class HomeArticleRvAdapter(data: MutableList<HomeArticleResponse.ArticleData.ArticleInfo>) :
+    BaseQuickAdapter<HomeArticleResponse.ArticleData.ArticleInfo, BaseViewHolder>(R.layout.rv_home_article_item, data) {
+    override fun convert(
+        helper: BaseViewHolder,
+        item: HomeArticleResponse.ArticleData.ArticleInfo?
+    ) {
+        item?.let {
+            helper
+                .setText(R.id.item_article_title_tv, it.title)
+                .setText(R.id.item_article_author_tv, it.author)
+                .setText(R.id.item_article_time_tv, it.niceShareDate)
+        }
+    }
+
+}

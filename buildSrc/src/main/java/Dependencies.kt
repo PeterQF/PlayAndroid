@@ -11,7 +11,6 @@ object Versions {
     const val support_design = "28.0.0"
     const val junit_lib = "4.12"
     const val test_runner_lib = "1.0.2"
-    const val android_material = "1.0.0"
     const val espresso_core_lib = "3.0.2"
     const val qumi = "1.4.4"
     const val okhttp3_logging = "3.10.0"
@@ -23,6 +22,7 @@ object Versions {
     const val brvah = "2.9.50"
     const val immersionBar = "3.0.0"
     const val glide = "4.9.0"
+    const val smartRefresh = "1.1.0"
 }
 
 object Package {
@@ -36,7 +36,6 @@ object Libs {
     const val junit = "junit:junit:${Versions.junit_lib}"
     const val test_runner = "com.android.support.test:runner:${Versions.test_runner_lib}"
     const val espresso_core = "com.android.support.test.espresso:espresso-core:${Versions.espresso_core_lib}"
-//    const val android_material = "com.google.android.material:material:${Versions.android_material}"
     const val support_design = "com.android.support:design:${Versions.support_design}"
     const val qmui = "com.qmuiteam:qmui:${Versions.qumi}"
     const val okhttp3_logging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp3_logging}"
@@ -51,4 +50,5 @@ object Libs {
     const val BRVAH = "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Versions.brvah}"
     const val ImmersionBar = "com.gyf.immersionbar:immersionbar:${Versions.immersionBar}"
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    const val smartRefresh = "com.scwang.smartrefresh:SmartRefreshLayout:${Versions.smartRefresh}"
 }

@@ -20,9 +20,12 @@ abstract class BaseReceiver<T: BaseResponse>: DisposableObserver<Response<T>>(){
                     // errorCode为0表示成功，不为0均为错误
                     onResult(this.errorCode, this.errorMsg, this)
                 } else {
+                    onFailed()
                     handleErrorCode(this.errorMsg)
                 }
             }
+        } else {
+            onFailed()
         }
     }
 
@@ -32,10 +35,13 @@ abstract class BaseReceiver<T: BaseResponse>: DisposableObserver<Response<T>>(){
         }
     }
 
+    abstract fun onFailed()
+
     abstract fun onResult(errorCode: Int, errorMsg: String, result: T)
 
     override fun onComplete() {
-
+        dispose()
+        LogUtil.info("on complete dispose")
     }
 
     override fun onError(e: Throwable) {

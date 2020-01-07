@@ -23,7 +23,8 @@ abstract class BaseActivity : AppCompatActivity() {
     open fun initStatusBar() {
         ImmersionBar
             .with(this)
-            .statusBarColor(R.color.mainColor)
+            .statusBarColor(R.color.white)
+            .statusBarDarkFont(true)
             .init()
     }
 
