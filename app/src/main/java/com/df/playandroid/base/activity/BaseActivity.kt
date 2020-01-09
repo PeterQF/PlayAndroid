@@ -13,8 +13,20 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppManager.instance.addActivity(this)
+        initPresenter()
+        setContentView(getLayoutId())
+        initView()
+        initData()
         init()
     }
+
+    abstract fun getLayoutId(): Int
+
+    abstract fun initView()
+
+    abstract fun initData()
+
+    open fun initPresenter() {}
 
     private fun init() {
         initStatusBar()

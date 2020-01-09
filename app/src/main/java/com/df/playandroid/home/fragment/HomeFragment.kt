@@ -2,6 +2,7 @@ package com.df.playandroid.home.fragment
 
 import android.support.v7.widget.LinearLayoutManager
 import com.df.playandroid.R
+import com.df.playandroid.base.activity.WebViewActivity
 import com.df.playandroid.home.presenter.HomePresenter
 import com.df.playandroid.home.view.IHomeView
 import com.df.playandroid.base.fragment.BaseFragment
@@ -19,7 +20,8 @@ import kotlinx.android.synthetic.main.fragment_home.*
 class HomeFragment : BaseFragment<IHomeView, HomePresenter>(), IHomeView {
 
     private lateinit var mArticleAdapter: HomeArticleRvAdapter
-    private var mArticleItems: MutableList<HomeArticleResponse.ArticleData.ArticleInfo> = ArrayList()
+    private var mArticleItems: MutableList<HomeArticleResponse.ArticleData.ArticleInfo> =
+        ArrayList()
     private var mPage = 0
     private var mArticleSize = 0
 
@@ -46,6 +48,15 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(), IHomeView {
         val layoutManager = LinearLayoutManager(requireContext())
         home_article_rv.layoutManager = layoutManager
         home_article_rv.adapter = mArticleAdapter
+        mArticleAdapter.setOnItemClickListener { adapter, view, position ->
+            startActivity(
+                WebViewActivity.openWeb(
+                    requireContext(),
+                    mArticleItems[position].title,
+                    mArticleItems[position].link
+                )
+            )
+        }
     }
 
     override fun initData() {

@@ -1,5 +1,7 @@
 package com.df.playandroid.home.adapter
 
+import android.view.View
+import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.df.playandroid.R
@@ -21,6 +23,13 @@ class HomeArticleRvAdapter(data: MutableList<HomeArticleResponse.ArticleData.Art
                 .setText(R.id.item_article_title_tv, it.title)
                 .setText(R.id.item_article_author_tv, it.author)
                 .setText(R.id.item_article_time_tv, it.niceShareDate)
+                .setText(R.id.item_article_sort_tv, it.chapterName)
+            val authorTv = helper.getView<TextView>(R.id.item_article_author_tv)
+            if (it.author.isNullOrEmpty()) {
+                authorTv.visibility = View.GONE
+            } else {
+                authorTv.visibility = View.VISIBLE
+            }
         }
     }
 

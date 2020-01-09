@@ -23,6 +23,7 @@ object Versions {
     const val immersionBar = "3.0.0"
     const val glide = "4.9.0"
     const val smartRefresh = "1.1.0"
+    const val agentWeb = "4.1.2"
 }
 
 object Package {
@@ -51,4 +52,5 @@ object Libs {
     const val ImmersionBar = "com.gyf.immersionbar:immersionbar:${Versions.immersionBar}"
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val smartRefresh = "com.scwang.smartrefresh:SmartRefreshLayout:${Versions.smartRefresh}"
+    const val agentWeb = "com.just.agentweb:agentweb:${Versions.agentWeb}"
 }
