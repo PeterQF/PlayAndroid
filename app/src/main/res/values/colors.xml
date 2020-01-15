@@ -16,4 +16,7 @@
     <!--字体颜色（黑色）-->
     <color name="color_1A1A1A">#1A1A1A</color>
     <color name="color_e8e8e8">#e8e8e8</color>
+    <color name="color_F8F8F8">#F8F8F8</color>
+    <!--公众号item子标题字颜色-->
+    <color name="color_838383">#838383</color>
 </resources>

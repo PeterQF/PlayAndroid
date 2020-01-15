@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/public_item_rl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_10"
+    android:padding="@dimen/dp_10"
+    android:background="@drawable/shape_article_item"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
+        android:layout_alignParentStart="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/public_item_icon"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/public_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="郭霖"
+            android:textSize="16dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/public_item_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Android技术分享平台"
+            android:maxLines="1"
+            android:textColor="@color/color_838383"
+            android:textSize="11dp"
+            android:layout_marginTop="@dimen/dp_10"/>
+
+    </LinearLayout>
+
+    <com.df.playandroid.widget.roundimage.RoundImageView
+        android:id="@+id/public_item_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        tools:src="@mipmap/icon_409"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>

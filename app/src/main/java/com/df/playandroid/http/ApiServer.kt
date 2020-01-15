@@ -2,6 +2,7 @@ package com.df.playandroid.http
 
 import com.df.playandroid.home.response.BannerResponse
 import com.df.playandroid.home.response.HomeArticleResponse
+import com.df.playandroid.public_recommend.response.PublicResponse
 import io.reactivex.Observable
 import retrofit2.Response
 import retrofit2.http.GET
@@ -20,4 +21,10 @@ interface ApiServer {
      */
     @GET("/article/list/{page}/json")
     fun requestHomeArticleList(@Path("page") page:Int): Observable<Response<HomeArticleResponse>>
+
+    /**
+     * 请求公众号列表
+     */
+    @GET("/wxarticle/chapters/json")
+    fun requestPublicItem(): Observable<Response<PublicResponse>>
 }
