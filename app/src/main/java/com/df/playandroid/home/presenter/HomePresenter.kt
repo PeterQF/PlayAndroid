@@ -7,6 +7,7 @@ import com.df.playandroid.base.presenter.BasePresenter
 import com.df.playandroid.config.Constants
 import com.df.playandroid.home.response.BannerResponse
 import com.df.playandroid.home.response.HomeArticleResponse
+import com.df.playandroid.home.response.SearchHotWordResponse
 import com.df.playandroid.http.ApiRetrofit
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -32,6 +33,9 @@ class HomePresenter(context: Context) : BasePresenter<IHomeView>(context) {
             })
     }
 
+    /**
+     * 获取首页文章
+     */
     fun getArticles(page: Int, type: Int) {
         ApiRetrofit
             .instance
@@ -59,6 +63,30 @@ class HomePresenter(context: Context) : BasePresenter<IHomeView>(context) {
                         }
                     }
                 }
+            })
+    }
+
+    /**
+     * 获取搜索热词
+     */
+    fun getHotWord() {
+        ApiRetrofit
+            .instance
+            .api
+            .requestSearchHotWord()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : BaseReceiver<SearchHotWordResponse>() {
+                override fun onFailed() {}
+
+                override fun onResult(
+                    errorCode: Int,
+                    errorMsg: String,
+                    result: SearchHotWordResponse
+                ) {
+                    result.data.takeIf { it.isNullOrEmpty().not() }?.let { getView()?.getHotWordSuccess(it) }
+                }
+
             })
     }
 }

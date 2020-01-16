@@ -1,6 +1,9 @@
 package com.df.playandroid.home.fragment
 
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Gravity
+import android.widget.TextView
 import com.df.playandroid.R
 import com.df.playandroid.base.activity.WebViewActivity
 import com.df.playandroid.home.presenter.HomePresenter
@@ -10,6 +13,8 @@ import com.df.playandroid.config.Constants
 import com.df.playandroid.home.adapter.HomeArticleRvAdapter
 import com.df.playandroid.home.response.BannerResponse
 import com.df.playandroid.home.response.HomeArticleResponse
+import com.df.playandroid.home.response.SearchHotWordResponse
+import com.df.playandroid.utils.DeviceUtil
 import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
@@ -20,8 +25,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 class HomeFragment : BaseFragment<IHomeView, HomePresenter>(), IHomeView {
 
     private lateinit var mArticleAdapter: HomeArticleRvAdapter
-    private var mArticleItems: MutableList<HomeArticleResponse.ArticleData.ArticleInfo> =
-        ArrayList()
+    private var mArticleItems: MutableList<HomeArticleResponse.ArticleData.ArticleInfo> = ArrayList()
     private var mPage = 0
     private var mArticleSize = 0
 
@@ -61,6 +65,7 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(), IHomeView {
 
     override fun initData() {
         mPresenter?.getBanner()
+        mPresenter?.getHotWord()
         home_refresh_layout.autoRefresh()
     }
 
@@ -74,6 +79,20 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(), IHomeView {
             mArticleItems.clear()
             mArticleItems.addAll(result.datas)
             mArticleAdapter.notifyDataSetChanged()
+        }
+    }
+
+    /**
+     * 得到搜索热词
+     */
+    override fun getHotWordSuccess(result: List<SearchHotWordResponse.SearchHotWordData>) {
+        for (i in result.indices) {
+            val hotTv = TextView(requireContext())
+            hotTv.text = result[i].name
+            hotTv.textSize = 14f
+            hotTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.main_text_color))
+            hotTv.gravity = Gravity.CENTER_VERTICAL
+            home_view_flipper.addView(hotTv)
         }
     }
 
