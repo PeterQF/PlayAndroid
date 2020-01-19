@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">PlayAndroid</string>
 
+    <!--common-->
+    <string name="common_network_error">网络错误</string>
+    <string name="common_token_invalid">Token失效</string>
+    <string name="common_request_failed">请求失败</string>
+    <string name="common_parse_error">解析错误</string>
+    <string name="common_connection_failed">连接失败</string>
+    <string name="common_network_dismiss">网络未连接</string>
+    <string name="common_response_timeout">服务器响应超时</string>
+    <string name="common_server_error">服务器出错</string>
+
+
     <!--main-->
     <string name="main_home">首页</string>
     <string name="main_project_recommend">项目</string>
