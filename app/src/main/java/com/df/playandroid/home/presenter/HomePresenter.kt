@@ -1,7 +1,7 @@
 package com.df.playandroid.home.presenter
 
 import android.content.Context
-import com.df.playandroid.base.BaseReceiver
+import com.df.playandroid.base.BaseObserver
 import com.df.playandroid.home.view.IHomeView
 import com.df.playandroid.base.presenter.BasePresenter
 import com.df.playandroid.config.Constants
@@ -24,7 +24,7 @@ class HomePresenter(context: Context) : BasePresenter<IHomeView>(context) {
             .requestBanner()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : BaseReceiver<BannerResponse>() {
+            .subscribe(object : BaseObserver<BannerResponse>() {
                 override fun onFailed() {}
 
                 override fun onResult(errorCode: Int, errorMsg: String, result: BannerResponse) {
@@ -43,7 +43,7 @@ class HomePresenter(context: Context) : BasePresenter<IHomeView>(context) {
             .requestHomeArticleList(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : BaseReceiver<HomeArticleResponse>(){
+            .subscribe(object : BaseObserver<HomeArticleResponse>(){
                 override fun onFailed() {
                     when(type) {
                         Constants.LoadType.REFRESH -> getView()?.stopRefresh()
@@ -76,7 +76,7 @@ class HomePresenter(context: Context) : BasePresenter<IHomeView>(context) {
             .requestSearchHotWord()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : BaseReceiver<SearchHotWordResponse>() {
+            .subscribe(object : BaseObserver<SearchHotWordResponse>() {
                 override fun onFailed() {}
 
                 override fun onResult(

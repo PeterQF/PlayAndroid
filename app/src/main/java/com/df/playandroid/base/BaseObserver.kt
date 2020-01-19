@@ -1,6 +1,7 @@
 package com.df.playandroid.base
 
 import com.df.playandroid.base.response.BaseResponse
+import com.df.playandroid.http.exception.ExceptionUtils
 import com.df.playandroid.utils.LogUtil
 import com.df.playandroid.utils.ToastUtil
 import io.reactivex.observers.DisposableObserver
@@ -11,7 +12,7 @@ import retrofit2.Response
  * 时间：2020/1/5
  * 描述：
  */
-abstract class BaseReceiver<T: BaseResponse>: DisposableObserver<Response<T>>(){
+abstract class BaseObserver<T: BaseResponse>: DisposableObserver<Response<T>>(){
 
     override fun onNext(t: Response<T>) {
         if (t.isSuccessful) {
@@ -46,5 +47,7 @@ abstract class BaseReceiver<T: BaseResponse>: DisposableObserver<Response<T>>(){
 
     override fun onError(e: Throwable) {
         LogUtil.error("get error ----> ${e.message}")
+        onFailed()
+        ExceptionUtils.handleException(e)
     }
 }

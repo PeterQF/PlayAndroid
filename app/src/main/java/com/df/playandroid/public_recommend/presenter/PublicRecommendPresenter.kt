@@ -1,7 +1,7 @@
 package com.df.playandroid.public_recommend.presenter
 
 import android.content.Context
-import com.df.playandroid.base.BaseReceiver
+import com.df.playandroid.base.BaseObserver
 import com.df.playandroid.base.presenter.BasePresenter
 import com.df.playandroid.http.ApiRetrofit
 import com.df.playandroid.public_recommend.response.PublicResponse
@@ -26,7 +26,7 @@ class PublicRecommendPresenter(context: Context) : BasePresenter<IPublicRecommen
             .requestPublicItem()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : BaseReceiver<PublicResponse>() {
+            .subscribe(object : BaseObserver<PublicResponse>() {
                 override fun onFailed() {
                     getView()?.stopRefresh()
                 }
