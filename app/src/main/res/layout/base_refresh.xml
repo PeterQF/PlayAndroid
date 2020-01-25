@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/base_refresh_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.scwang.smartrefresh.layout.header.ClassicsHeader
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="60dp"
+        app:srlDrawableArrow="@mipmap/icon_arrow"
+        app:srlDrawableArrowSize="30dp"
+        app:srlDrawableMarginRight="@dimen/dp_10"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/base_rv"
@@ -15,6 +19,10 @@
 
     <com.scwang.smartrefresh.layout.footer.ClassicsFooter
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="60dp"
+        app:srlTextFinish=""
+        app:srlFinishDuration="0"
+        app:srlDrawableArrowSize="30dp"
+        app:srlDrawableMarginRight="@dimen/dp_10"/>
 
 </com.scwang.smartrefresh.layout.SmartRefreshLayout>

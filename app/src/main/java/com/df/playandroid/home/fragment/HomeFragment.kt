@@ -38,6 +38,15 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(), IHomeView {
         initRefreshAndLoadMore()
     }
 
+    /**
+     * banner点击事件
+     */
+    private fun initBannerClickListener(result: List<BannerResponse.BannerData>) {
+        home_banner.setOnItemClickListener {
+            startActivity(WebViewActivity.openWeb(requireContext(), result[it].title, result[it].url))
+        }
+    }
+
     private fun initRefreshAndLoadMore() {
         home_refresh_layout.setOnRefreshListener {
             mPresenter?.getArticles(0, Constants.LoadType.REFRESH)
@@ -113,6 +122,7 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(), IHomeView {
     }
 
     override fun getBannerSuccess(result: List<BannerResponse.BannerData>) {
+        initBannerClickListener(result)
         home_banner.setData(result)
     }
 
