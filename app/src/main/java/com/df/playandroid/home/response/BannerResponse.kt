@@ -1,6 +1,7 @@
 package com.df.playandroid.home.response
 
 import com.df.playandroid.base.response.BaseResponse
+import java.io.Serializable
 
 data class BannerResponse(
     val data: List<BannerData>,
@@ -16,5 +17,5 @@ data class BannerResponse(
         val title: String,
         val type: Int,
         val url: String
-    )
+    ): Serializable
 }

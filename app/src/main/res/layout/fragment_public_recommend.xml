@@ -7,13 +7,16 @@
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
-        android:text="@string/public_title"
-        android:gravity="center"
-        android:textSize="18dp"
-        android:textStyle="bold"/>
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/dp_40"-->
+<!--        android:text="@string/public_title"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="18dp"-->
+<!--        android:textStyle="bold"/>-->
+
+    <include
+        layout="@layout/base_header"/>
 
     <include
         android:id="@+id/base_refresh_layout"

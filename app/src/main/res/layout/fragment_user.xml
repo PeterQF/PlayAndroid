@@ -5,11 +5,16 @@
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:text="我是我的fragment"
-        android:layout_centerInParent="true"
-        android:textSize="18dp"
+    <include
+        android:id="@+id/header"
+        layout="@layout/base_header"/>
+
+    <include
+        layout="@layout/header_before_login"
+        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_below="@id/header"
+        android:layout_margin="20dp"/>
+
 
 </RelativeLayout>

@@ -2,10 +2,9 @@ package com.df.playandroid.base.activity
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
 import android.widget.FrameLayout
 import com.df.playandroid.R
+import com.df.playandroid.content.activity.WebViewActivity
 import com.gyf.immersionbar.ImmersionBar
 import com.just.agentweb.AgentWeb
 import kotlinx.android.synthetic.main.activity_agent_web.*

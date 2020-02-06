@@ -8,7 +8,7 @@
     tools:context=".base.activity.AgentWebActivity">
 
     <include
-        layout="@layout/base_header"/>
+        layout="@layout/base_article_header"/>
 
     <FrameLayout
         android:id="@+id/mAgentWebFl"

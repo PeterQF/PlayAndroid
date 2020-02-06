@@ -5,7 +5,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import android.widget.TextView
 import com.df.playandroid.R
-import com.df.playandroid.base.activity.WebViewActivity
+import com.df.playandroid.content.activity.WebViewActivity
 import com.df.playandroid.home.presenter.HomePresenter
 import com.df.playandroid.home.view.IHomeView
 import com.df.playandroid.base.fragment.BaseFragment
@@ -14,7 +14,6 @@ import com.df.playandroid.home.adapter.HomeArticleRvAdapter
 import com.df.playandroid.home.response.BannerResponse
 import com.df.playandroid.home.response.HomeArticleResponse
 import com.df.playandroid.home.response.SearchHotWordResponse
-import com.df.playandroid.utils.DeviceUtil
 import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
@@ -43,7 +42,8 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(), IHomeView {
      */
     private fun initBannerClickListener(result: List<BannerResponse.BannerData>) {
         home_banner.setOnItemClickListener {
-            startActivity(WebViewActivity.openWeb(requireContext(), result[it].title, result[it].url))
+//            startActivity(WebViewActivity.openWeb(requireContext(), result[it].id, result[it].title, result[it].url))
+            startActivity(WebViewActivity.openBanner(requireContext(), result[it], 1))
         }
     }
 
@@ -65,8 +65,8 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(), IHomeView {
             startActivity(
                 WebViewActivity.openWeb(
                     requireContext(),
-                    mArticleItems[position].title,
-                    mArticleItems[position].link
+                    mArticleItems[position],
+                    0
                 )
             )
         }

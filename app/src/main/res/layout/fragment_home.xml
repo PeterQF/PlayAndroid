@@ -8,6 +8,7 @@
 
     <RelativeLayout
         android:id="@+id/home_banner_rl"
+        android:background="@color/mainColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -58,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/icon_hot" />
+            android:src="@mipmap/icon_hot_white" />
 
     </RelativeLayout>
 
@@ -88,6 +89,7 @@
                     android:id="@+id/home_banner"
                     android:paddingStart="15dp"
                     android:paddingEnd="15dp"
+                    android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"/>
 

@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.widget.RadioGroup
 import com.df.playandroid.R
+import com.df.playandroid.application.AppManager
 import com.df.playandroid.home.presenter.HomePresenter
 import com.df.playandroid.home.view.IHomeView
 import com.df.playandroid.base.activity.BaseMvpActivity
@@ -12,7 +13,9 @@ import com.df.playandroid.project_recommend.fragment.ProjectRecommendFragment
 import com.df.playandroid.project_system.fragment.ProjectSystemFragment
 import com.df.playandroid.public_recommend.fragment.PublicRecommendFragment
 import com.df.playandroid.user.fragment.UserFragment
+import com.df.playandroid.utils.ToastUtil
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.properties.Delegates
 
 class MainActivity : BaseMvpActivity<IHomeView, HomePresenter>() {
 
@@ -61,6 +64,18 @@ class MainActivity : BaseMvpActivity<IHomeView, HomePresenter>() {
                 mTransition.show(fragment).commit()
             }
         }
+    }
+
+    private var backPressedTime by Delegates.observable(0L) { pre, old, new ->
+        if (new - old < 1000) {
+            AppManager.instance.exitApplication(this)
+        } else {
+            ToastUtil.showToast(getString(R.string.common_exit_app))
+        }
+    }
+
+    override fun onBackPressed() {
+        backPressedTime = System.currentTimeMillis()
     }
 
     override fun initData() {}

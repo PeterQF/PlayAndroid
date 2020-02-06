@@ -4,7 +4,7 @@ import com.df.playandroid.base.presenter.BasePresenter
 
 abstract class BaseMvpActivity<V, P: BasePresenter<V>> : BaseActivity() {
 
-    private var mPresenter: P? = null
+    protected var mPresenter: P? = null
 
     override fun initPresenter() {
         mPresenter = setupPresenter()

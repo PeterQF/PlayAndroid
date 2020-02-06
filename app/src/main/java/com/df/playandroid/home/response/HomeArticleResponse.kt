@@ -1,6 +1,7 @@
 package com.df.playandroid.home.response
 
 import com.df.playandroid.base.response.BaseResponse
+import java.io.Serializable
 
 class HomeArticleResponse(
     val data: ArticleData,
@@ -46,6 +47,6 @@ class HomeArticleResponse(
             val userId: Int,
             val visible: Int,
             val zan: Int
-        )
+        ): Serializable
     }
 }

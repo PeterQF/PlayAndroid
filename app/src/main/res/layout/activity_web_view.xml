@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    tools:context=".base.activity.WebViewActivity">
+    tools:context=".content.activity.WebViewActivity">
 
     <include
-        layout="@layout/base_header"/>
+        layout="@layout/base_article_header"/>
 
     <com.qmuiteam.qmui.widget.QMUIProgressBar
         android:id="@+id/mProgressBar"

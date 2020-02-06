@@ -31,4 +31,9 @@ object Constants {
         const val PUBLIC_428 = 428
         const val PUBLIC_434 = 434
     }
+
+    /**
+     * 分享
+     */
+    const val CONTENT_SHARE_TYPE = "text/plain"
 }

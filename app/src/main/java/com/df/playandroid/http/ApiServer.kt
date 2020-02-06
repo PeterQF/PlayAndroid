@@ -1,5 +1,6 @@
 package com.df.playandroid.http
 
+import com.df.playandroid.content.response.CollectionResponse
 import com.df.playandroid.home.response.BannerResponse
 import com.df.playandroid.home.response.HomeArticleResponse
 import com.df.playandroid.home.response.SearchHotWordResponse
@@ -7,6 +8,7 @@ import com.df.playandroid.public_recommend.response.PublicResponse
 import io.reactivex.Observable
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface ApiServer {
@@ -34,4 +36,10 @@ interface ApiServer {
      */
     @GET("/wxarticle/chapters/json")
     fun requestPublicItem(): Observable<Response<PublicResponse>>
+
+    /**
+     * 请求收藏站内文章
+     */
+    @POST("/lg/collect/{id}/json")
+    fun requestCollectStationArticle(@Path("id") id: Int): Observable<Response<CollectionResponse>>
 }

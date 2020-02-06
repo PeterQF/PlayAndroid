@@ -5,6 +5,7 @@ import android.app.ActivityManager
 import android.content.Context
 import com.df.playandroid.utils.LogUtil
 import java.util.*
+import kotlin.system.exitProcess
 
 class AppManager private constructor(){
 //  activity管理栈
@@ -55,6 +56,6 @@ class AppManager private constructor(){
         finishAllActivity()
         val activityManager:ActivityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         activityManager.killBackgroundProcesses(context.packageName)
-        System.exit(0)
+        exitProcess(0)
     }
 }

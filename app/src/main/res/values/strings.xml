@@ -10,7 +10,12 @@
     <string name="common_network_dismiss">网络未连接</string>
     <string name="common_response_timeout">服务器响应超时</string>
     <string name="common_server_error">服务器出错</string>
+    <string name="common_exit_app">再按一次退出APP</string>
 
+    <!--文章详情-->
+    <string name="article_collect">收藏</string>
+    <string name="article_share">分享</string>
+    <string name="article_open_browser">用浏览器打开</string>
 
     <!--main-->
     <string name="main_home">首页</string>
@@ -21,5 +26,11 @@
 
     <!--公众号-->
     <string name="public_title">公众号推荐</string>
+
+    <!-- share -->
+    <string name="share_title">Share</string>
+    <string name="share_type_title">Share Project</string>
+    <string name="share_article_url">%1$s Share【%2$s】：%3$s</string>
+    <string name="share_type_url">%1$s Share【%2$s】Project：http://www.wanandroid.com/article/list/0?cid=%3$d</string>
 
 </resources>

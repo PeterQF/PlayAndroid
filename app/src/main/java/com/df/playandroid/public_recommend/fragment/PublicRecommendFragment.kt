@@ -7,6 +7,7 @@ import com.df.playandroid.public_recommend.adapter.PublicRvAdapter
 import com.df.playandroid.public_recommend.presenter.PublicRecommendPresenter
 import com.df.playandroid.public_recommend.response.PublicResponse
 import com.df.playandroid.public_recommend.view.IPublicRecommendView
+import kotlinx.android.synthetic.main.base_header.*
 import kotlinx.android.synthetic.main.base_refresh.*
 
 /**
@@ -24,6 +25,7 @@ class PublicRecommendFragment : BaseFragment<IPublicRecommendView, PublicRecomme
     override fun setupPresenter() = PublicRecommendPresenter(requireContext())
 
     override fun initView() {
+        base_header_title.text = getString(R.string.public_title)
         initAdapter()
         initRefresh()
     }
