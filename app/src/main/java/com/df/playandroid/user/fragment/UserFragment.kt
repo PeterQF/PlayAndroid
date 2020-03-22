@@ -5,6 +5,7 @@ import com.df.playandroid.base.fragment.BaseFragment
 import com.df.playandroid.user.presenter.UserPresenter
 import com.df.playandroid.user.view.IUserView
 import com.df.playandroid.utils.LogUtil
+import kotlinx.android.synthetic.main.layout_user_option.*
 
 /**
  * 作者：PeterWu
@@ -19,6 +20,8 @@ class UserFragment : BaseFragment<IUserView, UserPresenter>() {
 
     override fun initView() {
         LogUtil.info("fragment ---> UserFragment init view")
+        mAccountFl.setOnClickListener {
+        }
     }
 
     override fun initData() {

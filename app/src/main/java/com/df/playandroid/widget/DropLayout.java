@@ -8,10 +8,8 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 import com.df.playandroid.R;
 import com.df.playandroid.utils.LogUtil;
-import com.df.playandroid.utils.SPUtil;
 import com.qmuiteam.qmui.util.QMUIViewOffsetHelper;
 
 public class DropLayout extends RelativeLayout {

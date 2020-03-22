@@ -3,7 +3,7 @@ package com.df.playandroid.home.adapter
 import android.view.View
 import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.df.playandroid.R
 import com.df.playandroid.home.response.HomeArticleResponse
 
@@ -16,7 +16,7 @@ class HomeArticleRvAdapter(data: MutableList<HomeArticleResponse.ArticleData.Art
     BaseQuickAdapter<HomeArticleResponse.ArticleData.ArticleInfo, BaseViewHolder>(R.layout.rv_home_article_item, data) {
     override fun convert(
         helper: BaseViewHolder,
-        item: HomeArticleResponse.ArticleData.ArticleInfo?
+        item: HomeArticleResponse.ArticleData.ArticleInfo
     ) {
         item?.let {
             helper

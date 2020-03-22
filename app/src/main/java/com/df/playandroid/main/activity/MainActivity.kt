@@ -1,8 +1,7 @@
 package com.df.playandroid.main.activity
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentTransaction
-import android.widget.RadioGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.df.playandroid.R
 import com.df.playandroid.application.AppManager
 import com.df.playandroid.home.presenter.HomePresenter

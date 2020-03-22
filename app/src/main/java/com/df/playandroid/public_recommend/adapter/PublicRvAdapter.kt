@@ -1,13 +1,10 @@
 package com.df.playandroid.public_recommend.adapter
 
-import android.widget.RelativeLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.df.playandroid.R
 import com.df.playandroid.config.Constants
 import com.df.playandroid.public_recommend.response.PublicResponse
-import com.df.playandroid.utils.DeviceUtil
-import com.df.playandroid.widget.roundimage.RoundImageView
 import com.qmuiteam.qmui.widget.QMUIRadiusImageView
 
 /**
@@ -19,7 +16,7 @@ class PublicRvAdapter(data: MutableList<PublicResponse.PublicData>) :
     BaseQuickAdapter<PublicResponse.PublicData, BaseViewHolder>(
         R.layout.rv_public_recommend_item, data
     ) {
-    override fun convert(helper: BaseViewHolder, item: PublicResponse.PublicData?) {
+    override fun convert(helper: BaseViewHolder, item: PublicResponse.PublicData) {
         item?.let {
 //            val publicLayout = helper.getView<RelativeLayout>(R.id.public_item_rl)
 //            val params = publicLayout.layoutParams

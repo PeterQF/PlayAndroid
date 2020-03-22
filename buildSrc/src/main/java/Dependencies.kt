@@ -1,30 +1,34 @@
 object Versions {
-    const val compile_sdk = 28
+    const val compile_sdk = 29
     const val build_tools = "29.0.2"
     const val min_sdk = 19
-    const val target_sdk = 28
+    const val target_sdk = 29
     const val version_code = 1
     const val version_name = "1.0"
     const val kotlin = "1.3.50"
+    const val appcompat_version = "1.1.0"
     const val support_lib = "28.0.0"
-    const val support_constraint_lib = "1.1.3"
-    const val support_design = "28.0.0"
+    const val constraint_lib = "1.1.2"
+    const val material_design = "1.1.0"
+    const val recycler_view = "1.1.0"
     const val junit_lib = "4.12"
-    const val test_runner_lib = "1.0.2"
-    const val espresso_core_lib = "3.0.2"
-    const val qumi = "1.4.4"
-    const val okhttp3_logging = "3.10.0"
-    const val gson = "2.8.5"
-    const val okhttp3 = "3.14.4"
-    const val retrofit2 = "2.7.0"
-    const val rxjava2 = "2.2.16"
+    const val test_lib = "1.1.1"
+    const val core_ktx = "1.0.2"
+    const val multidex = "2.0.1"
+    const val espresso_core_lib = "3.2.0"
+    const val qumi = "2.0.0-alpha05"
+    const val okhttp3_logging = "4.4.0"
+    const val gson = "2.8.6"
+    const val okhttp3 = "4.4.0"
+    const val retrofit2 = "2.7.2"
+    const val rxjava2 = "2.2.19"
     const val rxandroid = "2.1.1"
-    const val brvah = "2.9.50"
+    const val brvah = "3.0.1"
     const val immersionBar = "3.0.0"
-    const val glide = "4.9.0"
-    const val smartRefresh = "1.1.0"
-    const val agentWeb = "4.1.2"
-    const val picture_selector = "2.2.5"
+    const val glide = "4.11.0"
+    const val smartRefresh = "1.1.2"
+    const val agentWeb = "4.1.3"
+    const val picture_selector = "2.4.9"
 }
 
 object Package {
@@ -33,12 +37,15 @@ object Package {
 
 object Libs {
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
-    const val support_appcompat_v7 = "com.android.support:appcompat-v7:${Versions.support_lib}"
-    const val support_constraint = "com.android.support.constraint:constraint-layout:${Versions.support_constraint_lib}"
+    const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat_version}"
+    const val constraint = "androidx.constraintlayout:constraintlayout:${Versions.constraint_lib}"
     const val junit = "junit:junit:${Versions.junit_lib}"
-    const val test_runner = "com.android.support.test:runner:${Versions.test_runner_lib}"
-    const val espresso_core = "com.android.support.test.espresso:espresso-core:${Versions.espresso_core_lib}"
-    const val support_design = "com.android.support:design:${Versions.support_design}"
+    const val test_runner = "androidx.test.ext:junit:${Versions.test_lib}"
+    const val espresso_core = "androidx.test.espresso:espresso-core:${Versions.espresso_core_lib}"
+    const val core_ktx = "androidx.core:core-ktx:${Versions.core_ktx}"
+    const val multidex = "androidx.multidex:multidex:${Versions.multidex}"
+    const val material_design = "com.google.android.material:material:${Versions.material_design}"
+    const val recycler_view = "androidx.recyclerview:recyclerview:${Versions.recycler_view}"
     const val qmui = "com.qmuiteam:qmui:${Versions.qumi}"
     const val okhttp3_logging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp3_logging}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"

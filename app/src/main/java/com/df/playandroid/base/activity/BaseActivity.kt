@@ -2,10 +2,9 @@ package com.df.playandroid.base.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.df.playandroid.R
 import com.df.playandroid.application.AppManager
-import com.df.playandroid.base.presenter.BasePresenter
 import com.gyf.immersionbar.ImmersionBar
 
 abstract class BaseActivity : AppCompatActivity() {

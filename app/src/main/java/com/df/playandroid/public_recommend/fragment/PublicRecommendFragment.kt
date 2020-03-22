@@ -1,7 +1,6 @@
 package com.df.playandroid.public_recommend.fragment
 
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.GridLayoutManager
 import com.df.playandroid.R
 import com.df.playandroid.base.fragment.BaseFragment
 import com.df.playandroid.public_recommend.adapter.PublicRvAdapter

@@ -19,8 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/header_back_iv"
         android:layout_toStartOf="@id/header_menu_iv"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:layout_marginStart="@dimen/dp_10"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingEnd="@dimen/dp_10"
         android:layout_centerInParent="true"
         tools:text="我是一个标题我是一个标题我是一个标题我是一个标题"
         android:textColor="@color/white"
@@ -36,7 +36,7 @@
         android:src="@mipmap/icon_menu"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:visibility="gone"
-        android:padding="@dimen/dp_10"/>
+        android:padding="@dimen/dp_10"
+        android:visibility="gone"/>
 
 </RelativeLayout>

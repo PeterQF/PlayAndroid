@@ -3,16 +3,16 @@ package com.df.playandroid.content.activity
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
+import androidx.camera.core.CameraX.getContext
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.df.playandroid.R
-import com.df.playandroid.base.activity.BaseActivity
 import com.df.playandroid.base.activity.BaseMvpActivity
 import com.df.playandroid.base.adapter.WebViewMenuRvAdapter
 import com.df.playandroid.base.bean.WebViewMenuItemBean
@@ -23,7 +23,11 @@ import com.df.playandroid.home.response.HomeArticleResponse
 import com.df.playandroid.utils.DeviceUtil
 import com.df.playandroid.utils.IntentUtil
 import com.gyf.immersionbar.ImmersionBar
+import com.qmuiteam.qmui.skin.QMUISkinManager
+import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import com.qmuiteam.qmui.widget.popup.QMUIPopup
+import com.qmuiteam.qmui.widget.popup.QMUIPopups
+import com.qmuiteam.qmui.widget.popup.QMUIQuickAction
 import com.qmuiteam.qmui.widget.webview.QMUIWebViewClient
 import kotlinx.android.synthetic.main.activity_web_view.*
 import kotlinx.android.synthetic.main.base_article_header.*
@@ -40,7 +44,7 @@ class WebViewActivity : BaseMvpActivity<ContentView, ContentPresenter>(), View.O
         initWebView()
         initWebViewMenuAdapter()
         initPopup()
-        header_title_tv.text = when(mType) {
+        header_title_tv.text = when (mType) {
             0 -> mItem.title
             else -> mBanner.title
         }
@@ -51,34 +55,64 @@ class WebViewActivity : BaseMvpActivity<ContentView, ContentPresenter>(), View.O
 
     private fun initWebViewMenuAdapter() {
         mMenuAdapter = WebViewMenuRvAdapter(mMenuItem)
-        mMenuItem.add(WebViewMenuItemBean(getString(R.string.article_collect), R.mipmap.icon_collect))
+        mMenuItem.add(
+            WebViewMenuItemBean(
+                getString(R.string.article_collect),
+                R.mipmap.icon_collect
+            )
+        )
         mMenuItem.add(WebViewMenuItemBean(getString(R.string.article_share), R.mipmap.icon_share))
-        mMenuItem.add(WebViewMenuItemBean(getString(R.string.article_open_browser), R.mipmap.icon_browser))
+        mMenuItem.add(
+            WebViewMenuItemBean(
+                getString(R.string.article_open_browser),
+                R.mipmap.icon_browser
+            )
+        )
         mMenuAdapter.notifyDataSetChanged()
     }
 
     private fun initPopup() {
-        if (mQMUIPopup == null) mQMUIPopup = QMUIPopup(this, QMUIPopup.DIRECTION_NONE)
+//        QMUIPopups
+//            .quickAction(
+//                this,
+//                QMUIDisplayHelper.dp2px(this, 80),
+//                QMUIDisplayHelper.dp2px(this, 56)
+//            )
+//            .shadow(true)
+//            .dimAmount(0.5f)
+//            .skinManager(QMUISkinManager.defaultInstance(this))
+//            .edgeProtection(QMUIDisplayHelper.dp2px(this, 20))
+//            .addAction(QMUIQuickAction.Action().icon(R.mipmap.icon_collect).text("收藏").onClick { quickAction, action, position ->
+//
+//            })
+//            .addAction(QMUIQuickAction.Action().icon(R.mipmap.icon_share).text("分享").onClick { quickAction, action, position ->
+//
+//            })
+//            .addAction(QMUIQuickAction.Action().icon(R.mipmap.icon_browser).text("用浏览器打开").onClick { quickAction, action, position ->
+//
+//            })
+//            .show(header_menu_iv)
+
+        if (mQMUIPopup == null) {
+            mQMUIPopup = QMUIPopups.popup(this, ViewGroup.LayoutParams.WRAP_CONTENT)
+        }
         val menuLayout = LayoutInflater.from(this).inflate(R.layout.webview_menu, null)
         val menuRv = menuLayout.findViewById<RecyclerView>(R.id.webView_menu_rv)
-        mQMUIPopup?.run {
-            val params = generateLayoutParam(
-                DeviceUtil.getScreenWidth() / 2,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            )
-            setContentView(menuLayout)
-            menuLayout.layoutParams = params
-            menuRv.layoutManager = LinearLayoutManager(this@WebViewActivity)
-            menuRv.adapter = mMenuAdapter
-            setAnimStyle(QMUIPopup.ANIM_GROW_FROM_CENTER)
-            setPreferredDirection(QMUIPopup.DIRECTION_NONE)
-            setOnDismissListener {
-
+        menuRv.layoutManager = LinearLayoutManager(this@WebViewActivity)
+        menuRv.adapter = mMenuAdapter
+        mQMUIPopup
+            ?.run {
+                preferredDirection(QMUIPopup.DIRECTION_BOTTOM)
+                view(menuLayout)
+                edgeProtection(DeviceUtil.dp2px(5.0f))
+                shadow(true)
+                arrow(true)
+                dimAmount(0.3f)
+                animStyle(QMUIPopup.ANIM_GROW_FROM_CENTER)
             }
-            if (!isShowing) show(header_menu_iv)
-        }
+
         mMenuAdapter.setOnItemClickListener { adapter, view, position ->
-            when(position) {
+            when (position) {
                 0 -> {
                     // TODO 收藏
                     mPresenter?.collectStationArticle(mItem.id)
@@ -86,7 +120,7 @@ class WebViewActivity : BaseMvpActivity<ContentView, ContentPresenter>(), View.O
                 }
                 1 -> {
                     // 分享
-                    when(mType) {
+                    when (mType) {
                         0 -> IntentUtil.shareTo(this, mItem.title, mItem.link)
                         else -> IntentUtil.shareTo(this, mBanner.title, mBanner.url)
                     }
@@ -94,7 +128,7 @@ class WebViewActivity : BaseMvpActivity<ContentView, ContentPresenter>(), View.O
                 }
                 2 -> {
                     // 用浏览器打开
-                    when(mType) {
+                    when (mType) {
                         0 -> IntentUtil.openBroswer(this, mItem.link)
                         else -> IntentUtil.openBroswer(this, mBanner.url)
                     }
@@ -142,9 +176,12 @@ class WebViewActivity : BaseMvpActivity<ContentView, ContentPresenter>(), View.O
                 loadWithOverviewMode = true
                 setAppCacheEnabled(true)
                 domStorageEnabled = true
+                // 自适应网页
+                useWideViewPort = true
+                loadWithOverviewMode = true
             }
 //            mUrl.takeIf { it.isNullOrEmpty().not() }?.let { loadUrl(it) }
-            when(mType) {
+            when (mType) {
                 0 -> loadUrl(mItem.link)
                 else -> loadUrl(mBanner.url)
             }
@@ -152,13 +189,9 @@ class WebViewActivity : BaseMvpActivity<ContentView, ContentPresenter>(), View.O
     }
 
     override fun onClick(v: View?) {
-        when(v) {
+        when (v) {
             header_back_iv -> finish()
-            header_menu_iv -> {
-                mQMUIPopup?.let {
-                    if (it.isShowing.not()) it.show(header_menu_iv)
-                }
-            }
+            header_menu_iv -> mQMUIPopup?.show(header_menu_iv)
         }
     }
 
@@ -194,7 +227,11 @@ class WebViewActivity : BaseMvpActivity<ContentView, ContentPresenter>(), View.O
     }
 
     companion object {
-        fun openWeb(context: Context, item: HomeArticleResponse.ArticleData.ArticleInfo, type: Int): Intent {
+        fun openWeb(
+            context: Context,
+            item: HomeArticleResponse.ArticleData.ArticleInfo,
+            type: Int
+        ): Intent {
             return Intent(context, WebViewActivity::class.java)
                 .putExtra("item", item)
                 .putExtra("type", type)

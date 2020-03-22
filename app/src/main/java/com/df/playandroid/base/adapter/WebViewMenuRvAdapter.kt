@@ -1,8 +1,8 @@
 package com.df.playandroid.base.adapter
 
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.df.playandroid.R
 import com.df.playandroid.base.bean.WebViewMenuItemBean
 
@@ -13,10 +13,11 @@ import com.df.playandroid.base.bean.WebViewMenuItemBean
  */
 class WebViewMenuRvAdapter(data: MutableList<WebViewMenuItemBean>) :
     BaseQuickAdapter<WebViewMenuItemBean, BaseViewHolder>(R.layout.rv_webview_meun_item, data) {
-    override fun convert(helper: BaseViewHolder, item: WebViewMenuItemBean?) {
-        item?.let {
-            helper.setText(R.id.webView_menu_tv, it.content)
-            helper.setImageDrawable(R.id.webView_menu_iv, ContextCompat.getDrawable(mContext, it.icon))
-        }
+    override fun convert(helper: BaseViewHolder, item: WebViewMenuItemBean) {
+        helper.setText(R.id.webView_menu_tv, item.content)
+        helper.setImageDrawable(
+            R.id.webView_menu_iv,
+            ContextCompat.getDrawable(context, item.icon)
+        )
     }
 }

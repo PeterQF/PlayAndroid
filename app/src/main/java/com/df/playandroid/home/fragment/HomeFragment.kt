@@ -1,9 +1,9 @@
 package com.df.playandroid.home.fragment
 
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.df.playandroid.R
 import com.df.playandroid.content.activity.WebViewActivity
 import com.df.playandroid.home.presenter.HomePresenter

@@ -29,11 +29,11 @@ object SPUtil {
      */
     fun get(key: String, default: Any): Any = with(prefs) {
         return when(default) {
-            is Int -> getInt(key, default)
-            is String -> getString(key, default)
-            is Long -> getLong(key, default)
-            is Float -> getFloat(key, default)
-            is Boolean -> getBoolean(key, default)
+            is Int -> SPUtil.getInt(key, default)
+            is String -> SPUtil.getString(key, default)
+            is Long -> SPUtil.getLong(key, default)
+            is Float -> SPUtil.getFloat(key, default)
+            is Boolean -> SPUtil.getBoolean(key, default)
             else -> throw IllegalArgumentException("SharedPreferences 类型错误")
         }
     }
