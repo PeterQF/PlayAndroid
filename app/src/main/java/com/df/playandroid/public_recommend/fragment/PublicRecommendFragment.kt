@@ -1,12 +1,15 @@
 package com.df.playandroid.public_recommend.fragment
 
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
 import com.df.playandroid.R
 import com.df.playandroid.base.fragment.BaseFragment
 import com.df.playandroid.public_recommend.adapter.PublicRvAdapter
 import com.df.playandroid.public_recommend.presenter.PublicRecommendPresenter
 import com.df.playandroid.public_recommend.response.PublicResponse
 import com.df.playandroid.public_recommend.view.IPublicRecommendView
+import com.luck.picture.lib.decoration.GridSpacingItemDecoration
+import com.luck.picture.lib.tools.ScreenUtils
 import kotlinx.android.synthetic.main.base_header.*
 import kotlinx.android.synthetic.main.base_refresh.*
 
@@ -40,8 +43,11 @@ class PublicRecommendFragment : BaseFragment<IPublicRecommendView, PublicRecomme
     private fun initAdapter() {
         mPublicAdapter = PublicRvAdapter(mPublicItem)
         val layoutManager = GridLayoutManager(requireContext(), 2)
-        layoutManager.orientation = GridLayoutManager.VERTICAL
         base_rv.layoutManager = layoutManager
+        layoutManager.orientation = GridLayoutManager.VERTICAL
+        val decoration =
+            GridSpacingItemDecoration(2, ScreenUtils.dip2px(requireContext(), 20.0f), false)
+        base_rv.addItemDecoration(decoration)
         base_rv.adapter = mPublicAdapter
     }
 

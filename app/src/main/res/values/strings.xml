@@ -27,6 +27,14 @@
     <!--公众号-->
     <string name="public_title">公众号推荐</string>
 
+    <!--我的-->
+    <string name="user_not_login">未登录玩安卓</string>
+    <string name="user_click_to_login">点击头像立即登录</string>
+    <string name="user_account">账户管理</string>
+    <string name="user_setting">系统设置</string>
+    <string name="user_about_us">关于我们</string>
+    <string name="user_share_software">推荐好友</string>
+
     <!-- share -->
     <string name="share_title">Share</string>
     <string name="share_type_title">Share Project</string>

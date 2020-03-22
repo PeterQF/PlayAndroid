@@ -56,4 +56,5 @@ dependencies {
     implementation Libs.support_design
     implementation Libs.smartRefresh
     implementation Libs.agentWeb
+    implementation Libs.picture_selector
 }

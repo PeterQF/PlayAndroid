@@ -12,6 +12,7 @@ import com.df.playandroid.utils.LogUtil
  * 描述：我的Fragment
  */
 class UserFragment : BaseFragment<IUserView, UserPresenter>() {
+
     override fun getLayoutId() = R.layout.fragment_user
 
     override fun setupPresenter() = UserPresenter(requireContext())

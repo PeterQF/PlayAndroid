@@ -24,6 +24,7 @@ object Versions {
     const val glide = "4.9.0"
     const val smartRefresh = "1.1.0"
     const val agentWeb = "4.1.2"
+    const val picture_selector = "2.2.5"
 }
 
 object Package {
@@ -53,4 +54,5 @@ object Libs {
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val smartRefresh = "com.scwang.smartrefresh:SmartRefreshLayout:${Versions.smartRefresh}"
     const val agentWeb = "com.just.agentweb:agentweb:${Versions.agentWeb}"
+    const val picture_selector = "com.github.LuckSiege.PictureSelector:picture_library:v${Versions.picture_selector}"
 }

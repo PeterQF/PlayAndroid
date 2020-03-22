@@ -8,6 +8,7 @@ import com.df.playandroid.config.Constants
 import com.df.playandroid.public_recommend.response.PublicResponse
 import com.df.playandroid.utils.DeviceUtil
 import com.df.playandroid.widget.roundimage.RoundImageView
+import com.qmuiteam.qmui.widget.QMUIRadiusImageView
 
 /**
  * 作者：PeterWu
@@ -20,12 +21,12 @@ class PublicRvAdapter(data: MutableList<PublicResponse.PublicData>) :
     ) {
     override fun convert(helper: BaseViewHolder, item: PublicResponse.PublicData?) {
         item?.let {
-            val publicLayout = helper.getView<RelativeLayout>(R.id.public_item_rl)
-            val params = publicLayout.layoutParams
-            params.width = (DeviceUtil.getScreenWidth() - DeviceUtil.dp2px(40f)) / 2
-            publicLayout.layoutParams = params
+//            val publicLayout = helper.getView<RelativeLayout>(R.id.public_item_rl)
+//            val params = publicLayout.layoutParams
+//            params.width = (DeviceUtil.getScreenWidth() - DeviceUtil.dp2px(40f)) / 2
+//            publicLayout.layoutParams = params
             helper.setText(R.id.public_item_name, it.name)
-            val publicIv = helper.getView<RoundImageView>(R.id.public_item_icon)
+            val publicIv = helper.getView<QMUIRadiusImageView>(R.id.public_item_icon)
             when(it.id) {
                 Constants.PublicId.PUBLIC_408 -> {
                     publicIv.setImageResource(R.mipmap.icon_408)
