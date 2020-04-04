@@ -22,6 +22,7 @@ class JYViewPager : ViewPager, View.OnTouchListener {
 
     constructor(context: Context, attrs: AttributeSet?): super(context, attrs) {
         setOnTouchListener(this)
+        pageMargin = 40
     }
 
     constructor(context: Context): this(context, null)

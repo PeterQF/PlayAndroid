@@ -15,7 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.df.playandroid.R;
-import com.df.playandroid.home.response.BannerResponse;
+import com.df.playandroid.response.home.BannerResponse;
 import com.df.playandroid.utils.DeviceUtil;
 import com.df.playandroid.widget.roundimage.RoundRectImageView;
 import java.util.ArrayList;
@@ -117,7 +117,6 @@ public class JYLooperPager extends LinearLayout {
     // 创建ImageView
     private void setupImageView() {
         for (int i = 0; i < mItems.size(); i++) {
-//            ImageView iv = new ImageView(getContext());
             RoundRectImageView iv = new RoundRectImageView(getContext());
             iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
             mViewpagerViews.add(iv);

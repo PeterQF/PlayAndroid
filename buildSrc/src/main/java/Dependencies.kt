@@ -24,11 +24,13 @@ object Versions {
     const val rxjava2 = "2.2.19"
     const val rxandroid = "2.1.1"
     const val brvah = "3.0.1"
-    const val immersionBar = "3.0.0"
+    const val immersionBar = "3.0.0-beta04"
+    const val immersion_components = "3.0.0-beta04"
     const val glide = "4.11.0"
     const val smartRefresh = "1.1.2"
     const val agentWeb = "4.1.3"
     const val picture_selector = "2.4.9"
+    const val lottieVersion = "3.4.0"
 }
 
 object Package {
@@ -58,8 +60,10 @@ object Libs {
     const val rxandroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxandroid}"
     const val BRVAH = "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Versions.brvah}"
     const val ImmersionBar = "com.gyf.immersionbar:immersionbar:${Versions.immersionBar}"
+    const val Immersion_components = "com.gyf.immersionbar:immersionbar-components:${Versions.immersion_components}"
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val smartRefresh = "com.scwang.smartrefresh:SmartRefreshLayout:${Versions.smartRefresh}"
     const val agentWeb = "com.just.agentweb:agentweb:${Versions.agentWeb}"
     const val picture_selector = "com.github.LuckSiege.PictureSelector:picture_library:v${Versions.picture_selector}"
+    const val lottie = "com.airbnb.android:lottie:${Versions.lottieVersion}"
 }

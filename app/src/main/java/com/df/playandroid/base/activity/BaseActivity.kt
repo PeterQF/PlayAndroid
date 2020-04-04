@@ -35,6 +35,8 @@ abstract class BaseActivity : AppCompatActivity() {
         ImmersionBar
             .with(this)
             .statusBarColor(R.color.mainColor)
+            .keyboardEnable(true)
+            .navigationBarColor(R.color.white)
             .init()
     }
 

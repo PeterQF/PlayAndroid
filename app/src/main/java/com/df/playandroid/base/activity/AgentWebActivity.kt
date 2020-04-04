@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.widget.FrameLayout
 import com.df.playandroid.R
-import com.df.playandroid.content.activity.WebViewActivity
+import com.df.playandroid.ui.content.activity.ContentActivity
 import com.gyf.immersionbar.ImmersionBar
 import com.just.agentweb.AgentWeb
 import kotlinx.android.synthetic.main.activity_agent_web.*
@@ -40,7 +40,7 @@ class AgentWebActivity : BaseActivity() {
 
     companion object {
         fun openWeb(context: Context, url: String): Intent {
-            return Intent(context, WebViewActivity::class.java)
+            return Intent(context, ContentActivity::class.java)
                 .putExtra("url", url)
         }
     }

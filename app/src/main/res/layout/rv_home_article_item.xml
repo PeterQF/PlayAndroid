@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="我是一个标题"
         android:textSize="16dp"
-        android:textColor="@color/color_1A1A1A"/>
+        android:textColor="@color/color_main_text"/>
 
     <LinearLayout
         android:id="@+id/item_ll"
@@ -30,7 +30,7 @@
             android:drawableStart="@mipmap/icon_author"
             android:text="PeterWu"
             android:textSize="12dp"
-            android:textColor="@color/main_text_color"
+            android:textColor="@color/color_main_sub_text"
             android:drawablePadding="2dp"
             android:layout_marginEnd="@dimen/dp_10"/>
 
@@ -41,7 +41,7 @@
             android:drawableStart="@mipmap/icon_time"
             android:text="2020年1月6日22:41:34"
             android:textSize="12dp"
-            android:textColor="@color/main_text_color"
+            android:textColor="@color/color_main_sub_text"
             android:drawablePadding="2dp" />
 
     </LinearLayout>
@@ -69,7 +69,7 @@
         android:layout_below="@id/view_line"
         android:layout_marginTop="5dp"
         android:textSize="12dp"
-        android:textColor="@color/main_text_color"
+        android:textColor="@color/color_main_sub_text"
         android:drawablePadding="2dp"
         tools:text="安卓"/>
 

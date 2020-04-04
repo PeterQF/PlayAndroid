@@ -1,10 +1,10 @@
 package com.df.playandroid.http
 
-import com.df.playandroid.content.response.CollectionResponse
-import com.df.playandroid.home.response.BannerResponse
-import com.df.playandroid.home.response.HomeArticleResponse
-import com.df.playandroid.home.response.SearchHotWordResponse
-import com.df.playandroid.public_recommend.response.PublicResponse
+import com.df.playandroid.response.content.CollectionResponse
+import com.df.playandroid.response.home.BannerResponse
+import com.df.playandroid.response.home.HomeArticleResponse
+import com.df.playandroid.response.home.SearchHotWordResponse
+import com.df.playandroid.response.officialaccount.OfficialAccountResponse
 import io.reactivex.Observable
 import retrofit2.Response
 import retrofit2.http.GET
@@ -35,7 +35,7 @@ interface ApiServer {
      * 请求公众号列表
      */
     @GET("/wxarticle/chapters/json")
-    fun requestPublicItem(): Observable<Response<PublicResponse>>
+    fun requestPublicItem(): Observable<Response<OfficialAccountResponse>>
 
     /**
      * 请求收藏站内文章

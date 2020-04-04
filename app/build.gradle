@@ -36,6 +36,8 @@ dependencies {
     implementation Libs.constraint
     implementation Libs.core_ktx
     implementation Libs.multidex
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation Libs.junit
     androidTestImplementation Libs.test_runner
     androidTestImplementation Libs.espresso_core
@@ -52,11 +54,12 @@ dependencies {
     implementation Libs.rxandroid
     implementation Libs.BRVAH
     implementation Libs.ImmersionBar
+    implementation Libs.Immersion_components
     implementation Libs.glide
     implementation Libs.material_design
     implementation Libs.recycler_view
     implementation Libs.smartRefresh
     implementation Libs.agentWeb
     implementation Libs.picture_selector
-
+    implementation Libs.lottie
 }
