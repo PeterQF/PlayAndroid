@@ -10,6 +10,7 @@ import com.df.playandroid.response.home.HomeArticleResponse
 import com.df.playandroid.response.home.SearchHotWordResponse
 import com.df.playandroid.http.ApiRetrofit
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class HomePresenter(context: Context) : BasePresenter<IHomeView>(context) {
@@ -25,9 +26,13 @@ class HomePresenter(context: Context) : BasePresenter<IHomeView>(context) {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : BaseObserver<BannerResponse>() {
+                override fun addDisposable(d: Disposable) {
+                    mDisposables.add(d)
+                }
+
                 override fun onFailed() {}
 
-                override fun onResult(errorCode: Int, errorMsg: String, result: BannerResponse) {
+                override fun onResult(errorCode: Int, errorMsg: String?, result: BannerResponse) {
                     result.data.takeIf { it.isNullOrEmpty().not() }?.let { getView()?.getBannerSuccess(it) }
                 }
             })
@@ -44,6 +49,10 @@ class HomePresenter(context: Context) : BasePresenter<IHomeView>(context) {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : BaseObserver<HomeArticleResponse>(){
+                override fun addDisposable(d: Disposable) {
+                    mDisposables.add(d)
+                }
+
                 override fun onFailed() {
                     when(type) {
                         Constants.LoadType.REFRESH -> getView()?.stopRefresh()
@@ -51,7 +60,7 @@ class HomePresenter(context: Context) : BasePresenter<IHomeView>(context) {
                     }
                 }
 
-                override fun onResult(errorCode: Int, errorMsg: String, result: HomeArticleResponse) {
+                override fun onResult(errorCode: Int, errorMsg: String?, result: HomeArticleResponse) {
                     when(type) {
                         Constants.LoadType.REFRESH -> {
                             getView()?.stopRefresh()
@@ -77,11 +86,15 @@ class HomePresenter(context: Context) : BasePresenter<IHomeView>(context) {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : BaseObserver<SearchHotWordResponse>() {
+                override fun addDisposable(d: Disposable) {
+                    mDisposables.add(d)
+                }
+
                 override fun onFailed() {}
 
                 override fun onResult(
                     errorCode: Int,
-                    errorMsg: String,
+                    errorMsg: String?,
                     result: SearchHotWordResponse
                 ) {
                     result.data.takeIf { it.isNullOrEmpty().not() }?.let { getView()?.getHotWordSuccess(it) }

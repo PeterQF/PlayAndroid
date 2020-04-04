@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="@dimen/dp_40"-->
-<!--        android:text="@string/public_title"-->
-<!--        android:gravity="center"-->
-<!--        android:textSize="18dp"-->
-<!--        android:textStyle="bold"/>-->
-
     <include
-        layout="@layout/base_header"/>
+        layout="@layout/base_search_header"/>
 
-    <include
-        android:id="@+id/base_refresh_layout"
-        layout="@layout/base_refresh"/>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/mTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        app:tabMode="scrollable"
+        app:tabRippleColor="@color/transparent"
+        app:tabSelectedTextColor="@color/mainColor"
+        app:tabTextColor="@color/color_main_sub_text"
+        app:tabIndicator="@drawable/shape_tab_layout"
+        app:tabIndicatorFullWidth="false"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/mViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

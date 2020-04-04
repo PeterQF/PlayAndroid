@@ -14,6 +14,7 @@ import com.df.playandroid.ui.home.adapter.HomeArticleRvAdapter
 import com.df.playandroid.response.home.BannerResponse
 import com.df.playandroid.response.home.HomeArticleResponse
 import com.df.playandroid.response.home.SearchHotWordResponse
+import kotlinx.android.synthetic.main.base_search_header.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
@@ -28,8 +29,6 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(),
     private var mArticleItems: MutableList<HomeArticleResponse.ArticleData.ArticleInfo> = ArrayList()
     private var mPage = 0
     private var mArticleSize = 0
-    private var mBannerHeight = 0
-    private var mRlSearchHeight = 0
 
     override fun getLayoutId() = R.layout.fragment_home
 
@@ -39,6 +38,7 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(),
     override fun initView() {
         initAdapter()
         initRefreshAndLoadMore()
+        mHeaderTitle.text = getString(R.string.home)
     }
 
     /**
@@ -106,7 +106,7 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(),
             hotTv.textSize = 14f
             hotTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_main_sub_text))
             hotTv.gravity = Gravity.CENTER_VERTICAL
-            home_view_flipper.addView(hotTv)
+            mFlipper.addView(hotTv)
         }
     }
 

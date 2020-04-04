@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/mHeaderTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="首页"
+        android:layout_marginEnd="15dp"
+        android:textColor="@color/black"
+        android:layout_centerVertical="true"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_alignParentStart="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_toEndOf="@id/mHeaderTitle"
+        android:layout_marginEnd="20dp"
+        android:layout_toStartOf="@id/mHotIv"
+        android:background="@drawable/shape_search">
+
+        <ImageView
+            android:id="@+id/mSearchIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_search"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"/>
+
+        <ViewFlipper
+            android:id="@+id/mFlipper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/mSearchIv"
+            android:layout_marginStart="@dimen/dp_10"
+            android:autoStart="true"
+            android:flipInterval="3000"
+            android:inAnimation="@anim/anim_marquee_in"
+            android:outAnimation="@anim/anim_marquee_out"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/mHotIv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/icon_hot" />
+
+</RelativeLayout>

@@ -3,11 +3,7 @@ package com.df.playandroid.response.home
 import com.df.playandroid.base.response.BaseResponse
 import java.io.Serializable
 
-class HomeArticleResponse(
-    val data: ArticleData,
-    errorCode: Int,
-    errorMsg: String
-) : BaseResponse(errorCode, errorMsg){
+class HomeArticleResponse(val data: ArticleData) : BaseResponse(){
     data class ArticleData(
         val curPage: Int,
         val datas: List<ArticleInfo>,

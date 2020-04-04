@@ -15,7 +15,7 @@
     <!--搜索框颜色-->
     <color name="color_EBEDF9">#EBEDF9</color>
     <!--Toast背景色-->
-    <color name="color_213335">#91989F</color>
+    <color name="color_213335">#CC91989F</color>
     <!--布局背景色-->
     <color name="color_FBFBFB">#FBFBFB</color>
     <color name="color_e8e8e8">#e8e8e8</color>

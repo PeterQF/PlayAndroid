@@ -3,11 +3,7 @@ package com.df.playandroid.response.officialaccount
 import com.df.playandroid.base.response.BaseResponse
 import java.io.Serializable
 
-class OfficialAccountResponse(
-    val data: List<PublicData>,
-    errorCode: Int,
-    errorMsg: String
-) : BaseResponse(errorCode, errorMsg) {
+class OfficialAccountResponse(val data: List<PublicData>) : BaseResponse() {
     data class PublicData(
         val children: List<Any>,
         val courseId: Int,

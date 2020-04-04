@@ -3,11 +3,7 @@ package com.df.playandroid.response.home
 import com.df.playandroid.base.response.BaseResponse
 import java.io.Serializable
 
-class SearchHotWordResponse(
-    val data: List<SearchHotWordData>,
-    errorCode: Int,
-    errorMsg: String
-) : BaseResponse(errorCode, errorMsg) {
+class SearchHotWordResponse(val data: List<SearchHotWordData>) : BaseResponse() {
     data class SearchHotWordData(
         val id: Int,
         val link: String,

@@ -28,6 +28,7 @@ open class BasePresenter<V>(context: Context) {
             mReference = null
         }
         mDisposables.dispose()
+        mDisposables.clear()
     }
 
     fun getView() = mReference?.get()

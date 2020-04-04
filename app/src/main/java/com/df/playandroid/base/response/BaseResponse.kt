@@ -6,4 +6,4 @@ package com.df.playandroid.base.response
  * 描述：BaseResponse
  */
 
-open class BaseResponse(val errorCode: Int, val errorMsg: String)
+open class BaseResponse(val errorCode: Int = -1, val errorMsg: String? = null)

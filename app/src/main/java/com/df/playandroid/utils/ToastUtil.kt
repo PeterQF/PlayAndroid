@@ -18,8 +18,7 @@ object ToastUtil {
 
     fun showToast(content: String) {
         LogUtil.info("show toast")
-        val view = LayoutInflater.from(MyApplication.instance.applicationContext)
-            .inflate(R.layout.toast, null) as TextView
+        val view = LayoutInflater.from(MyApplication.instance.applicationContext).inflate(R.layout.toast, null) as TextView
         if (null == mToat) {
             mToat = Toast(MyApplication.instance.applicationContext)
         }

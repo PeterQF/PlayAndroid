@@ -59,12 +59,12 @@ class MainActivity : BaseMvpActivity<IHomeView, HomePresenter>() {
                 R.id.main_project_recommend -> {
                     setFragmentPosition(1)
 //                    mFragment = projectRecommendFragment
-                    ImmersionBar.with(this).reset().keyboardEnable(true).fitsSystemWindows(true).statusBarColor(R.color.mainColor).statusBarDarkFont(false).navigationBarColor(R.color.white).init()
+                    ImmersionBar.with(this).reset().keyboardEnable(true).fitsSystemWindows(true).statusBarColor(R.color.white).statusBarDarkFont(true).navigationBarColor(R.color.white).init()
                 }
                 R.id.main_public_recommend -> {
                     setFragmentPosition(2)
 //                    mFragment = publicRecommendFragment
-                    ImmersionBar.with(this).reset().keyboardEnable(true).fitsSystemWindows(true).statusBarColor(R.color.mainColor).statusBarDarkFont(false).navigationBarColor(R.color.white).init()
+                    ImmersionBar.with(this).reset().keyboardEnable(true).fitsSystemWindows(true).statusBarColor(R.color.white).statusBarDarkFont(true).navigationBarColor(R.color.white).init()
                 }
                 R.id.main_project_system -> {
                     setFragmentPosition(3)
