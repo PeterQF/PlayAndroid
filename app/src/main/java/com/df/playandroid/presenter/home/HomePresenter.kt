@@ -6,10 +6,9 @@ import com.df.playandroid.view.home.IHomeView
 import com.df.playandroid.base.presenter.BasePresenter
 import com.df.playandroid.config.Constants
 import com.df.playandroid.response.home.BannerResponse
-import com.df.playandroid.response.home.HomeArticleResponse
 import com.df.playandroid.response.home.SearchHotWordResponse
 import com.df.playandroid.http.ApiRetrofit
-import com.df.playandroid.utils.LogUtil
+import com.df.playandroid.response.article.ArticleResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -54,7 +53,7 @@ class HomePresenter(context: Context) : BasePresenter<IHomeView>(context) {
                 if (type == Constants.LoadType.LOADING)
                     getView()?.showLoadingView()
             }
-            .subscribe(object : BaseObserver<HomeArticleResponse>() {
+            .subscribe(object : BaseObserver<ArticleResponse>() {
                 override fun addDisposable(d: Disposable) {
                     mDisposables.add(d)
                 }
@@ -70,7 +69,7 @@ class HomePresenter(context: Context) : BasePresenter<IHomeView>(context) {
                 override fun onResult(
                     errorCode: Int,
                     errorMsg: String?,
-                    result: HomeArticleResponse
+                    result: ArticleResponse
                 ) {
                     when (type) {
                         Constants.LoadType.REFRESH -> {

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="135dp"
+    android:paddingBottom="15dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/mTitleTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@id/mCoverIv"
+        android:layout_marginEnd="@dimen/dp_10"
+        tools:text="哈啊哈哈哈哈哈哈啊哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈啊哈哈哈啊哈哈哈哈哈哈啊哈哈哈啊哈哈"
+        android:maxLines="2"
+        android:textColor="@color/color_main_text"
+        android:ellipsize="end"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/mDescTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mTitleTv"
+        android:maxLines="3"
+        android:textColor="@color/color_main_sub_text"
+        android:textSize="10sp"
+        android:paddingTop="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_toStartOf="@id/mCoverIv"
+        android:ellipsize="end"
+        tools:text="【文本翻译器】是一款免费的简洁实用的翻译软件。文本翻译器应用程序完全免费，可以非常快速翻译您的单词，帮助您与外国人交流。文本翻译器适用于旅行者、学生、商人和其他语言爱好者，使用文本翻译器可以轻松了解其他语言。文本翻译器支持多国语言，全新领先的翻译引擎，让各种变得更加可靠有保证。界面设计简洁、优雅，体积小巧，但是功能很强大哦。赶快下载来试试吧~"/>
+
+    <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+        android:id="@+id/mCoverIv"
+        android:layout_alignParentEnd="true"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:qmui_border_width="0dp"
+        app:qmui_corner_radius="@dimen/dp_10"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/image_lu_lu"/>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@id/mCoverIv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/dp_10">
+
+        <TextView
+            android:id="@+id/mAuthorTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="PeterWu"
+            android:textSize="12sp"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:textColor="@color/color_main_sub_text"/>
+
+        <TextView
+            android:id="@+id/mTimeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="2020年4月5日23:41:40"
+            android:textColor="@color/color_main_sub_text"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

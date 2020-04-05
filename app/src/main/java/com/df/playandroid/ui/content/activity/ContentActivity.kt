@@ -18,8 +18,6 @@ import com.df.playandroid.base.bean.WebViewMenuItemBean
 import com.df.playandroid.presenter.content.ContentPresenter
 import com.df.playandroid.response.home.BannerData
 import com.df.playandroid.view.content.IContentView
-import com.df.playandroid.response.home.BannerResponse
-import com.df.playandroid.response.home.HomeArticleResponse
 import com.df.playandroid.utils.DeviceUtil
 import com.df.playandroid.utils.IntentUtil
 import com.gyf.immersionbar.ImmersionBar

@@ -5,17 +5,16 @@ import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.df.playandroid.R
-import com.df.playandroid.response.home.HomeArticleResponse
-import com.df.playandroid.response.officialaccount.OfficialAccountArticleInfo
+import com.df.playandroid.response.article.ArticleInfo
 
 /**
  * 作者：PeterWu
  * 时间：2020/1/6
  * 描述：首页文章Adapter
  */
-class OfficialAccountArticleRvAdapter(data: MutableList<OfficialAccountArticleInfo>) :
-    BaseQuickAdapter<OfficialAccountArticleInfo, BaseViewHolder>(R.layout.rv_home_article_item, data) {
-    override fun convert(helper: BaseViewHolder, item: OfficialAccountArticleInfo) {
+class OfficialAccountArticleRvAdapter(data: MutableList<ArticleInfo>) :
+    BaseQuickAdapter<ArticleInfo, BaseViewHolder>(R.layout.rv_home_article_item, data) {
+    override fun convert(helper: BaseViewHolder, item: ArticleInfo) {
         helper
             .setText(R.id.item_article_title_tv, item.title)
             .setText(R.id.item_article_author_tv, item.author)

@@ -1,9 +1,15 @@
-package com.df.playandroid.response.home
+package com.df.playandroid.response.article
 
 import com.df.playandroid.base.response.BaseResponse
 import java.io.Serializable
 
-data class HomeArticleResponse(val data: ArticleData) : BaseResponse()
+/**
+ * 作者：PeterWu
+ * 时间：2020/4/5
+ * 描述：文章data和info
+ */
+
+data class ArticleResponse(val data: ArticleData) : BaseResponse()
 
 data class ArticleData(
     val curPage: Int = 0,
@@ -39,10 +45,15 @@ data class ArticleInfo(
     val shareUser: String? = null,
     val superChapterId: Int = 0,
     val superChapterName: String? = null,
-    val tags: List<Any>? = null,
+    val tags: List<Tag>? = null,
     val title: String? = null,
     val type: Int = 0,
     val userId: Int = 0,
     val visible: Int = 0,
     val zan: Int = 0
+): Serializable
+
+data class Tag(
+    val name: String? = null,
+    val url: String? = null
 ): Serializable

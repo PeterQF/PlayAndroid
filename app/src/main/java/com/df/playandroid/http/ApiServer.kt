@@ -1,16 +1,16 @@
 package com.df.playandroid.http
 
+import com.df.playandroid.response.category.CategoryResponse
+import com.df.playandroid.response.article.ArticleResponse
 import com.df.playandroid.response.content.CollectionResponse
 import com.df.playandroid.response.home.BannerResponse
-import com.df.playandroid.response.home.HomeArticleResponse
 import com.df.playandroid.response.home.SearchHotWordResponse
-import com.df.playandroid.response.officialaccount.OfficialAccountArticleResponse
-import com.df.playandroid.response.officialaccount.OfficialAccountResponse
 import io.reactivex.Observable
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiServer {
 
@@ -24,7 +24,7 @@ interface ApiServer {
      * 请求首页文章列表
      */
     @GET("/article/list/{page}/json")
-    fun requestHomeArticleList(@Path("page") page:Int): Observable<Response<HomeArticleResponse>>
+    fun requestHomeArticleList(@Path("page") page:Int): Observable<Response<ArticleResponse>>
 
     /**
      * 请求搜索热词
@@ -36,7 +36,7 @@ interface ApiServer {
      * 请求公众号列表
      */
     @GET("/wxarticle/chapters/json")
-    fun requestPublicItem(): Observable<Response<OfficialAccountResponse>>
+    fun requestPublicItem(): Observable<Response<CategoryResponse>>
 
     /**
      * 请求收藏站内文章
@@ -48,6 +48,17 @@ interface ApiServer {
      * 请求公众号文章
      */
     @GET("/wxarticle/list/{id}/{page}/json")
-    fun requestOfficialAccountArticleList(@Path("id") id: Int, @Path("page") page:Int): Observable<Response<OfficialAccountArticleResponse>>
+    fun requestOfficialAccountArticleList(@Path("id") id: Int, @Path("page") page:Int): Observable<Response<ArticleResponse>>
 
+    /**
+     * 请求项目分类
+     */
+    @GET("/project/tree/json")
+    fun requestProjectCategory(): Observable<Response<CategoryResponse>>
+
+    /**
+     * 请求项目列表
+     */
+    @GET("/project/list/{page}/json")
+    fun requestProjectList(@Path("page") page:Int, @Query("cid") id: Int): Observable<Response<ArticleResponse>>
 }

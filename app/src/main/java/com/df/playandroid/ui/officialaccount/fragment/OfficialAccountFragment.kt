@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat
 import com.df.playandroid.R
 import com.df.playandroid.base.fragment.BaseFragment
 import com.df.playandroid.presenter.officialaccount.OfficialAccountPresenter
-import com.df.playandroid.response.officialaccount.OfficialAccountResponse
+import com.df.playandroid.response.category.CategoryData
 import com.df.playandroid.ui.officialaccount.adapter.OfficialAccountPageAdapter
 import com.df.playandroid.utils.LogUtil
 import com.df.playandroid.view.officialaccount.IOfficialAccountView
@@ -38,7 +38,7 @@ class OfficialAccountFragment : BaseFragment<IOfficialAccountView, OfficialAccou
         mPresenter?.getPublicItem()
     }
 
-    override fun getPublicItemSuccess(result: List<OfficialAccountResponse.PublicData>) {
+    override fun getPublicItemSuccess(result: List<CategoryData>) {
         val fragments: ArrayList<OfficialAccountArticleFragment> = ArrayList()
         for (i in result.indices) {
             val page = OfficialAccountArticleFragment.newInstance(result[i].id)

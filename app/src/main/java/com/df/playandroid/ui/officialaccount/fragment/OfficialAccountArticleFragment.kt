@@ -7,8 +7,8 @@ import com.df.playandroid.base.fragment.BaseFragment
 import com.df.playandroid.base.helper.LoadingViewHelper
 import com.df.playandroid.config.Constants
 import com.df.playandroid.presenter.officialaccount.OfficialAccountArticlePresenter
-import com.df.playandroid.response.officialaccount.OfficialAccountArticleData
-import com.df.playandroid.response.officialaccount.OfficialAccountArticleInfo
+import com.df.playandroid.response.article.ArticleData
+import com.df.playandroid.response.article.ArticleInfo
 import com.df.playandroid.ui.content.activity.ContentActivity
 import com.df.playandroid.ui.home.adapter.OfficialAccountArticleRvAdapter
 import com.df.playandroid.utils.LogUtil
@@ -26,7 +26,7 @@ class OfficialAccountArticleFragment :
     IOfficialAccountArticleView {
 
     private lateinit var mArticleAdapter: OfficialAccountArticleRvAdapter
-    private var mArticleItems: MutableList<OfficialAccountArticleInfo> = ArrayList()
+    private var mArticleItems: MutableList<ArticleInfo> = ArrayList()
     private var mPage = 1
     private var mIsOver = false
     private var mLastPosition = -1
@@ -89,7 +89,7 @@ class OfficialAccountArticleFragment :
         mId?.let { mPresenter?.getOfficialAccountArticle(it, 1, Constants.LoadType.LOADING) }
     }
 
-    override fun getArticleSuccess(result: OfficialAccountArticleData) {
+    override fun getArticleSuccess(result: ArticleData) {
         val list = result.datas
         mIsOver = result.over
         mPage = result.curPage
@@ -101,7 +101,7 @@ class OfficialAccountArticleFragment :
         }
     }
 
-    override fun loadMoreArticleSuccess(result: OfficialAccountArticleData) {
+    override fun loadMoreArticleSuccess(result: ArticleData) {
         val list = result.datas
         mIsOver = result.over
         mPage = result.curPage

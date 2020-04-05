@@ -1,6 +1,6 @@
 package com.df.playandroid.view.officialaccount
 
-import com.df.playandroid.response.officialaccount.OfficialAccountResponse
+import com.df.playandroid.response.category.CategoryData
 
 /**
  * 作者：PeterWu
@@ -8,5 +8,5 @@ import com.df.playandroid.response.officialaccount.OfficialAccountResponse
  * 描述：
  */
 interface IOfficialAccountView {
-    fun getPublicItemSuccess(result: List<OfficialAccountResponse.PublicData>)
+    fun getPublicItemSuccess(result: List<CategoryData>)
 }

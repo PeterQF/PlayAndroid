@@ -1,6 +1,6 @@
 package com.df.playandroid.view.officialaccount
 
-import com.df.playandroid.response.officialaccount.OfficialAccountArticleData
+import com.df.playandroid.response.article.ArticleData
 
 /**
  * 作者：PeterWu
@@ -12,6 +12,6 @@ interface IOfficialAccountArticleView {
     fun hideLoadingView()
     fun stopRefresh()
     fun stopLoadMore()
-    fun getArticleSuccess(result: OfficialAccountArticleData)
-    fun loadMoreArticleSuccess(result: OfficialAccountArticleData)
+    fun getArticleSuccess(result: ArticleData)
+    fun loadMoreArticleSuccess(result: ArticleData)
 }

@@ -5,8 +5,7 @@ import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.df.playandroid.R
-import com.df.playandroid.response.home.ArticleInfo
-import com.df.playandroid.response.home.HomeArticleResponse
+import com.df.playandroid.response.article.ArticleInfo
 
 /**
  * 作者：PeterWu

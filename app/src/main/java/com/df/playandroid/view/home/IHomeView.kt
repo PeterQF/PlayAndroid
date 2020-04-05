@@ -1,5 +1,6 @@
 package com.df.playandroid.view.home
 
+import com.df.playandroid.response.article.ArticleData
 import com.df.playandroid.response.home.*
 
 interface IHomeView {

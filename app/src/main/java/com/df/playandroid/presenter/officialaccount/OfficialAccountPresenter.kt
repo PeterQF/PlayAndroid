@@ -4,7 +4,7 @@ import android.content.Context
 import com.df.playandroid.base.observer.BaseObserver
 import com.df.playandroid.base.presenter.BasePresenter
 import com.df.playandroid.http.ApiRetrofit
-import com.df.playandroid.response.officialaccount.OfficialAccountResponse
+import com.df.playandroid.response.category.CategoryResponse
 import com.df.playandroid.view.officialaccount.IOfficialAccountView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -27,7 +27,7 @@ class OfficialAccountPresenter(context: Context) : BasePresenter<IOfficialAccoun
             .requestPublicItem()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : BaseObserver<OfficialAccountResponse>() {
+            .subscribe(object : BaseObserver<CategoryResponse>() {
                 override fun addDisposable(d: Disposable) {
                     mDisposables.add(d)
                 }
@@ -35,9 +35,9 @@ class OfficialAccountPresenter(context: Context) : BasePresenter<IOfficialAccoun
                 override fun onFailed() {
                 }
 
-                override fun onResult(errorCode: Int, errorMsg: String?, result: OfficialAccountResponse) {
+                override fun onResult(errorCode: Int, errorMsg: String?, result: CategoryResponse) {
                     if (result.data.isNullOrEmpty().not()) {
-                        getView()?.getPublicItemSuccess(result.data)
+                        result.data?.let { getView()?.getPublicItemSuccess(it) }
                     }
                 }
             })

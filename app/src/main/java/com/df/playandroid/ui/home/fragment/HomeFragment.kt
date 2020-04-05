@@ -12,6 +12,8 @@ import com.df.playandroid.view.home.IHomeView
 import com.df.playandroid.base.fragment.BaseFragment
 import com.df.playandroid.base.helper.LoadingViewHelper
 import com.df.playandroid.config.Constants
+import com.df.playandroid.response.article.ArticleData
+import com.df.playandroid.response.article.ArticleInfo
 import com.df.playandroid.response.home.*
 import com.df.playandroid.ui.home.adapter.HomeArticleRvAdapter
 import com.df.playandroid.utils.LogUtil
