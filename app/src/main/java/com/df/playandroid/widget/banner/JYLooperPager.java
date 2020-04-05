@@ -15,6 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.df.playandroid.R;
+import com.df.playandroid.response.home.BannerData;
 import com.df.playandroid.response.home.BannerResponse;
 import com.df.playandroid.utils.DeviceUtil;
 import com.df.playandroid.widget.roundimage.RoundRectImageView;
@@ -32,7 +33,7 @@ public class JYLooperPager extends LinearLayout {
     private InnerAdapter mAdapter = null;
     private OnItemClickListener mItemClickListener = null;
     // 加载网络图片
-    private List<BannerResponse.BannerData> mItems;
+    private List<BannerData> mItems;
     private List<ImageView> mViewpagerViews;
     private boolean mIsSetData = false;
 
@@ -102,7 +103,7 @@ public class JYLooperPager extends LinearLayout {
     }
 
     // 网络
-    public void setData(List<BannerResponse.BannerData> items) {
+    public void setData(List<BannerData> items) {
         if (!mIsSetData) {
             this.mItems = items;
             setupImageView();

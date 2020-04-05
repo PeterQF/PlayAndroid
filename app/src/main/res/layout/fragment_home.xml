@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/mHomeLayout">
 
     <include
+        android:id="@+id/mSearchHeader"
         layout="@layout/base_search_header"/>
 
 <!--    <RelativeLayout-->
@@ -71,6 +73,7 @@
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/home_refresh_layout"
+        android:layout_below="@id/mSearchHeader"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:srlEnableNestedScrolling="false">
@@ -96,7 +99,8 @@
                     android:paddingStart="15dp"
                     android:paddingEnd="15dp"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"/>
+                    android:layout_height="180dp"
+                    android:visibility="gone"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/home_article_rv"
@@ -118,4 +122,4 @@
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-</LinearLayout>
+</RelativeLayout>

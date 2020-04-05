@@ -4,6 +4,7 @@ import com.df.playandroid.response.content.CollectionResponse
 import com.df.playandroid.response.home.BannerResponse
 import com.df.playandroid.response.home.HomeArticleResponse
 import com.df.playandroid.response.home.SearchHotWordResponse
+import com.df.playandroid.response.officialaccount.OfficialAccountArticleResponse
 import com.df.playandroid.response.officialaccount.OfficialAccountResponse
 import io.reactivex.Observable
 import retrofit2.Response
@@ -42,4 +43,11 @@ interface ApiServer {
      */
     @POST("/lg/collect/{id}/json")
     fun requestCollectStationArticle(@Path("id") id: Int): Observable<Response<CollectionResponse>>
+
+    /**
+     * 请求公众号文章
+     */
+    @GET("/wxarticle/list/{id}/{page}/json")
+    fun requestOfficialAccountArticleList(@Path("id") id: Int, @Path("page") page:Int): Observable<Response<OfficialAccountArticleResponse>>
+
 }

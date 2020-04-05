@@ -10,6 +10,7 @@ object Constants {
     object LoadType {
         const val REFRESH = 0
         const val LOAD_MORE = 1
+        const val LOADING = 2
     }
 
     /**

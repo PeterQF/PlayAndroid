@@ -24,7 +24,7 @@
         android:layout_centerInParent="true"
         tools:text="我是一个标题我是一个标题我是一个标题我是一个标题"
         android:textColor="@color/white"
-        android:textSize="18dp"
+        android:textSize="16sp"
         android:maxLines="1"
         android:ellipsize="end"
         android:gravity="center_horizontal"/>

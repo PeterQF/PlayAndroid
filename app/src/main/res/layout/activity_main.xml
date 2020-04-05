@@ -45,7 +45,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/main_home"
-            android:textSize="10dp"
+            android:textSize="10sp"
             android:textColor="@color/selector_main_text_color"
             android:drawablePadding="2dp"
             android:layout_marginBottom="2dp" />
@@ -62,7 +62,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/main_project_recommend"
-            android:textSize="10dp"
+            android:textSize="10sp"
             android:textColor="@color/selector_main_text_color"
             android:drawablePadding="2dp"
             android:layout_marginBottom="2dp" />
@@ -79,7 +79,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/main_public_recommend"
-            android:textSize="10dp"
+            android:textSize="10sp"
             android:textColor="@color/selector_main_text_color"
             android:drawablePadding="2dp"
             android:layout_marginBottom="2dp" />
@@ -96,7 +96,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/main_project_system"
-            android:textSize="10dp"
+            android:textSize="10sp"
             android:textColor="@color/selector_main_text_color"
             android:drawablePadding="2dp"
             android:layout_marginBottom="2dp" />
@@ -112,7 +112,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/main_user"
-            android:textSize="10dp"
+            android:textSize="10sp"
             android:textColor="@color/selector_main_text_color"
             android:drawablePadding="2dp"
             android:layout_marginBottom="2dp" />

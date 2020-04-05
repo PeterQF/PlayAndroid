@@ -9,6 +9,7 @@ import com.df.playandroid.response.home.BannerResponse
 import com.df.playandroid.response.home.HomeArticleResponse
 import com.df.playandroid.response.home.SearchHotWordResponse
 import com.df.playandroid.http.ApiRetrofit
+import com.df.playandroid.utils.LogUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -33,7 +34,8 @@ class HomePresenter(context: Context) : BasePresenter<IHomeView>(context) {
                 override fun onFailed() {}
 
                 override fun onResult(errorCode: Int, errorMsg: String?, result: BannerResponse) {
-                    result.data.takeIf { it.isNullOrEmpty().not() }?.let { getView()?.getBannerSuccess(it) }
+                    result.data.takeIf { it.isNullOrEmpty().not() }
+                        ?.let { getView()?.getBannerSuccess(it) }
                 }
             })
     }
@@ -48,20 +50,29 @@ class HomePresenter(context: Context) : BasePresenter<IHomeView>(context) {
             .requestHomeArticleList(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : BaseObserver<HomeArticleResponse>(){
+            .doOnSubscribe {
+                if (type == Constants.LoadType.LOADING)
+                    getView()?.showLoadingView()
+            }
+            .subscribe(object : BaseObserver<HomeArticleResponse>() {
                 override fun addDisposable(d: Disposable) {
                     mDisposables.add(d)
                 }
 
                 override fun onFailed() {
-                    when(type) {
+                    when (type) {
                         Constants.LoadType.REFRESH -> getView()?.stopRefresh()
                         Constants.LoadType.LOAD_MORE -> getView()?.stopLoadMore()
+                        Constants.LoadType.LOADING -> getView()?.hideLoadingView()
                     }
                 }
 
-                override fun onResult(errorCode: Int, errorMsg: String?, result: HomeArticleResponse) {
-                    when(type) {
+                override fun onResult(
+                    errorCode: Int,
+                    errorMsg: String?,
+                    result: HomeArticleResponse
+                ) {
+                    when (type) {
                         Constants.LoadType.REFRESH -> {
                             getView()?.stopRefresh()
                             getView()?.getArticleSuccess(result.data)
@@ -69,6 +80,10 @@ class HomePresenter(context: Context) : BasePresenter<IHomeView>(context) {
                         Constants.LoadType.LOAD_MORE -> {
                             getView()?.stopLoadMore()
                             getView()?.loadMoreArticleSuccess(result.data)
+                        }
+                        Constants.LoadType.LOADING -> {
+                            getView()?.hideLoadingView()
+                            getView()?.getArticleSuccess(result.data)
                         }
                     }
                 }
@@ -97,7 +112,8 @@ class HomePresenter(context: Context) : BasePresenter<IHomeView>(context) {
                     errorMsg: String?,
                     result: SearchHotWordResponse
                 ) {
-                    result.data.takeIf { it.isNullOrEmpty().not() }?.let { getView()?.getHotWordSuccess(it) }
+                    result.data.takeIf { it.isNullOrEmpty().not() }
+                        ?.let { getView()?.getHotWordSuccess(it) }
                 }
 
             })

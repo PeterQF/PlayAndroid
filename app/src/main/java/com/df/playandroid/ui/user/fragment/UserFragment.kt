@@ -30,8 +30,8 @@ class UserFragment : BaseFragment<IUserView, UserPresenter>() {
     }
 
     override fun initData() {
-        LogUtil.info("fragment ---> UserFragment init data")
+//        LogUtil.info("fragment ---> UserFragment init data")
+        LogUtil.info("init fragment user")
     }
 
-    override fun isWithViewPager() = false
 }

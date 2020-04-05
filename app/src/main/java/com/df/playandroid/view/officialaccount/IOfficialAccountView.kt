@@ -8,7 +8,5 @@ import com.df.playandroid.response.officialaccount.OfficialAccountResponse
  * 描述：
  */
 interface IOfficialAccountView {
-
-    fun stopRefresh()
     fun getPublicItemSuccess(result: List<OfficialAccountResponse.PublicData>)
 }

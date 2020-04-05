@@ -16,6 +16,7 @@ import com.df.playandroid.base.activity.BaseMvpActivity
 import com.df.playandroid.base.adapter.WebViewMenuRvAdapter
 import com.df.playandroid.base.bean.WebViewMenuItemBean
 import com.df.playandroid.presenter.content.ContentPresenter
+import com.df.playandroid.response.home.BannerData
 import com.df.playandroid.view.content.IContentView
 import com.df.playandroid.response.home.BannerResponse
 import com.df.playandroid.response.home.HomeArticleResponse
@@ -40,10 +41,11 @@ class ContentActivity : BaseMvpActivity<IContentView, ContentPresenter>(), View.
         initWebView()
         initWebViewMenuAdapter()
         initPopup()
-        header_title_tv.text = when (mType) {
-            0 -> mItem.title
-            else -> mBanner.title
-        }
+//        header_title_tv.text = when (mType) {
+//            0 -> mItem.title
+//            else -> mBanner.title
+//        }
+        header_title_tv.text = mTitle
         header_menu_iv.visibility = View.VISIBLE
         header_back_iv.setOnClickListener(this)
         header_menu_iv.setOnClickListener(this)
@@ -68,26 +70,6 @@ class ContentActivity : BaseMvpActivity<IContentView, ContentPresenter>(), View.
     }
 
     private fun initPopup() {
-//        QMUIPopups
-//            .quickAction(
-//                this,
-//                QMUIDisplayHelper.dp2px(this, 80),
-//                QMUIDisplayHelper.dp2px(this, 56)
-//            )
-//            .shadow(true)
-//            .dimAmount(0.5f)
-//            .skinManager(QMUISkinManager.defaultInstance(this))
-//            .edgeProtection(QMUIDisplayHelper.dp2px(this, 20))
-//            .addAction(QMUIQuickAction.Action().icon(R.mipmap.icon_collect).text("收藏").onClick { quickAction, action, position ->
-//
-//            })
-//            .addAction(QMUIQuickAction.Action().icon(R.mipmap.icon_share).text("分享").onClick { quickAction, action, position ->
-//
-//            })
-//            .addAction(QMUIQuickAction.Action().icon(R.mipmap.icon_browser).text("用浏览器打开").onClick { quickAction, action, position ->
-//
-//            })
-//            .show(header_menu_iv)
 
         if (mQMUIPopup == null) {
             mQMUIPopup = QMUIPopups.popup(this, ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -111,47 +93,50 @@ class ContentActivity : BaseMvpActivity<IContentView, ContentPresenter>(), View.
             when (position) {
                 0 -> {
                     // TODO 收藏
-                    mPresenter?.collectStationArticle(mItem.id)
+//                    mPresenter?.collectStationArticle(mItem.id)
+                    mPresenter?.collectStationArticle(mId)
                     mQMUIPopup?.dismiss()
                 }
                 1 -> {
                     // 分享
-                    when (mType) {
-                        0 -> IntentUtil.shareTo(this, mItem.title, mItem.link)
-                        else -> IntentUtil.shareTo(this, mBanner.title, mBanner.url)
-                    }
+//                    when (mType) {
+//                        0 -> IntentUtil.shareTo(this, mItem.title, mItem.link)
+//                        else -> IntentUtil.shareTo(this, mBanner.title, mBanner.url)
+//                    }
+                    IntentUtil.shareTo(this, mTitle, mUrl)
                     mQMUIPopup?.dismiss()
                 }
                 2 -> {
                     // 用浏览器打开
-                    when (mType) {
-                        0 -> IntentUtil.openBroswer(this, mItem.link)
-                        else -> IntentUtil.openBroswer(this, mBanner.url)
-                    }
+//                    when (mType) {
+//                        0 -> IntentUtil.openBroswer(this, mItem.link)
+//                        else -> IntentUtil.openBroswer(this, mBanner.url)
+//                    }
+                    IntentUtil.openBroswer(this, mUrl)
                     mQMUIPopup?.dismiss()
                 }
             }
         }
     }
 
-//    private val mUrl by lazy {
-//        intent.getStringExtra("url")
-//    }
-//
-//    private val mTitle by lazy {
-//        intent.getStringExtra("title")
-//    }
-//
-//    private val mId by lazy {
-//        intent.getIntExtra("id", 0)
-//    }
-
-    private val mItem by lazy {
-        intent.getSerializableExtra("item") as HomeArticleResponse.ArticleData.ArticleInfo
+    private val mUrl by lazy {
+        intent.getStringExtra("url")
     }
 
+    private val mTitle by lazy {
+        intent.getStringExtra("title")
+    }
+
+    private val mId by lazy {
+        intent.getIntExtra("id", 0)
+    }
+
+//    private val mItem by lazy {
+//        intent.getSerializableExtra("item") as HomeArticleResponse.ArticleData.ArticleInfo
+//    }
+
     private val mBanner by lazy {
-        intent.getSerializableExtra("banner") as BannerResponse.BannerData
+        intent.getSerializableExtra("banner") as BannerData
     }
 
     private val mType by lazy {
@@ -173,10 +158,11 @@ class ContentActivity : BaseMvpActivity<IContentView, ContentPresenter>(), View.
                 setAppCacheEnabled(true)
                 domStorageEnabled = true
             }
-            when (mType) {
-                0 -> loadUrl(mItem.link)
-                else -> loadUrl(mBanner.url)
-            }
+            loadUrl(mUrl)
+//            when (mType) {
+//                0 -> loadUrl(mItem.link)
+//                else -> loadUrl(mBanner.url)
+//            }
         }
     }
 
@@ -221,18 +207,19 @@ class ContentActivity : BaseMvpActivity<IContentView, ContentPresenter>(), View.
     companion object {
         fun openWeb(
             context: Context,
-            item: HomeArticleResponse.ArticleData.ArticleInfo,
-            type: Int
+            id: Int,
+            url: String,
+            title: String
         ): Intent {
             return Intent(context, ContentActivity::class.java)
-                .putExtra("item", item)
-                .putExtra("type", type)
-//                .putExtra("id", id)
-//                .putExtra("url", url)
-//                .putExtra("title", title)
+//                .putExtra("item", item)
+//                .putExtra("type", type)
+                .putExtra("id", id)
+                .putExtra("url", url)
+                .putExtra("title", title)
         }
 
-        fun openBanner(context: Context, banner: BannerResponse.BannerData, type: Int): Intent {
+        fun openBanner(context: Context, banner: BannerData, type: Int): Intent {
             return Intent(context, ContentActivity::class.java)
                 .putExtra("banner", banner)
                 .putExtra("type", type)

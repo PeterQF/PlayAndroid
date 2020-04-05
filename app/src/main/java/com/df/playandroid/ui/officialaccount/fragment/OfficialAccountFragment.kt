@@ -4,21 +4,15 @@ import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.GridLayoutManager
 import com.df.playandroid.R
 import com.df.playandroid.base.fragment.BaseFragment
-import com.df.playandroid.ui.officialaccount.adapter.OfficialAccountRvAdapter
 import com.df.playandroid.presenter.officialaccount.OfficialAccountPresenter
 import com.df.playandroid.response.officialaccount.OfficialAccountResponse
 import com.df.playandroid.ui.officialaccount.adapter.OfficialAccountPageAdapter
+import com.df.playandroid.utils.LogUtil
 import com.df.playandroid.view.officialaccount.IOfficialAccountView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.luck.picture.lib.decoration.GridSpacingItemDecoration
-import com.luck.picture.lib.tools.ScreenUtils
-import kotlinx.android.synthetic.main.base_header.*
-import kotlinx.android.synthetic.main.base_refresh.*
-import kotlinx.android.synthetic.main.base_search_header.*
 import kotlinx.android.synthetic.main.fragment_official_account.*
 
 /**
@@ -29,9 +23,6 @@ import kotlinx.android.synthetic.main.fragment_official_account.*
 class OfficialAccountFragment : BaseFragment<IOfficialAccountView, OfficialAccountPresenter>(),
     IOfficialAccountView, TabLayout.OnTabSelectedListener {
 
-    private var mOfficialAccountItem: MutableList<OfficialAccountResponse.PublicData> = ArrayList()
-    private lateinit var mOfficialAccountAdapter: OfficialAccountRvAdapter
-
     override fun getLayoutId() = R.layout.fragment_official_account
 
     override fun setupPresenter() = OfficialAccountPresenter(requireContext())
@@ -39,48 +30,21 @@ class OfficialAccountFragment : BaseFragment<IOfficialAccountView, OfficialAccou
     override fun initView() {
         mHeaderTitle.text = getString(R.string.main_public_recommend)
         mTabLayout.addOnTabSelectedListener(this)
-//        initAdapter()
-//        initRefresh()
     }
 
-    private fun initRefresh() {
-        base_refresh_layout.setEnableLoadMore(false)
-        base_refresh_layout.setOnRefreshListener {
-            mPresenter?.getPublicItem()
-        }
-    }
-
-    private fun initAdapter() {
-        mOfficialAccountAdapter = OfficialAccountRvAdapter(mOfficialAccountItem)
-        val layoutManager = GridLayoutManager(requireContext(), 2)
-        base_rv.layoutManager = layoutManager
-        layoutManager.orientation = GridLayoutManager.VERTICAL
-        val decoration =
-            GridSpacingItemDecoration(2, ScreenUtils.dip2px(requireContext(), 20.0f), false)
-        base_rv.addItemDecoration(decoration)
-        base_rv.adapter = mOfficialAccountAdapter
-    }
 
     override fun initData() {
+        LogUtil.info("init fragment public account")
         mPresenter?.getPublicItem()
-//        base_refresh_layout.autoRefresh()
-    }
-
-    override fun stopRefresh() {
-        base_refresh_layout.finishRefresh(1000)
     }
 
     override fun getPublicItemSuccess(result: List<OfficialAccountResponse.PublicData>) {
-//        mOfficialAccountItem.clear()
-//        mOfficialAccountItem.addAll(result)
-//        mOfficialAccountAdapter.notifyDataSetChanged()
         val fragments: ArrayList<OfficialAccountArticleFragment> = ArrayList()
         for (i in result.indices) {
             val page = OfficialAccountArticleFragment.newInstance(result[i].id)
             fragments.add(page)
         }
         mViewPager.adapter = OfficialAccountPageAdapter(requireActivity(), fragments)
-        mViewPager.offscreenPageLimit = 100
         TabLayoutMediator(mTabLayout, mViewPager, false,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 val tabView = LayoutInflater.from(requireContext()).inflate(R.layout.layout_tab_custom, null)
@@ -110,6 +74,4 @@ class OfficialAccountFragment : BaseFragment<IOfficialAccountView, OfficialAccou
             setTextColor(ContextCompat.getColor(requireContext(), R.color.mainColor))
         }
     }
-
-    override fun isWithViewPager() = false
 }

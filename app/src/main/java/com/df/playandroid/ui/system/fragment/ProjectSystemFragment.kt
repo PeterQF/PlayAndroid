@@ -23,8 +23,8 @@ class ProjectSystemFragment : BaseFragment<IProjectSystemView, ProjectSystemPres
     }
 
     override fun initData() {
-        LogUtil.info("fragment ---> ProjectSystemFragment init data")
+//        LogUtil.info("fragment ---> ProjectSystemFragment init data")
+        LogUtil.info("init fragment system")
     }
 
-    override fun isWithViewPager() = false
 }

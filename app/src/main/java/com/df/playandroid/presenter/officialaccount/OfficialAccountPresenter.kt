@@ -33,11 +33,9 @@ class OfficialAccountPresenter(context: Context) : BasePresenter<IOfficialAccoun
                 }
 
                 override fun onFailed() {
-//                    getView()?.stopRefresh()
                 }
 
                 override fun onResult(errorCode: Int, errorMsg: String?, result: OfficialAccountResponse) {
-//                    getView()?.stopRefresh()
                     if (result.data.isNullOrEmpty().not()) {
                         getView()?.getPublicItemSuccess(result.data)
                     }
