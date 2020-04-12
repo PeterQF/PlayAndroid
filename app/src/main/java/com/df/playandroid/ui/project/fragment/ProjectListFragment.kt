@@ -1,6 +1,9 @@
 package com.df.playandroid.ui.project.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.df.playandroid.R
 import com.df.playandroid.base.fragment.BaseFragment
@@ -9,16 +12,19 @@ import com.df.playandroid.config.Constants
 import com.df.playandroid.presenter.project.ProjectListPresenter
 import com.df.playandroid.response.article.ArticleData
 import com.df.playandroid.response.article.ArticleInfo
+import com.df.playandroid.ui.content.activity.ContentActivity
 import com.df.playandroid.ui.project.adapter.ProjectListRvAdapter
 import com.df.playandroid.view.project.IProjectListView
 import kotlinx.android.synthetic.main.base_refresh.*
+import kotlinx.android.synthetic.main.fragment_project_list.*
 
 /**
  * 作者：PeterWu
  * 时间：2020/4/5
  * 描述：
  */
-class ProjectListFragment : BaseFragment<IProjectListView, ProjectListPresenter>(), IProjectListView {
+class ProjectListFragment : BaseFragment<IProjectListView, ProjectListPresenter>(),
+    IProjectListView {
 
     private lateinit var mAdapter: ProjectListRvAdapter
     private var mItems: MutableList<ArticleInfo> = ArrayList()
@@ -40,7 +46,7 @@ class ProjectListFragment : BaseFragment<IProjectListView, ProjectListPresenter>
         arguments?.getInt("id")
     }
 
-    override fun getLayoutId() = R.layout.base_refresh
+    override fun getLayoutId() = R.layout.fragment_project_list
 
     override fun setupPresenter() = ProjectListPresenter(requireContext())
 
@@ -62,7 +68,25 @@ class ProjectListFragment : BaseFragment<IProjectListView, ProjectListPresenter>
         mAdapter = ProjectListRvAdapter(mItems)
         val layoutManager = LinearLayoutManager(requireContext())
         mRecyclerView.layoutManager = layoutManager
+        val decoration = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+        ContextCompat.getDrawable(requireContext(), R.drawable.rv_divider)
+            ?.let { decoration.setDrawable(it) }
+        mRecyclerView.addItemDecoration(decoration)
         mRecyclerView.adapter = mAdapter
+        mAdapter.setOnItemClickListener { adapter, view, position ->
+            startActivity(
+                mItems[position].link?.let { url ->
+                    mItems[position].title?.let { title ->
+                        ContentActivity.openWeb(
+                            requireContext(),
+                            mItems[position].id,
+                            url,
+                            title
+                        )
+                    }
+                }
+            )
+        }
     }
 
     override fun initData() {
@@ -70,11 +94,11 @@ class ProjectListFragment : BaseFragment<IProjectListView, ProjectListPresenter>
     }
 
     override fun showLoadingView() {
-        LoadingViewHelper.instance.show(mRefreshLayout)
+        LoadingViewHelper.instance.show(mProjectListLayout)
     }
 
     override fun hideLoadingView() {
-        LoadingViewHelper.instance.dismiss(mRefreshLayout)
+        LoadingViewHelper.instance.dismiss(mProjectListLayout)
     }
 
     override fun getProjectSuccess(result: ArticleData) {

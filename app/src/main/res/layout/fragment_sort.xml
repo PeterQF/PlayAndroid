@@ -2,15 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
-    android:id="@+id/mOfficialAccountArticleLayout">
+    android:id="@+id/mSortLayout">
 
-    <include
-        layout="@layout/base_refresh"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"/>
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>

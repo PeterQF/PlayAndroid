@@ -12,6 +12,17 @@ import java.io.Serializable
 data class CategoryResponse(val data: List<CategoryData>? = null) : BaseResponse()
 
 data class CategoryData(
+    val children: List<Children>? = null,
+    val courseId: Int = 0,
+    val id: Int = 0,
+    val name: String? = null,
+    val order: Int = 0,
+    val parentChapterId: Int = 0,
+    val userControlSetTop: Boolean = false,
+    val visible: Int = 0
+): Serializable
+
+data class Children(
     val children: List<Any>? = null,
     val courseId: Int = 0,
     val id: Int = 0,

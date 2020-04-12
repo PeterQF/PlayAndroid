@@ -26,4 +26,7 @@
     <color name="color_666666">#666666</color>
     <color name="color_D8D8D8">#D8D8D8</color>
     <color name="color_7C7C7C">#7C7C7C</color>
+
+    <!--列表分隔线-->
+    <color name="color_divide">@color/color_F8F8F8</color>
 </resources>

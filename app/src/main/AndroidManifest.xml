@@ -14,11 +14,12 @@
         android:roundIcon="@mipmap/icon_app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.df.playandroid.ui.setting.activity.SettingActivity"></activity>
-        <activity android:name="com.df.playandroid.ui.login.activity.LoginActivity" />
+        <activity android:name=".ui.system.activity.SortDetailActivity"></activity>
+        <activity android:name=".ui.setting.activity.SettingActivity" />
+        <activity android:name=".ui.login.activity.LoginActivity" />
         <activity android:name=".base.activity.AgentWebActivity" />
         <activity android:name=".ui.content.activity.ContentActivity" />
-        <activity android:name="com.df.playandroid.ui.main.activity.MainActivity">
+        <activity android:name=".ui.main.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

@@ -5,13 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/mainColor">
 
+    <ImageView
+        android:id="@+id/mHeaderBackIv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon_back"
+        android:padding="@dimen/dp_10"
+        android:layout_centerVertical="true" />
+
     <TextView
-        android:id="@+id/base_header_title"
+        android:id="@+id/mHeaderTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="我是一个标题"
         android:textColor="@color/white"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:layout_centerInParent="true"/>
 

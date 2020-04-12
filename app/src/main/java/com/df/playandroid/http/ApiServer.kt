@@ -5,6 +5,7 @@ import com.df.playandroid.response.article.ArticleResponse
 import com.df.playandroid.response.content.CollectionResponse
 import com.df.playandroid.response.home.BannerResponse
 import com.df.playandroid.response.home.SearchHotWordResponse
+import com.df.playandroid.response.navigation.NavigationResponse
 import io.reactivex.Observable
 import retrofit2.Response
 import retrofit2.http.GET
@@ -61,4 +62,22 @@ interface ApiServer {
      */
     @GET("/project/list/{page}/json")
     fun requestProjectList(@Path("page") page:Int, @Query("cid") id: Int): Observable<Response<ArticleResponse>>
+
+    /**
+     * 请求体系分类
+     */
+    @GET("/tree/json")
+    fun requestSortLabel(): Observable<Response<CategoryResponse>>
+
+    /**
+     * 请求导航分类
+     */
+    @GET("/navi/json")
+    fun requestNavigationLabel(): Observable<Response<NavigationResponse>>
+
+    /**
+     * 请求分类label文章
+     */
+    @GET("/article/list/{page}/json")
+    fun requestSortLabelArticle(@Path("page") page:Int, @Query("cid") id: Int): Observable<Response<ArticleResponse>>
 }

@@ -217,6 +217,16 @@ class ContentActivity : BaseMvpActivity<IContentView, ContentPresenter>(), View.
                 .putExtra("title", title)
         }
 
+        fun openUrl(
+            context: Context,
+            url: String,
+            title: String
+        ): Intent {
+            return Intent(context, ContentActivity::class.java)
+                .putExtra("url", url)
+                .putExtra("title", title)
+        }
+
         fun openBanner(context: Context, banner: BannerData, type: Int): Intent {
             return Intent(context, ContentActivity::class.java)
                 .putExtra("banner", banner)

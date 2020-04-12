@@ -31,6 +31,7 @@ object Versions {
     const val agentWeb = "4.1.3"
     const val picture_selector = "2.4.9"
     const val lottieVersion = "3.4.0"
+    const val labelsView = "1.6.1"
 }
 
 object Package {
@@ -66,4 +67,5 @@ object Libs {
     const val agentWeb = "com.just.agentweb:agentweb:${Versions.agentWeb}"
     const val picture_selector = "com.github.LuckSiege.PictureSelector:picture_library:v${Versions.picture_selector}"
     const val lottie = "com.airbnb.android:lottie:${Versions.lottieVersion}"
+    const val labels_view = "com.github.donkingliang:LabelsView:${Versions.labelsView}"
 }

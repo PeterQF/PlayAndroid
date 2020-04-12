@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/mLabelTitleTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dp_10"
+        android:textColor="@color/color_main_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="最新分类" />
+
+    <com.donkingliang.labels.LabelsView
+        android:id="@+id/mLabelView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:labelBackground="@drawable/shape_label_grid_item"
+        app:labelTextColor="@color/color_main_sub_text"
+        app:labelTextPaddingBottom="10dp"
+        app:labelTextPaddingLeft="20dp"
+        app:labelTextPaddingRight="20dp"
+        app:labelTextPaddingTop="@dimen/dp_10"
+        app:labelTextSize="12sp"
+        app:lineMargin="10dp"
+        app:wordMargin="20dp" />
+
+</LinearLayout>

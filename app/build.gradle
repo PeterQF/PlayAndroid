@@ -62,4 +62,5 @@ dependencies {
     implementation Libs.agentWeb
     implementation Libs.picture_selector
     implementation Libs.lottie
+    implementation Libs.labels_view
 }

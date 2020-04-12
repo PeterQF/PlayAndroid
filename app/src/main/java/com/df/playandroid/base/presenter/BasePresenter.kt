@@ -5,7 +5,7 @@ import io.reactivex.disposables.CompositeDisposable
 import java.lang.ref.Reference
 import java.lang.ref.WeakReference
 
-open class BasePresenter<V>(context: Context) {
+open class BasePresenter<V>(private val context: Context) {
 
     // view的引用, 使用弱引用防止内存泄漏
     private var mReference: Reference<V>? = null

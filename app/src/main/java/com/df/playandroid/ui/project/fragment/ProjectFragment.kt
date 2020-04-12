@@ -10,7 +10,6 @@ import com.df.playandroid.presenter.project.ProjectPresenter
 import com.df.playandroid.response.category.CategoryData
 import com.df.playandroid.ui.project.adapter.ProjectPageAdapter
 import com.df.playandroid.view.project.IProjectView
-import com.df.playandroid.utils.LogUtil
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.base_search_header.*
@@ -33,7 +32,6 @@ class ProjectFragment : BaseFragment<IProjectView, ProjectPresenter>(), IProject
         mTabLayout.addOnTabSelectedListener(this)
     }
     override fun initData() {
-        LogUtil.info("init fragment recommend")
         mPresenter?.getProjectCategory()
     }
 
