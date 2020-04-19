@@ -6,7 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.df.playandroid.base.event.BaseEvent
+import com.df.playandroid.base.event.EventManager
 import com.df.playandroid.base.presenter.BasePresenter
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 /**
  * 作者：PeterWu
@@ -35,12 +40,22 @@ abstract class BaseFragment<V, P : BasePresenter<V>> : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        initEvent()
         initView()
+    }
+
+    private fun initEvent() {
+        if (hadEventBus()) {
+            EventBus.getDefault().register(this)
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         mPresenter?.detachView()
+        if (hadEventBus() && EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this)
+        }
     }
 
     override fun onResume() {
@@ -63,4 +78,7 @@ abstract class BaseFragment<V, P : BasePresenter<V>> : Fragment() {
     abstract fun setupPresenter(): P?
     abstract fun initView()
     abstract fun initData()
+    open fun hadEventBus() = false
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    open fun onMessageEvent(event: BaseEvent) {}
 }

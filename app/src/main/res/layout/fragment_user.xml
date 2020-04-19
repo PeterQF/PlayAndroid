@@ -13,7 +13,7 @@
         android:scaleType="centerCrop"/>
 
     <com.qmuiteam.qmui.widget.QMUIRadiusImageView
-        android:id="@+id/user_icon"
+        android:id="@+id/mUserIcon"
         android:layout_below="@id/mHeaderBg"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -28,7 +28,7 @@
     <TextView
         android:id="@+id/mUserName"
         android:layout_below="@id/mHeaderBg"
-        android:layout_toEndOf="@id/user_icon"
+        android:layout_toEndOf="@id/mUserIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/user_not_login"
@@ -42,7 +42,7 @@
 
     <TextView
         android:layout_below="@id/mUserName"
-        android:layout_toEndOf="@id/user_icon"
+        android:layout_toEndOf="@id/mUserIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/user_click_to_login"
@@ -52,44 +52,9 @@
         android:paddingTop="5dp"
         android:textSize="@dimen/sp_14"/>
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="-30dp">-->
-
-<!--&lt;!&ndash;        <LinearLayout&ndash;&gt;-->
-<!--&lt;!&ndash;            android:orientation="vertical"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_gravity="bottom"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_toEndOf="@id/user_icon"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="wrap_content">&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <TextView&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:text="@string/user_not_login"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:textColor="@color/color_666666"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:textSize="20sp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:textStyle="bold"/>&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <TextView&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:text="@string/user_click_to_login"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:textColor="@color/color_7C7C7C"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:paddingTop="@dimen/dp_10"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:textSize="@dimen/sp_14"/>&ndash;&gt;-->
-
-<!--&lt;!&ndash;        </LinearLayout>&ndash;&gt;-->
-
-<!--    </LinearLayout>-->
-
-<!--    <include-->
-<!--        layout="@layout/header_before_login"/>-->
-
     <include
         layout="@layout/layout_user_option"
-        android:layout_below="@id/user_icon"
+        android:layout_below="@id/mUserIcon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

@@ -5,18 +5,107 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:fitsSystemWindows="true"
     tools:context=".ui.login.activity.LoginActivity">
 
-    <include
-        layout="@layout/base_header"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:src="@mipmap/icon_close" />
 
-    <com.qmuiteam.qmui.widget.QMUIRadiusImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:qmui_border_width="0dp"
-        app:qmui_is_circle="true"
-        app:srcCompat="@mipmap/icon_app"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingStart="30dp"
+            android:paddingTop="100dp"
+            android:paddingEnd="30dp">
+
+            <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+                android:id="@+id/mUserIcon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:qmui_border_width="0dp"
+                app:qmui_is_circle="true"
+                app:srcCompat="@mipmap/icon_user_default" />
+
+            <EditText
+                android:id="@+id/mAccountEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:background="@null"
+                android:drawableStart="@mipmap/icon_account_et"
+                android:drawablePadding="@dimen/dp_10"
+                android:ellipsize="end"
+                android:hint="@string/login_input_account"
+                android:maxLength="16"
+                android:maxLines="1"
+                android:textColor="@color/color_main_text"
+                android:textColorHint="@color/color_main_sub_text"
+                android:textCursorDrawable="@drawable/shape_et_cursor"
+                android:textSize="@dimen/sp_14" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/color_view_line" />
+
+            <EditText
+                android:id="@+id/mPasswordEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@null"
+                android:drawableStart="@mipmap/icon_password"
+                android:drawablePadding="@dimen/dp_10"
+                android:ellipsize="end"
+                android:hint="@string/login_input_pwd"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                android:maxLines="1"
+                android:textColor="@color/color_main_text"
+                android:textColorHint="@color/color_main_sub_text"
+                android:textCursorDrawable="@drawable/shape_et_cursor"
+                android:textSize="@dimen/sp_14" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/color_view_line" />
+
+            <Button
+                android:id="@+id/mLoginBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/shape_login"
+                android:text="@string/login"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/mRegisterTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="30dp"
+                android:text="@string/login_go_to_register"
+                android:textColor="@color/color_main_text"
+                android:textSize="@dimen/sp_14" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

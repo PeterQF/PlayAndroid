@@ -43,9 +43,9 @@ dependencies {
     androidTestImplementation Libs.espresso_core
 
     implementation Libs.qmui
+    implementation Libs.okhttp3
     implementation Libs.okhttp3_logging
     implementation Libs.gson
-    implementation Libs.okhttp3
     implementation Libs.retrofit2
     implementation Libs.retrofit2_converters
     implementation Libs.retrofit2_converter_gson
@@ -63,4 +63,5 @@ dependencies {
     implementation Libs.picture_selector
     implementation Libs.lottie
     implementation Libs.labels_view
+    implementation Libs.eventBus
 }

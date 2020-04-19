@@ -8,7 +8,7 @@ import java.util.*
 import kotlin.system.exitProcess
 
 class AppManager private constructor(){
-//  activity管理栈
+    //  activity管理栈
     private val activityStack: Stack<Activity> = Stack()
 
     companion object {

@@ -5,7 +5,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.df.playandroid.R
 import com.df.playandroid.application.AppManager
+import com.df.playandroid.base.event.BaseEvent
+import com.df.playandroid.base.event.EventManager
 import com.gyf.immersionbar.ImmersionBar
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -19,6 +24,13 @@ abstract class BaseActivity : AppCompatActivity() {
         init()
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (hadEventBus()) {
+            EventBus.getDefault().register(this)
+        }
+    }
+
     abstract fun getLayoutId(): Int
 
     abstract fun initView()
@@ -26,6 +38,11 @@ abstract class BaseActivity : AppCompatActivity() {
     abstract fun initData()
 
     open fun initPresenter() {}
+
+    open fun hadEventBus() = false
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    open fun onMessageEvent(event: BaseEvent) {}
 
     private fun init() {
         initStatusBar()
@@ -42,6 +59,13 @@ abstract class BaseActivity : AppCompatActivity() {
 
     inline fun<reified T> launch() {
         startActivity(Intent(this, T::class.java))
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if (hadEventBus() && EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this)
+        }
     }
 
     override fun onDestroy() {

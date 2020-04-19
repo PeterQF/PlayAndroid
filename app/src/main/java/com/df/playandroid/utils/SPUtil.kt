@@ -2,7 +2,10 @@ package com.df.playandroid.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.text.TextUtils
+import android.util.Base64
 import com.df.playandroid.application.MyApplication
+import java.io.*
 import java.lang.IllegalArgumentException
 
 /**
@@ -11,78 +14,149 @@ import java.lang.IllegalArgumentException
  * 描述：
  */
 object SPUtil {
-    private val name = "App_Sp"
+
+    private const val name = "App_Sp"
     private val prefs: SharedPreferences by lazy {
         MyApplication.instance.getSharedPreferences(name, Context.MODE_PRIVATE)
     }
 
-    fun getEditor(): SharedPreferences.Editor {
+    private fun getEditor(): SharedPreferences.Editor {
         return prefs.edit()
     }
 
-    fun getObtain(): SharedPreferences {
+    private fun getObtain(): SharedPreferences {
         return prefs
     }
 
-    /**
-     * 获取存放数据
-     */
-    fun get(key: String, default: Any): Any = with(prefs) {
-        return when(default) {
-            is Int -> SPUtil.getInt(key, default)
-            is String -> SPUtil.getString(key, default)
-            is Long -> SPUtil.getLong(key, default)
-            is Float -> SPUtil.getFloat(key, default)
-            is Boolean -> SPUtil.getBoolean(key, default)
-            else -> throw IllegalArgumentException("SharedPreferences 类型错误")
+    fun getBoolean(
+        key: String,
+        defaultValue: Boolean
+    ): Boolean {
+        return getObtain().getBoolean(key, defaultValue)
+    }
+
+    fun setBoolean(ctx: Context, key: String, value: Boolean) {
+        getEditor().putBoolean(key, value).apply()
+    }
+
+    fun getString(ctx: Context, key: String, defaultValue: String): String? {
+        return getObtain().getString(key, defaultValue)
+    }
+
+    fun getString(key: String, defaultValue: String): String? {
+        return getObtain().getString(key, defaultValue)
+    }
+
+    fun setString(ctx: Context, key: String, value: String) {
+        getEditor().putString(key, value).apply()
+    }
+
+    fun setInt(ctx: Context, key: String, value: Int) {
+        getEditor().putInt(key, value).apply()
+    }
+
+    fun getInt(ctx: Context, key: String, defaultValue: Int): Int {
+        return getObtain().getInt(key, defaultValue)
+    }
+
+    fun setLong(ctx: Context, key: String, value: Long) {
+        getEditor().putLong(key, value).apply()
+    }
+
+    fun getLong(ctx: Context, key: String, defaultValue: Long): Long {
+        return getObtain().getLong(key, defaultValue)
+    }
+
+    fun setBoolean(key: String, value: Boolean) {
+        getEditor().putBoolean(key, value).apply()
+    }
+
+    fun getString(key: String): String? {
+        var result: String? = null
+        result = try {
+            getObtain().getString(key, "")
+        } catch (e: ClassCastException) {
+            getObtain().getInt(key, -1).toString()
         }
+
+        return result
     }
 
-    fun getString(key: String, default: String = ""): String {
-        return get(key, default) as String
+    fun setString(key: String, value: String) {
+        getEditor().putString(key, value).apply()
     }
 
-    fun getInt(key: String, default: Int = 0): Int {
-        return get(key, default) as Int
+    fun setInt(key: String, value: Int) {
+        getEditor().putInt(key, value).apply()
     }
 
-    fun getLong(key: String, default: Long = 0): Long {
-        return get(key, default) as Long
+    fun getInt(key: String, defaultValue: Int): Int {
+        return getObtain().getInt(key, defaultValue)
     }
 
-    fun getBoolean(key: String, default: Boolean = false): Boolean {
-        return get(key, default) as Boolean
+    fun setLong(key: String, value: Long) {
+        getEditor().putLong(key, value).apply()
     }
 
-    fun getFloat(key: String, default: Float = 0f): Float {
-        return get(key, default) as Float
+    fun getLong(key: String, defaultValue: Long): Long {
+        return getObtain().getLong(key, defaultValue)
     }
 
-    /**
-     * 存放数据
-     */
-    fun put(key: String, value: Any) = with(prefs.edit()) {
-        when(value) {
-            is Int -> putInt(key, value)
-            is String -> putString(key, value)
-            is Long -> putLong(key, value)
-            is Float -> putFloat(key, value)
-            is Boolean -> putBoolean(key, value)
-            else -> throw IllegalArgumentException("SharedPreferences 类型错误")
-        }.apply()
+    fun setHashSet(key: String,value:HashSet<String>){
+        getEditor().putStringSet(key, value).apply()
     }
 
-    /**
-     * 清除
-     */
-    fun clear() {
-        prefs.edit().clear().apply()
+    fun getHashSet(key: String): MutableSet<String>? {
+        return getObtain().getStringSet(key, null)
     }
 
-    /**
-     * 删除某Key的值
-     */
-    fun remove(key: String) {
-        prefs.edit().remove(key).apply()
+    fun removeKey(key: String): Boolean {
+        return getEditor().remove(key).commit()
+    }
+
+    fun setObject(key: String, value: Any?) {
+        if (value == null) {
+            return
+        }
+        if (value !is Serializable) {
+            return
+        }
+        var baos: ByteArrayOutputStream? = null
+        var oos: ObjectOutputStream? = null
+        try {
+            baos = ByteArrayOutputStream()
+            oos = ObjectOutputStream(baos)
+            oos.writeObject(value)
+            val temp = String(Base64.encode(baos.toByteArray(), Base64.DEFAULT))
+            getEditor().putString(key, temp).apply()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            if (oos != null&&baos != null) {
+                IOUtils.closeIO(oos, baos)
+            }
+        }
+
+    }
+
+    fun getObject(key: String): Any? {
+        var `object`: Any? = null
+        var bais: ByteArrayInputStream? = null
+        var ois: ObjectInputStream? = null
+        val temp = getObtain().getString(key, "")
+        if (!TextUtils.isEmpty(temp)) {
+            try {
+                bais = ByteArrayInputStream(Base64.decode(temp!!.toByteArray(), Base64.DEFAULT))
+                ois = ObjectInputStream(bais)
+                `object` = ois.readObject()
+            } catch (ignored: Exception) {
+
+            } finally {
+                if (ois != null&&bais != null) {
+                    IOUtils.closeIO(ois, bais)
+                }
+            }
+        }
+        return `object`
     }
 }

@@ -6,12 +6,10 @@ import com.df.playandroid.response.content.CollectionResponse
 import com.df.playandroid.response.home.BannerResponse
 import com.df.playandroid.response.home.SearchHotWordResponse
 import com.df.playandroid.response.navigation.NavigationResponse
+import com.df.playandroid.response.user.UserResponse
 import io.reactivex.Observable
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiServer {
 
@@ -80,4 +78,11 @@ interface ApiServer {
      */
     @GET("/article/list/{page}/json")
     fun requestSortLabelArticle(@Path("page") page:Int, @Query("cid") id: Int): Observable<Response<ArticleResponse>>
+
+    /**
+     * 请求登录
+     */
+    @FormUrlEncoded
+    @POST("/user/login")
+    fun requestLogin(@Field("username") username: String, @Field("password") password: String): Observable<Response<UserResponse>>
 }
