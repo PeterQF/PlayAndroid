@@ -1,6 +1,7 @@
 package com.df.playandroid.ui.user.fragment
 
 import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
 import com.df.playandroid.R
 import com.df.playandroid.base.event.BaseEvent
 import com.df.playandroid.base.event.EventManager
@@ -37,7 +38,7 @@ class UserFragment : BaseFragment<IUserView, UserPresenter>(), View.OnClickListe
     override fun onClick(v: View?) {
         when(v?.id) {
             R.id.mAccountFl -> {}
-            R.id.mSettingFl -> launch<SettingActivity>()
+            R.id.mSettingFl -> {}
             R.id.mUserIcon -> {
                 if (AppUtils.isLogin().not()) launch<LoginActivity>()
             }

@@ -5,6 +5,9 @@ import android.content.SharedPreferences
 import android.text.TextUtils
 import android.util.Base64
 import com.df.playandroid.application.MyApplication
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import okhttp3.Cookie
 import java.io.*
 import java.lang.IllegalArgumentException
 
@@ -35,51 +38,12 @@ object SPUtil {
         return getObtain().getBoolean(key, defaultValue)
     }
 
-    fun setBoolean(ctx: Context, key: String, value: Boolean) {
-        getEditor().putBoolean(key, value).apply()
-    }
-
-    fun getString(ctx: Context, key: String, defaultValue: String): String? {
-        return getObtain().getString(key, defaultValue)
-    }
-
-    fun getString(key: String, defaultValue: String): String? {
-        return getObtain().getString(key, defaultValue)
-    }
-
-    fun setString(ctx: Context, key: String, value: String) {
-        getEditor().putString(key, value).apply()
-    }
-
-    fun setInt(ctx: Context, key: String, value: Int) {
-        getEditor().putInt(key, value).apply()
-    }
-
-    fun getInt(ctx: Context, key: String, defaultValue: Int): Int {
-        return getObtain().getInt(key, defaultValue)
-    }
-
-    fun setLong(ctx: Context, key: String, value: Long) {
-        getEditor().putLong(key, value).apply()
-    }
-
-    fun getLong(ctx: Context, key: String, defaultValue: Long): Long {
-        return getObtain().getLong(key, defaultValue)
-    }
-
     fun setBoolean(key: String, value: Boolean) {
         getEditor().putBoolean(key, value).apply()
     }
 
-    fun getString(key: String): String? {
-        var result: String? = null
-        result = try {
-            getObtain().getString(key, "")
-        } catch (e: ClassCastException) {
-            getObtain().getInt(key, -1).toString()
-        }
-
-        return result
+    fun getString(key: String, defaultValue: String): String? {
+        return getObtain().getString(key, defaultValue)
     }
 
     fun setString(key: String, value: String) {
@@ -158,5 +122,23 @@ object SPUtil {
             }
         }
         return `object`
+    }
+
+    fun setCookies(key: String, value: List<Cookie>?) {
+        if (value == null) return
+        val gson = Gson()
+        val gsonValue = gson.toJson(value)
+        getEditor().putString(key, gsonValue).apply()
+    }
+
+    fun getCookies(key: String): List<Cookie>? {
+        val listJson = getObtain().getString(key, "")
+        return if (listJson != "") {
+            val gson = Gson()
+            val list: List<Cookie> = gson.fromJson(listJson, object : TypeToken<List<Cookie>>() {}.type)
+            list
+        } else {
+            emptyList()
+        }
     }
 }

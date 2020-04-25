@@ -181,7 +181,9 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(),
     }
 
     override fun onDestroy() {
-        LoadingViewHelper.instance.dismiss(mHomeLayout)
+        if (mHomeLayout != null) {
+            LoadingViewHelper.instance.dismiss(mHomeLayout)
+        }
         super.onDestroy()
     }
 }

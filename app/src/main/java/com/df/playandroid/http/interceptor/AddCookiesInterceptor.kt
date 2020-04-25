@@ -1,6 +1,7 @@
 package com.df.playandroid.http.interceptor
 
 import com.df.playandroid.config.SpConstants
+import com.df.playandroid.utils.LogUtil
 import com.df.playandroid.utils.SPUtil
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -17,6 +18,7 @@ class AddCookiesInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val builder = chain.request().newBuilder()
         val cookies = SPUtil.getHashSet(SpConstants.KEY_COOKIE) as HashSet<String>?
+        LogUtil.info("add cookie ---> $cookies")
         if (cookies != null) {
             for (cookie in cookies) {
                 builder.addHeader("Cookie", cookie)
