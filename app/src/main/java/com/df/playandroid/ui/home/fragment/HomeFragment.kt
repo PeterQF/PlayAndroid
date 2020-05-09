@@ -51,16 +51,11 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(),
     private fun initBannerClickListener(result: List<BannerData>) {
         home_banner.setOnItemClickListener {
             startActivity(
-                result[it].url?.let { url ->
-                    result[it].title?.let { title ->
-                        ContentActivity.openWeb(
-                            requireContext(),
-                            result[it].id,
-                            url,
-                            title
-                        )
-                    }
-                }
+                ContentActivity.openBanner(
+                    requireContext(),
+                    result[it],
+                    1
+                )
             )
 //            startActivity(ContentActivity.openBanner(requireContext(), result[it], 1))
         }
@@ -82,18 +77,17 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(),
         home_article_rv.adapter = mArticleAdapter
         mArticleAdapter.setOnItemClickListener { adapter, view, position ->
             startActivity(
-//                ContentActivity.openWeb(
+//                ContentActivity.openArticle(
 //                    requireContext(),
 //                    mArticleItems[position],
 //                    0
 //                )
                 mArticleItems[position].link?.let { link ->
                     mArticleItems[position].title?.let { title ->
-                        ContentActivity.openWeb(
+                        ContentActivity.openArticle(
                             requireContext(),
-                            mArticleItems[position].id,
-                            link,
-                            title
+                            mArticleItems[position],
+                            0
                         )
                     }
                 }

@@ -64,4 +64,5 @@ dependencies {
     implementation Libs.lottie
     implementation Libs.labels_view
     implementation Libs.eventBus
+    implementation Libs.persistentCookieJar
 }

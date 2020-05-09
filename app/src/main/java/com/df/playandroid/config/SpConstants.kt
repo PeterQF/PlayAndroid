@@ -21,4 +21,29 @@ object SpConstants {
      * key is login
      */
     const val KEY_IS_LOGIN = "is_login"
+
+    /**
+     * key username
+     */
+    const val KEY_USER_NAME = "user_name"
+
+    /**
+     * key user icon
+     */
+    const val KEY_USER_ICON = "user_icon"
+
+    /**
+     * key user cover
+     */
+    const val KEY_USER_COVER = "user_cover"
+
+    /**
+     * key user nickname
+     */
+    const val KEY_USER_NICKNAME = "user_nickname"
+
+    /**
+     * key user signature
+     */
+    const val KEY_USER_SIGNATURE = "user_signature"
 }

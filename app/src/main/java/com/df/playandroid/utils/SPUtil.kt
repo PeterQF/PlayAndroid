@@ -42,7 +42,7 @@ object SPUtil {
         getEditor().putBoolean(key, value).apply()
     }
 
-    fun getString(key: String, defaultValue: String): String? {
+    fun getString(key: String, defaultValue: String = ""): String? {
         return getObtain().getString(key, defaultValue)
     }
 

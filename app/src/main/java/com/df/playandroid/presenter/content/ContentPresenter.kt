@@ -4,6 +4,7 @@ import android.content.Context
 import com.df.playandroid.R
 import com.df.playandroid.base.observer.BaseObserver
 import com.df.playandroid.base.presenter.BasePresenter
+import com.df.playandroid.base.response.BaseResponse
 import com.df.playandroid.response.content.CollectionResponse
 import com.df.playandroid.view.content.IContentView
 import com.df.playandroid.http.ApiRetrofit
@@ -34,16 +35,41 @@ class ContentPresenter(private val context: Context) : BasePresenter<IContentVie
                     mDisposables.add(d)
                 }
 
-                override fun onFailed() {
-
-                }
+                override fun onFailed() {}
 
                 override fun onResult(
                     errorCode: Int,
                     errorMsg: String?,
                     result: CollectionResponse
                 ) {
-                    ToastUtil.showToast(context.getString(R.string.article_collect_success))
+                    getView()?.collectSuccess()
+                }
+            })
+    }
+
+    /**
+     * 取消收藏
+     */
+    fun unCollectArticle(id: Int) {
+        ApiRetrofit
+            .instance
+            .api
+            .requestUnCollectArticle(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object: BaseObserver<BaseResponse>() {
+                override fun addDisposable(d: Disposable) {
+                    mDisposables.add(d)
+                }
+
+                override fun onFailed() {}
+
+                override fun onResult(
+                    errorCode: Int,
+                    errorMsg: String?,
+                    result: BaseResponse
+                ) {
+                    getView()?.unCollectSuccess()
                 }
             })
     }

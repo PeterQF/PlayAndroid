@@ -1,11 +1,15 @@
 package com.df.playandroid.http
 
 import com.df.playandroid.BuildConfig
+import com.df.playandroid.application.MyApplication
 import com.df.playandroid.config.SpConstants
 import com.df.playandroid.http.interceptor.AddCookiesInterceptor
 import com.df.playandroid.http.interceptor.ReceivedCookiesInterceptor
 import com.df.playandroid.utils.LogUtil
 import com.df.playandroid.utils.SPUtil
+import com.franmontiel.persistentcookiejar.PersistentCookieJar
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import okhttp3.Cookie
 import okhttp3.CookieJar
 import okhttp3.HttpUrl
@@ -29,19 +33,25 @@ open class BaseRetrofit {
     /**
      * 配置Cookie
      */
-    private val cookieJar = object : CookieJar {
+//    private val cookieJar = object : CookieJar {
+//
+//        override fun loadForRequest(url: HttpUrl): List<Cookie> {
+//            val cookies = SPUtil.getCookies(SpConstants.KEY_COOKIE)
+//            LogUtil.info("okhttp cookiejar load ----> $cookies")
+//            return cookies ?: emptyList()
+//        }
+//
+//        override fun saveFromResponse(url: HttpUrl, cookies: List<Cookie>) {
+//            if (cookies.isNullOrEmpty().not()) {
+//                LogUtil.info("okhttp cookiejar save ----> $cookies")
+//                SPUtil.setCookies(SpConstants.KEY_COOKIE, cookies)
+//            }
+//        }
+//
+//    }
 
-        override fun loadForRequest(url: HttpUrl): List<Cookie> {
-            val cookies = SPUtil.getCookies(SpConstants.KEY_COOKIE)
-            LogUtil.info("okhttp cookiejar load ----> $cookies")
-            return cookies ?: emptyList()
-        }
-
-        override fun saveFromResponse(url: HttpUrl, cookies: List<Cookie>) {
-            LogUtil.info("okhttp cookiejar save ----> $cookies")
-            SPUtil.setCookies(SpConstants.KEY_COOKIE, cookies)
-        }
-
+    private val cookieJar: PersistentCookieJar by lazy {
+        PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(MyApplication.instance.applicationContext))
     }
 
     val client: OkHttpClient by lazy {

@@ -19,9 +19,9 @@ abstract class BaseActivity : AppCompatActivity() {
         AppManager.instance.addActivity(this)
         initPresenter()
         setContentView(getLayoutId())
+        initStatusBar()
         initView()
         initData()
-        init()
     }
 
     override fun onStart() {
@@ -44,16 +44,14 @@ abstract class BaseActivity : AppCompatActivity() {
     @Subscribe(threadMode = ThreadMode.MAIN)
     open fun onMessageEvent(event: BaseEvent) {}
 
-    private fun init() {
-        initStatusBar()
-    }
-
     open fun initStatusBar() {
         ImmersionBar
             .with(this)
-            .statusBarColor(R.color.mainColor)
+            .statusBarColor(R.color.white)
+            .autoDarkModeEnable(true)
             .keyboardEnable(true)
             .navigationBarColor(R.color.white)
+            .autoNavigationBarDarkModeEnable(true)
             .init()
     }
 

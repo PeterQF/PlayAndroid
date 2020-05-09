@@ -11,12 +11,17 @@
     <string name="common_response_timeout">服务器响应超时</string>
     <string name="common_server_error">服务器出错</string>
     <string name="common_exit_app">再按一次退出APP</string>
+    <string name="common_cancel">取消</string>
+    <string name="common_ok">确定</string>
+    <string name="common_please_login">请先登录</string>
 
     <!--文章详情-->
     <string name="article_collect">收藏</string>
+    <string name="article_had_collect">已收藏</string>
     <string name="article_share">分享</string>
     <string name="article_open_browser">用浏览器打开</string>
     <string name="article_collect_success">收藏成功</string>
+    <string name="article_un_collect_success">已取消收藏</string>
 
     <!--main-->
     <string name="main_home">首页</string>
@@ -39,6 +44,7 @@
     <string name="user_setting">系统设置</string>
     <string name="user_about_us">关于我们</string>
     <string name="user_share_software">推荐好友</string>
+    <string name="user_no_signature">还没有设置个性签名哦~</string>
 
     <!-- share -->
     <string name="share_title">分享到</string>
@@ -46,10 +52,29 @@
     <string name="share_article_url">%1$s Share【%2$s】：%3$s</string>
     <string name="share_type_url">%1$s Share【%2$s】Project：http://www.wanandroid.com/article/list/0?cid=%3$d</string>
 
-    <!--登录-->
-    <string name="login_input_account">请输入账号</string>
+    <!--登录，注册-->
+    <string name="login_input_username">请输入用户名</string>
     <string name="login_input_pwd">请输入密码</string>
     <string name="login">登录</string>
     <string name="login_go_to_register">没有账号？立即注册</string>
+
+    <!--注册-->
+    <string name="register_input_pwd_again">请再次输入密码</string>
+    <string name="register">注册</string>
+    <string name="register_pwd_not_equal">两次输入密码不一致，请重新输入</string>
+    <string name="register_ing">注册中</string>
+
+    <!--账号管理-->
+    <string name="account_change_icon">更换头像</string>
+    <string name="account_change_cover">更换个人封面</string>
+    <string name="account_change_nickname">更改昵称</string>
+    <string name="account_change_signature">更改个性签名</string>
+    <string name="account_set_nickname">设置昵称</string>
+    <string name="account_set_signature">设置签名</string>
+    <string name="account_please_input_nickname">请输入您的昵称</string>
+    <string name="account_please_input_signature">请输入您的个性签名</string>
+    <string name="account_login_out">退出登录</string>
+
+
 
 </resources>

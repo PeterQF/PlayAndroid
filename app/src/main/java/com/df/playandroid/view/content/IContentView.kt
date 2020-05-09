@@ -6,4 +6,7 @@ package com.df.playandroid.view.content
  * 描述：文章详情view
  */
 interface IContentView {
+
+    fun collectSuccess()
+    fun unCollectSuccess()
 }

@@ -27,7 +27,8 @@ class NavigationLabelRvAdapter(data: MutableList<NavigationData>) :
                         ContentActivity.openUrl(
                             context,
                             it,
-                            label.text as String
+                            label.text as String,
+                            2
                         )
                     }
                 )

@@ -29,10 +29,11 @@ object Versions {
     const val glide = "4.11.0"
     const val smartRefresh = "1.1.2"
     const val agentWeb = "4.1.3"
-    const val picture_selector = "2.4.9"
+    const val picture_selector = "2.5.3"
     const val lottieVersion = "3.4.0"
     const val labelsView = "1.6.1"
     const val eventBus = "3.2.0"
+    const val persistentCookieJar = "1.0.1"
 
 }
 
@@ -71,4 +72,5 @@ object Libs {
     const val lottie = "com.airbnb.android:lottie:${Versions.lottieVersion}"
     const val labels_view = "com.github.donkingliang:LabelsView:${Versions.labelsView}"
     const val eventBus = "org.greenrobot:eventbus:${Versions.eventBus}"
+    const val persistentCookieJar = "com.github.franmontiel:PersistentCookieJar:v${Versions.persistentCookieJar}"
 }

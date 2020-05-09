@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.account.AccountActivity">
+
+    <ImageView
+        android:id="@+id/mCloseIv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:src="@mipmap/icon_close" />
+
+    <ScrollView
+        android:layout_below="@id/mCloseIv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:id="@+id/mSetIconRl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_change_icon"
+                    android:textSize="14sp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/color_main_text"
+                    android:layout_alignParentStart="true"/>
+
+                <ImageView
+                    android:id="@+id/mRightArrowIv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/icon_arrow_right"
+                    android:layout_alignParentEnd="true"/>
+
+                <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_toStartOf="@id/mRightArrowIv"
+                    tools:src="@mipmap/image_lu_lu"
+                    android:layout_centerVertical="true"
+                    app:qmui_is_circle="true"
+                    app:qmui_border_width="0dp" />
+
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/mSetCoverFl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_change_cover"
+                    android:textSize="@dimen/sp_14"
+                    android:textColor="@color/color_main_text"
+                    android:layout_gravity="start|center_vertical"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_arrow_right"
+                    android:layout_gravity="end|center_vertical"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/mSetNicknameFl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_change_nickname"
+                    android:textSize="@dimen/sp_14"
+                    android:textColor="@color/color_main_text"
+                    android:layout_gravity="start|center_vertical"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@mipmap/icon_arrow_right"
+                    android:layout_gravity="end|center_vertical"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:textColor="@color/color_main_text"
+                    android:textSize="12sp"
+                    tools:text="PeterWu"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/mSetSignatureFl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_change_signature"
+                    android:textSize="@dimen/sp_14"
+                    android:textColor="@color/color_main_text"
+                    android:layout_gravity="start|center_vertical"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@mipmap/icon_arrow_right"
+                    android:layout_gravity="end|center_vertical"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:textColor="@color/color_main_text"
+                    android:textSize="12sp"
+                    android:maxLines="1"
+                    android:maxLength="10"
+                    android:ellipsize="end"
+                    tools:text="哈哈哈哈哈哈哈哈哈哈哈哈哈哈"/>
+
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/mLoginOutBtn"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/shape_login"
+                android:text="@string/account_login_out"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

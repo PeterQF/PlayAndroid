@@ -72,11 +72,10 @@ class OfficialAccountArticleFragment :
             startActivity(
                 mArticleItems[position].link?.let { link ->
                     mArticleItems[position].title?.let { title ->
-                        ContentActivity.openWeb(
+                        ContentActivity.openArticle(
                             requireContext(),
-                            mArticleItems[position].id,
-                            link,
-                            title
+                            mArticleItems[position],
+                            0
                         )
                     }
                 }

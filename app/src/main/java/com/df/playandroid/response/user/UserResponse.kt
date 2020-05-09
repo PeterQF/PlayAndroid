@@ -11,5 +11,9 @@ import java.io.Serializable
 data class UserResponse(val data: UserData? = null) : BaseResponse()
 
 data class UserData(
-    val username: String? = null
+    val username: String? = null,
+    var icon: String? = null,
+    var cover: String? = null,
+    var nickname: String? = null,
+    var signature: String? = null
 ): Serializable

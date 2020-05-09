@@ -9,6 +9,14 @@ import com.df.playandroid.response.user.UserData
  */
 object EventManager {
 
+    /**
+     * 更新用户信息
+     */
     class UpdateUserInfo(val userInfo: UserData) : BaseEvent()
+
+    /**
+     * 注册成功
+     */
+    class RegisterSuccessEvent(val username: String, val pwd: String, val icon: String?) : BaseEvent()
 
 }

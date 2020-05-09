@@ -1,6 +1,5 @@
 package com.df.playandroid.ui.project.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -77,11 +76,10 @@ class ProjectListFragment : BaseFragment<IProjectListView, ProjectListPresenter>
             startActivity(
                 mItems[position].link?.let { url ->
                     mItems[position].title?.let { title ->
-                        ContentActivity.openWeb(
+                        ContentActivity.openArticle(
                             requireContext(),
-                            mItems[position].id,
-                            url,
-                            title
+                            mItems[position],
+                            0
                         )
                     }
                 }

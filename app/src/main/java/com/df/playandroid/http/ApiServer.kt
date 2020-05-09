@@ -1,5 +1,6 @@
 package com.df.playandroid.http
 
+import com.df.playandroid.base.response.BaseResponse
 import com.df.playandroid.response.category.CategoryResponse
 import com.df.playandroid.response.article.ArticleResponse
 import com.df.playandroid.response.content.CollectionResponse
@@ -23,7 +24,7 @@ interface ApiServer {
      * 请求首页文章列表
      */
     @GET("/article/list/{page}/json")
-    fun requestHomeArticleList(@Path("page") page:Int): Observable<Response<ArticleResponse>>
+    fun requestHomeArticleList(@Path("page") page: Int): Observable<Response<ArticleResponse>>
 
     /**
      * 请求搜索热词
@@ -44,10 +45,16 @@ interface ApiServer {
     fun requestCollectStationArticle(@Path("id") id: Int): Observable<Response<CollectionResponse>>
 
     /**
+     * 取消收藏
+     */
+    @POST("/lg/uncollect_originId/{id}/json")
+    fun requestUnCollectArticle(@Path("id") id: Int): Observable<Response<BaseResponse>>
+
+    /**
      * 请求公众号文章
      */
     @GET("/wxarticle/list/{id}/{page}/json")
-    fun requestOfficialAccountArticleList(@Path("id") id: Int, @Path("page") page:Int): Observable<Response<ArticleResponse>>
+    fun requestOfficialAccountArticleList(@Path("id") id: Int, @Path("page") page: Int): Observable<Response<ArticleResponse>>
 
     /**
      * 请求项目分类
@@ -59,7 +66,7 @@ interface ApiServer {
      * 请求项目列表
      */
     @GET("/project/list/{page}/json")
-    fun requestProjectList(@Path("page") page:Int, @Query("cid") id: Int): Observable<Response<ArticleResponse>>
+    fun requestProjectList(@Path("page") page: Int, @Query("cid") id: Int): Observable<Response<ArticleResponse>>
 
     /**
      * 请求体系分类
@@ -77,7 +84,7 @@ interface ApiServer {
      * 请求分类label文章
      */
     @GET("/article/list/{page}/json")
-    fun requestSortLabelArticle(@Path("page") page:Int, @Query("cid") id: Int): Observable<Response<ArticleResponse>>
+    fun requestSortLabelArticle(@Path("page") page: Int, @Query("cid") id: Int): Observable<Response<ArticleResponse>>
 
     /**
      * 请求登录
@@ -85,4 +92,15 @@ interface ApiServer {
     @FormUrlEncoded
     @POST("/user/login")
     fun requestLogin(@Field("username") username: String, @Field("password") password: String): Observable<Response<UserResponse>>
+
+    /**
+     * 请求注册
+     */
+    @FormUrlEncoded
+    @POST("/user/register")
+    fun requestRegister(
+        @Field("username") username: String,
+        @Field("password") password: String,
+        @Field("repassword") rePassword: String
+    ): Observable<Response<UserResponse>>
 }

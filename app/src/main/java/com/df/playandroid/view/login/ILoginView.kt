@@ -9,5 +9,7 @@ import com.df.playandroid.response.user.UserData
  */
 interface ILoginView {
 
+    fun showLoadingView()
+    fun hideLoadingView()
     fun loginSuccess(result: UserData)
 }

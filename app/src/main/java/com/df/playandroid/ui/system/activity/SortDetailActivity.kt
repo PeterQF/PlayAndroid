@@ -2,8 +2,6 @@ package com.df.playandroid.ui.system.activity
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.df.playandroid.R
 import com.df.playandroid.base.activity.BaseMvpActivity
@@ -14,7 +12,6 @@ import com.df.playandroid.response.article.ArticleInfo
 import com.df.playandroid.ui.content.activity.ContentActivity
 import com.df.playandroid.ui.home.adapter.HomeArticleRvAdapter
 import com.df.playandroid.view.system.ISortDetailView
-import com.gyf.immersionbar.ImmersionBar
 import kotlinx.android.synthetic.main.base_header.*
 import kotlinx.android.synthetic.main.base_refresh.*
 
@@ -73,11 +70,10 @@ class SortDetailActivity : BaseMvpActivity<ISortDetailView, SortDetailPresenter>
             startActivity(
                 mItems[position].link?.let { url ->
                     mItems[position].title?.let { title ->
-                        ContentActivity.openWeb(
+                        ContentActivity.openArticle(
                             this,
-                            mItems[position].id,
-                            url,
-                            title
+                            mItems[position],
+                            0
                         )
                     }
                 }

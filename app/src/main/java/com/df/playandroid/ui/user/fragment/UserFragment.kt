@@ -6,15 +6,19 @@ import com.df.playandroid.R
 import com.df.playandroid.base.event.BaseEvent
 import com.df.playandroid.base.event.EventManager
 import com.df.playandroid.base.fragment.BaseFragment
+import com.df.playandroid.base.helper.GlideHelper
+import com.df.playandroid.base.helper.UserDataHelper
 import com.df.playandroid.config.SpConstants
 import com.df.playandroid.ui.setting.activity.SettingActivity
 import com.df.playandroid.presenter.user.UserPresenter
 import com.df.playandroid.response.user.UserData
+import com.df.playandroid.ui.account.AccountActivity
 import com.df.playandroid.ui.login.activity.LoginActivity
 import com.df.playandroid.utils.AppUtils
 import com.df.playandroid.view.user.IUserView
 import com.df.playandroid.utils.LogUtil
 import com.df.playandroid.utils.SPUtil
+import com.df.playandroid.utils.ToastUtil
 import kotlinx.android.synthetic.main.fragment_user.*
 import kotlinx.android.synthetic.main.layout_user_option.*
 
@@ -37,7 +41,13 @@ class UserFragment : BaseFragment<IUserView, UserPresenter>(), View.OnClickListe
 
     override fun onClick(v: View?) {
         when(v?.id) {
-            R.id.mAccountFl -> {}
+            R.id.mAccountFl -> {
+                if (AppUtils.isLogin()) {
+                    launch<AccountActivity>()
+                } else {
+                    ToastUtil.showToast(getString(R.string.common_please_login))
+                }
+            }
             R.id.mSettingFl -> {}
             R.id.mUserIcon -> {
                 if (AppUtils.isLogin().not()) launch<LoginActivity>()
@@ -47,9 +57,15 @@ class UserFragment : BaseFragment<IUserView, UserPresenter>(), View.OnClickListe
 
     override fun initData() {
         if (AppUtils.isLogin()) {
-            SPUtil.getObject(SpConstants.KEY_USER_BEAN)?.let {
-                val userData = it as UserData
-                mUserName.text = userData.username
+            mUserName.text = UserDataHelper.getUserName()
+            mSetSignatureTv.text = UserDataHelper.getUserSignature()
+            UserDataHelper.getUserCover()?.let {
+                GlideHelper.loadUserCover(requireContext(),
+                    it, mUserCover)
+            }
+            UserDataHelper.getUserIcon()?.let {
+                GlideHelper.loadUserIcon(requireContext(),
+                    it, mUserIcon)
             }
         }
     }
@@ -59,7 +75,8 @@ class UserFragment : BaseFragment<IUserView, UserPresenter>(), View.OnClickListe
     override fun onMessageEvent(event: BaseEvent) {
         if (event is EventManager.UpdateUserInfo) {
             mUserName.text = event.userInfo.username
+            event.userInfo.icon?.let { GlideHelper.loadUserIcon(requireContext(), it, mUserIcon) }
+            mSetSignatureTv.text = getString(R.string.user_no_signature)
         }
     }
-
 }
