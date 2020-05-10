@@ -1,5 +1,6 @@
 package com.df.playandroid.ui.user.fragment
 
+import android.text.TextUtils
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import com.df.playandroid.R
@@ -57,7 +58,9 @@ class UserFragment : BaseFragment<IUserView, UserPresenter>(), View.OnClickListe
 
     override fun initData() {
         if (AppUtils.isLogin()) {
-            mUserName.text = UserDataHelper.getUserName()
+            val userNickname = UserDataHelper.getUserNickname()
+            val userName = UserDataHelper.getUserName()
+            mUserName.text = if (userNickname.isNullOrEmpty().not()) userNickname else userName
             mSetSignatureTv.text = UserDataHelper.getUserSignature()
             UserDataHelper.getUserCover()?.let {
                 GlideHelper.loadUserCover(requireContext(),
@@ -66,6 +69,12 @@ class UserFragment : BaseFragment<IUserView, UserPresenter>(), View.OnClickListe
             UserDataHelper.getUserIcon()?.let {
                 GlideHelper.loadUserIcon(requireContext(),
                     it, mUserIcon)
+            }
+            val signature = UserDataHelper.getUserSignature()
+            if (signature.isNullOrEmpty()) {
+                mSetSignatureTv.text = getString(R.string.user_no_signature)
+            } else {
+                mSetSignatureTv.text = signature
             }
         }
     }
@@ -77,6 +86,16 @@ class UserFragment : BaseFragment<IUserView, UserPresenter>(), View.OnClickListe
             mUserName.text = event.userInfo.username
             event.userInfo.icon?.let { GlideHelper.loadUserIcon(requireContext(), it, mUserIcon) }
             mSetSignatureTv.text = getString(R.string.user_no_signature)
+        } else if (event is EventManager.UpdateUserPage) {
+            val nickname = UserDataHelper.getUserNickname()
+            val signature = UserDataHelper.getUserSignature()
+            val userCover = UserDataHelper.getUserCover()
+            val userIcon = UserDataHelper.getUserIcon()
+            val userName = UserDataHelper.getUserName()
+            mUserName.text = if (nickname.isNullOrEmpty().not()) nickname else userName
+            userCover?.let { GlideHelper.loadUserCover(requireContext(), it, mUserCover) }
+            mSetSignatureTv.text = if (signature.isNullOrEmpty().not()) signature else getString(R.string.user_no_signature)
+            userIcon?.let { GlideHelper.loadUserIcon(requireContext(), it, mUserIcon) }
         }
     }
 }

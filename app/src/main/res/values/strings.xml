@@ -74,6 +74,7 @@
     <string name="account_please_input_nickname">请输入您的昵称</string>
     <string name="account_please_input_signature">请输入您的个性签名</string>
     <string name="account_login_out">退出登录</string>
+    <string name="account_set_success">设置成功</string>
 
 
 

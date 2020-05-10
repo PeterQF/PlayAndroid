@@ -19,4 +19,8 @@ object EventManager {
      */
     class RegisterSuccessEvent(val username: String, val pwd: String, val icon: String?) : BaseEvent()
 
+    /**
+     * 更新个人主页
+     */
+    class UpdateUserPage : BaseEvent()
 }
