@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="MainTabTitle">
+        <item>@string/main_home</item>
+        <item>@string/main_project_recommend</item>
+        <item>@string/main_public_recommend</item>
+        <item>@string/main_project_system</item>
+        <item>@string/main_user</item>
+    </string-array>
+
+    <array name="MainTabIcon">
+        <item>@drawable/selector_main_home</item>
+        <item>@drawable/selector_main_project_recommend</item>
+        <item>@drawable/selector_main_public_recommend</item>
+        <item>@drawable/selector_main_project_system</item>
+        <item>@drawable/selector_main_user</item>
+    </array>
+</resources>

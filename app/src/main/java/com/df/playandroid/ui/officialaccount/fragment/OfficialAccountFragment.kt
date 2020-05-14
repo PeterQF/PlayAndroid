@@ -44,7 +44,7 @@ class OfficialAccountFragment : BaseFragment<IOfficialAccountView, OfficialAccou
             val page = OfficialAccountArticleFragment.newInstance(result[i].id)
             fragments.add(page)
         }
-        mViewPager.adapter = OfficialAccountPageAdapter(requireActivity(), fragments)
+        mViewPager.adapter = OfficialAccountPageAdapter(childFragmentManager, lifecycle, fragments)
         TabLayoutMediator(mTabLayout, mViewPager, false,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 val tabView = LayoutInflater.from(requireContext()).inflate(R.layout.layout_tab_custom, null)

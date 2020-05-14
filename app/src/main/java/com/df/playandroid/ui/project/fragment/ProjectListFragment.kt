@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.df.playandroid.R
+import com.df.playandroid.base.event.EventManager
 import com.df.playandroid.base.fragment.BaseFragment
 import com.df.playandroid.base.helper.LoadingViewHelper
 import com.df.playandroid.config.Constants
@@ -16,6 +17,7 @@ import com.df.playandroid.ui.project.adapter.ProjectListRvAdapter
 import com.df.playandroid.view.project.IProjectListView
 import kotlinx.android.synthetic.main.base_refresh.*
 import kotlinx.android.synthetic.main.fragment_project_list.*
+import org.greenrobot.eventbus.EventBus
 
 /**
  * 作者：PeterWu

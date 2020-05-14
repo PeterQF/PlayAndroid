@@ -41,7 +41,7 @@ class ProjectFragment : BaseFragment<IProjectView, ProjectPresenter>(), IProject
             val page = ProjectListFragment.newInstance(result[i].id)
             fragments.add(page)
         }
-        mViewPager.adapter = ProjectPageAdapter(requireActivity(), fragments)
+        mViewPager.adapter = ProjectPageAdapter(childFragmentManager, lifecycle, fragments)
         TabLayoutMediator(mTabLayout, mViewPager, false,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 val tabView = LayoutInflater.from(requireContext()).inflate(R.layout.layout_tab_custom, null)

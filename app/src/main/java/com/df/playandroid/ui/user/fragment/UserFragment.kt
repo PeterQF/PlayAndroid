@@ -98,4 +98,6 @@ class UserFragment : BaseFragment<IUserView, UserPresenter>(), View.OnClickListe
             userIcon?.let { GlideHelper.loadUserIcon(requireContext(), it, mUserIcon) }
         }
     }
+
+    override fun isNeedLazyLoad() = false
 }

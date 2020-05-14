@@ -1,6 +1,8 @@
 package com.df.playandroid.ui.project.adapter
 
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.df.playandroid.ui.project.fragment.ProjectListFragment
 
@@ -10,9 +12,10 @@ import com.df.playandroid.ui.project.fragment.ProjectListFragment
  * 描述：
  */
 class ProjectPageAdapter(
-    fragmentActivity: FragmentActivity,
+    fragmentManager: FragmentManager,
+    lifecycle: Lifecycle,
     private val fragments: ArrayList<ProjectListFragment>
-) : FragmentStateAdapter(fragmentActivity) {
+) : FragmentStateAdapter(fragmentManager, lifecycle) {
 
     override fun getItemCount() = fragments.size
 

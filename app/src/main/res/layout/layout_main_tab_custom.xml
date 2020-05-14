@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/mTabIv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:src="@drawable/selector_main_home"/>
+
+    <TextView
+        android:id="@+id/mTabTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="哈哈哈"
+        android:textColor="@color/color_main_sub_text"
+        android:textSize="10sp"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>

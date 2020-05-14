@@ -30,4 +30,6 @@
     <!--列表分隔线-->
     <color name="color_divide">@color/color_F8F8F8</color>
     <color name="color_view_line">#C7C7C7</color>
+    <!--主页tab分隔线-->
+    <color name="color_main_view_line">#bfbfbf</color>
 </resources>

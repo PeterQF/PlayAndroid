@@ -1,14 +1,19 @@
 package com.df.playandroid.base.fragment
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.df.playandroid.R
 import com.df.playandroid.base.event.BaseEvent
 import com.df.playandroid.base.event.EventManager
 import com.df.playandroid.base.presenter.BasePresenter
+import com.df.playandroid.utils.LogUtil
+import com.gyf.immersionbar.ImmersionBar
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -42,6 +47,10 @@ abstract class BaseFragment<V, P : BasePresenter<V>> : Fragment() {
         super.onActivityCreated(savedInstanceState)
         initEvent()
         initView()
+        if (isNeedLazyLoad().not()) {
+            initData()
+            LogUtil.info("fragment load data init")
+        }
     }
 
     private fun initEvent() {
@@ -60,9 +69,10 @@ abstract class BaseFragment<V, P : BasePresenter<V>> : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        if (isDataLoaded.not()) {
+        if (isDataLoaded.not() && isNeedLazyLoad()) {
             isDataLoaded = true
             lazyLoad()
+            LogUtil.info("fragment load data onResume")
         }
     }
 
@@ -78,6 +88,7 @@ abstract class BaseFragment<V, P : BasePresenter<V>> : Fragment() {
     abstract fun setupPresenter(): P?
     abstract fun initView()
     abstract fun initData()
+    open fun isNeedLazyLoad() = true
     open fun hadEventBus() = false
     @Subscribe(threadMode = ThreadMode.MAIN)
     open fun onMessageEvent(event: BaseEvent) {}

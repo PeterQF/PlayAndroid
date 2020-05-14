@@ -33,7 +33,7 @@ class ProjectSystemFragment : BaseFragment<IProjectSystemView, ProjectSystemPres
     }
 
     private fun initTab() {
-        mViewPager.adapter = SystemPageAdapter(requireActivity())
+        mViewPager.adapter = SystemPageAdapter(childFragmentManager, lifecycle)
         TabLayoutMediator(mTabLayout, mViewPager, false,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 val tabView = LayoutInflater.from(requireContext()).inflate(R.layout.layout_tab_custom, null)
