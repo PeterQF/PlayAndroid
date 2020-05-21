@@ -26,8 +26,6 @@ import kotlin.properties.Delegates
 
 class MainActivity : BaseMvpActivity<IHomeView, HomePresenter>(), TabLayout.OnTabSelectedListener {
 
-    override fun initStatusBar() {}
-
     private var fragments: ArrayList<Fragment> = ArrayList()
 
     override fun getLayoutId() = R.layout.activity_main
@@ -123,6 +121,8 @@ class MainActivity : BaseMvpActivity<IHomeView, HomePresenter>(), TabLayout.OnTa
             ToastUtil.showToast(getString(R.string.common_exit_app))
         }
     }
+
+    override fun initStatusBar() {}
 
     override fun onBackPressed() {
         backPressedTime = System.currentTimeMillis()

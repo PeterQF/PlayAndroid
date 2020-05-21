@@ -49,7 +49,7 @@ class UserFragment : BaseFragment<IUserView, UserPresenter>(), View.OnClickListe
                     ToastUtil.showToast(getString(R.string.common_please_login))
                 }
             }
-            R.id.mSettingFl -> {}
+            R.id.mSettingFl -> launch<SettingActivity>()
             R.id.mUserIcon -> {
                 if (AppUtils.isLogin().not()) launch<LoginActivity>()
             }
