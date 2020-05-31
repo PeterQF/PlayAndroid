@@ -7,6 +7,7 @@ import com.df.playandroid.utils.CacheDataManager
 import kotlinx.android.synthetic.main.activity_setting.*
 
 class SettingActivity : BaseActivity() {
+
     override fun getLayoutId() = R.layout.activity_setting
 
     override fun initView() {

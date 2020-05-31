@@ -124,18 +124,18 @@ object SPUtil {
         return `object`
     }
 
-    fun setCookies(key: String, value: List<Cookie>?) {
+    fun setList(key: String, value: List<Any>?) {
         if (value == null) return
         val gson = Gson()
         val gsonValue = gson.toJson(value)
         getEditor().putString(key, gsonValue).apply()
     }
 
-    fun getCookies(key: String): List<Cookie>? {
+    fun getList(key: String): List<Any> {
         val listJson = getObtain().getString(key, "")
         return if (listJson != "") {
             val gson = Gson()
-            val list: List<Cookie> = gson.fromJson(listJson, object : TypeToken<List<Cookie>>() {}.type)
+            val list: List<Any> = gson.fromJson(listJson, object : TypeToken<List<Any>>() {}.type)
             list
         } else {
             emptyList()

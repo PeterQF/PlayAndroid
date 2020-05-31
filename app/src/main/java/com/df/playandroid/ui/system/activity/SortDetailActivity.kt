@@ -12,6 +12,7 @@ import com.df.playandroid.response.article.ArticleInfo
 import com.df.playandroid.ui.content.activity.ContentActivity
 import com.df.playandroid.ui.home.adapter.HomeArticleRvAdapter
 import com.df.playandroid.view.system.ISortDetailView
+import com.gyf.immersionbar.ImmersionBar
 import kotlinx.android.synthetic.main.base_header.*
 import kotlinx.android.synthetic.main.base_refresh.*
 
@@ -68,15 +69,11 @@ class SortDetailActivity : BaseMvpActivity<ISortDetailView, SortDetailPresenter>
         mRecyclerView.adapter = mAdapter
         mAdapter.setOnItemClickListener { adapter, view, position ->
             startActivity(
-                mItems[position].link?.let { url ->
-                    mItems[position].title?.let { title ->
-                        ContentActivity.openArticle(
-                            this,
-                            mItems[position],
-                            0
-                        )
-                    }
-                }
+                ContentActivity.openArticle(
+                    this,
+                    mItems[position],
+                    0
+                )
             )
         }
     }
@@ -118,5 +115,15 @@ class SortDetailActivity : BaseMvpActivity<ISortDetailView, SortDetailPresenter>
             mAdapter.notifyItemInserted(mLastPosition)
             mLastPosition = mItems.size
         }
+    }
+
+    override fun initStatusBar() {
+        ImmersionBar
+            .with(this)
+            .statusBarColor(R.color.mainColor)
+            .keyboardEnable(true)
+            .navigationBarColor(R.color.white)
+            .autoNavigationBarDarkModeEnable(true )
+            .init()
     }
 }

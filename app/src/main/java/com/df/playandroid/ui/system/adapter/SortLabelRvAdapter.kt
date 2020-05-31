@@ -1,16 +1,13 @@
 package com.df.playandroid.ui.system.adapter
 
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.view.LayoutInflater
+import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.df.playandroid.R
 import com.df.playandroid.response.category.CategoryData
-import com.df.playandroid.response.category.Children
 import com.df.playandroid.ui.system.activity.SortDetailActivity
-import com.donkingliang.labels.LabelsView
-import com.luck.picture.lib.decoration.GridSpacingItemDecoration
-import com.luck.picture.lib.tools.ScreenUtils
+import com.qmuiteam.qmui.widget.QMUIFloatLayout
 
 /**
  * 作者：PeterWu
@@ -22,18 +19,22 @@ class SortLabelRvAdapter(data: MutableList<CategoryData>) :
 
     override fun convert(helper: BaseViewHolder, item: CategoryData) {
         helper.setText(R.id.mLabelTitleTv, item.name)
-        helper.getView<LabelsView>(R.id.mLabelView).apply {
-            setLabels(item.children) { _, _, data ->
-                data.name
+        val floatLayout = helper.getView<QMUIFloatLayout>(R.id.mFloatLayout)
+        floatLayout.removeAllViews()
+        item.children?.forEach {
+            val textView = LayoutInflater.from(context).inflate(R.layout.search_history_float_item, null) as TextView
+            textView.text = it.name
+            textView.setOnClickListener { v ->
+                context.startActivity(
+                    it.name?.let { title ->
+                        SortDetailActivity.open(context,
+                            it.id,
+                            title
+                        )
+                    }
+                )
             }
-            setOnLabelClickListener { label, _, position ->
-                context.startActivity(item.children?.get(position)?.id?.let {
-                    SortDetailActivity.open(context,
-                        it,
-                        label.text as String
-                    )
-                })
-            }
+            floatLayout.addView(textView)
         }
     }
 }

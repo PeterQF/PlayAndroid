@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.df.playandroid.R
+import com.df.playandroid.base.event.EventManager
 import com.df.playandroid.ui.content.activity.ContentActivity
 import com.df.playandroid.presenter.home.HomePresenter
 import com.df.playandroid.view.home.IHomeView
@@ -16,9 +17,11 @@ import com.df.playandroid.response.article.ArticleData
 import com.df.playandroid.response.article.ArticleInfo
 import com.df.playandroid.response.home.*
 import com.df.playandroid.ui.home.adapter.HomeArticleRvAdapter
+import com.df.playandroid.ui.search.activity.SearchActivity
 import com.df.playandroid.utils.LogUtil
 import kotlinx.android.synthetic.main.base_search_header.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.greenrobot.eventbus.EventBus
 
 /**
  * 作者：PeterWu
@@ -43,6 +46,10 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(),
         initAdapter()
         initRefreshAndLoadMore()
         mHeaderTitle.text = getString(R.string.home)
+        mSearchRl.setOnClickListener {
+            launch<SearchActivity>()
+            activity?.overridePendingTransition(0, 0)
+        }
     }
 
     /**
@@ -57,7 +64,6 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(),
                     1
                 )
             )
-//            startActivity(ContentActivity.openBanner(requireContext(), result[it], 1))
         }
     }
 
@@ -77,11 +83,6 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(),
         home_article_rv.adapter = mArticleAdapter
         mArticleAdapter.setOnItemClickListener { adapter, view, position ->
             startActivity(
-//                ContentActivity.openArticle(
-//                    requireContext(),
-//                    mArticleItems[position],
-//                    0
-//                )
                 mArticleItems[position].link?.let { link ->
                     mArticleItems[position].title?.let { title ->
                         ContentActivity.openArticle(
@@ -97,9 +98,10 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(),
 
     override fun initData() {
         LogUtil.info("init fragment home")
-        mPresenter?.getBanner()
-        mPresenter?.getHotWord()
-        mPresenter?.getArticles(0, Constants.LoadType.LOADING)
+//        mPresenter?.getBanner()
+//        mPresenter?.getHotWord()
+//        mPresenter?.getArticles(0, Constants.LoadType.LOADING)
+        mPresenter?.getMainInfo()
     }
 
     override fun stopRefresh() {
@@ -147,6 +149,7 @@ class HomeFragment : BaseFragment<IHomeView, HomePresenter>(),
             hotTv.gravity = Gravity.CENTER_VERTICAL
             mFlipper.addView(hotTv)
         }
+        EventBus.getDefault().post(EventManager.SendHotWordEvent(result))
     }
 
     override fun showLoadingView() {

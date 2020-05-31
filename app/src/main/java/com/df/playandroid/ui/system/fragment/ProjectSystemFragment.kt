@@ -1,12 +1,16 @@
 package com.df.playandroid.ui.system.fragment
 
 import android.graphics.Typeface
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.df.playandroid.R
+import com.df.playandroid.base.event.BaseEvent
+import com.df.playandroid.base.event.EventManager
 import com.df.playandroid.base.fragment.BaseFragment
 import com.df.playandroid.presenter.system.ProjectSystemPresenter
+import com.df.playandroid.ui.search.activity.SearchActivity
 import com.df.playandroid.ui.system.adapter.SystemPageAdapter
 import com.df.playandroid.view.system.IProjectSystemView
 import com.df.playandroid.utils.LogUtil
@@ -30,6 +34,10 @@ class ProjectSystemFragment : BaseFragment<IProjectSystemView, ProjectSystemPres
         mHeaderTitle.text = getString(R.string.main_project_system)
         mTabLayout.addOnTabSelectedListener(this)
         initTab()
+        mSearchRl.setOnClickListener {
+            launch<SearchActivity>()
+            activity?.overridePendingTransition(0, 0)
+        }
     }
 
     private fun initTab() {
@@ -66,6 +74,27 @@ class ProjectSystemFragment : BaseFragment<IProjectSystemView, ProjectSystemPres
             textSize = 18.0f
             typeface = Typeface.DEFAULT_BOLD
             setTextColor(ContextCompat.getColor(requireContext(), R.color.mainColor))
+        }
+    }
+
+    override fun hadEventBus() = true
+
+    override fun onMessageEvent(event: BaseEvent) {
+        if (event is EventManager.SendHotWordEvent) {
+            val words = event.words
+            for (i in words.indices) {
+                val hotTv = TextView(requireContext())
+                hotTv.text = words[i].name
+                hotTv.textSize = 14f
+                hotTv.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.color_main_sub_text
+                    )
+                )
+                hotTv.gravity = Gravity.CENTER_VERTICAL
+                mFlipper.addView(hotTv)
+            }
         }
     }
 }

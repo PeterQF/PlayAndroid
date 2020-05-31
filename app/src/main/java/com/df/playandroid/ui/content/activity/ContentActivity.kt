@@ -295,5 +295,7 @@ class ContentActivity : BaseMvpActivity<IContentView, ContentPresenter>(), ICont
         }
     }
 
+
+
     override fun setupPresenter() = ContentPresenter(this)
 }

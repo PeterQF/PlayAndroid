@@ -1,11 +1,13 @@
 package com.df.playandroid.ui.system.adapter
 
+import android.view.LayoutInflater
+import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.df.playandroid.R
 import com.df.playandroid.response.navigation.NavigationData
 import com.df.playandroid.ui.content.activity.ContentActivity
-import com.donkingliang.labels.LabelsView
+import com.qmuiteam.qmui.widget.QMUIFloatLayout
 
 /**
  * 作者：PeterWu
@@ -17,22 +19,26 @@ class NavigationLabelRvAdapter(data: MutableList<NavigationData>) :
 
     override fun convert(helper: BaseViewHolder, item: NavigationData) {
         helper.setText(R.id.mLabelTitleTv, item.name)
-        helper.getView<LabelsView>(R.id.mLabelView).apply {
-            setLabels(item.articles) { _, _, data ->
-                data.title
-            }
-            setOnLabelClickListener { label, data, position ->
+        val floatLayout = helper.getView<QMUIFloatLayout>(R.id.mFloatLayout)
+        floatLayout.removeAllViews()
+        item.articles?.forEach {
+            val textView = LayoutInflater.from(context).inflate(R.layout.search_history_float_item, null) as TextView
+            textView.text = it.title
+            textView.setOnClickListener { v ->
                 context.startActivity(
-                    item.articles?.get(position)?.link?.let {
-                        ContentActivity.openUrl(
-                            context,
-                            it,
-                            label.text as String,
-                            2
-                        )
+                    it.link?.let { link ->
+                        it.title?.let { title ->
+                            ContentActivity.openUrl(
+                                context,
+                                link,
+                                title,
+                                2
+                            )
+                        }
                     }
                 )
             }
+            floatLayout.addView(textView)
         }
     }
 }

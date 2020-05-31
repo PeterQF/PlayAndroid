@@ -50,8 +50,7 @@ class MainActivity : BaseMvpActivity<IHomeView, HomePresenter>(), TabLayout.OnTa
         mViewPager.offscreenPageLimit = 5
         TabLayoutMediator(mTabLayout, mViewPager, false,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-                val tabView =
-                    LayoutInflater.from(this).inflate(R.layout.layout_main_tab_custom, null)
+                val tabView = LayoutInflater.from(this).inflate(R.layout.layout_main_tab_custom, null)
                 val tabTv = tabView.findViewById<TextView>(R.id.mTabTv)
                 val tabIv = tabView.findViewById<ImageView>(R.id.mTabIv)
                 tabTv.text = mainTitlesArray[position]

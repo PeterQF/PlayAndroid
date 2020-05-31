@@ -30,6 +30,9 @@ android {
 }
 
 dependencies {
+    /**
+     * system
+     */
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Libs.kotlin_stdlib
     implementation Libs.appcompat
@@ -42,6 +45,9 @@ dependencies {
     androidTestImplementation Libs.test_runner
     androidTestImplementation Libs.espresso_core
 
+    /**
+     * 第三方
+     */
     implementation Libs.qmui
     implementation Libs.okhttp3
     implementation Libs.okhttp3_logging
@@ -62,7 +68,6 @@ dependencies {
     implementation Libs.agentWeb
     implementation Libs.picture_selector
     implementation Libs.lottie
-    implementation Libs.labels_view
     implementation Libs.eventBus
     implementation Libs.persistentCookieJar
 }

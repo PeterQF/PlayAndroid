@@ -9,6 +9,7 @@ import com.df.playandroid.base.event.EventManager
 import com.df.playandroid.base.helper.GlideHelper
 import com.df.playandroid.base.helper.PictureSelectorHelper
 import com.df.playandroid.base.helper.UserDataHelper
+import com.df.playandroid.expansion.hideKeyboard
 import com.df.playandroid.utils.ToastUtil
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
@@ -71,6 +72,7 @@ class AccountActivity : BaseActivity(), View.OnClickListener {
             setPlaceholder(placeholder)
             setInputType(InputType.TYPE_CLASS_TEXT)
             addAction(getString(R.string.common_cancel)) { dialog, _ ->
+                mEditTextDialog?.editText?.let { hideKeyboard(it) }
                 dialog.dismiss()
             }
             addAction(getString(R.string.common_ok)) { dialog, index ->
@@ -89,8 +91,10 @@ class AccountActivity : BaseActivity(), View.OnClickListener {
                         }
                     }
                 }
+                mEditTextDialog?.editText?.let { hideKeyboard(it) }
                 dialog.dismiss()
             }
+            setCanceledOnTouchOutside(false)
             create()
             show()
         }

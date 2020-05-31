@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".ui.search.activity.SearchActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingTop="15dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="15dp">
+
+
+        <ImageView
+            android:id="@+id/mBackIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/dp_10"
+            android:src="@mipmap/icon_back_gray" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:layout_toEndOf="@id/mBackIv"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_10"
+            android:background="@drawable/shape_search">
+
+            <EditText
+                android:id="@+id/mSearchEt"
+                android:layout_toStartOf="@id/mCleanEtIv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_centerVertical="true"
+                android:drawableStart="@mipmap/icon_search"
+                android:background="@null"
+                android:drawablePadding="@dimen/dp_10"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:hint="@string/search_hint"
+                android:imeOptions="actionSearch"
+                android:maxLines="1"
+                android:textCursorDrawable="@drawable/shape_et_cursor"
+                android:singleLine="true"
+                android:textColor="@color/color_main_text"
+                android:textColorHint="@color/color_main_sub_text"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/mCleanEtIv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_clean_et"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:padding="@dimen/dp_10"/>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/mSearchRl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/mSearchHistoryRl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="@dimen/dp_10"
+                android:text="@string/search_history"
+                android:textColor="@color/color_main_text"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/mCleanHistoryTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:padding="@dimen/dp_10"
+                android:text="@string/search_clean_history"
+                android:textColor="@color/color_main_sub_text"
+                android:textSize="12sp" />
+
+            <com.qmuiteam.qmui.widget.QMUIFloatLayout
+                android:id="@+id/mFloatLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/mCleanHistoryTv"
+                android:layout_marginTop="@dimen/dp_10"
+                app:qmui_childHorizontalSpacing="15dp"
+                app:qmui_childVerticalSpacing="15dp"
+                app:qmui_maxNumber="20"/>
+
+        </RelativeLayout>
+
+        <include
+            layout="@layout/base_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</LinearLayout>

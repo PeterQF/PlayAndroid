@@ -18,18 +18,11 @@
         android:textStyle="bold"
         tools:text="最新分类" />
 
-    <com.donkingliang.labels.LabelsView
-        android:id="@+id/mLabelView"
+    <com.qmuiteam.qmui.widget.QMUIFloatLayout
+        android:id="@+id/mFloatLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:labelBackground="@drawable/shape_label_grid_item"
-        app:labelTextColor="@color/color_main_sub_text"
-        app:labelTextPaddingBottom="10dp"
-        app:labelTextPaddingLeft="20dp"
-        app:labelTextPaddingRight="20dp"
-        app:labelTextPaddingTop="@dimen/dp_10"
-        app:labelTextSize="12sp"
-        app:lineMargin="10dp"
-        app:wordMargin="20dp" />
+        app:qmui_childVerticalSpacing="15dp"
+        app:qmui_childHorizontalSpacing="15dp"/>
 
 </LinearLayout>

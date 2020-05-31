@@ -1,5 +1,6 @@
 package com.df.playandroid.base.event
 
+import com.df.playandroid.response.home.SearchHotWordData
 import com.df.playandroid.response.user.UserData
 
 /**
@@ -23,4 +24,9 @@ object EventManager {
      * 更新个人主页
      */
     class UpdateUserPage : BaseEvent()
+
+    /**
+     * 发送搜索热词
+     */
+    class SendHotWordEvent(val words: List<SearchHotWordData>) : BaseEvent()
 }

@@ -46,4 +46,9 @@ object SpConstants {
      * key user signature
      */
     const val KEY_USER_SIGNATURE = "user_signature"
+
+    /**
+     * key search history list
+     */
+    const val KEY_SEARCH_HISTORY_LIST = "key_search_history_list"
 }

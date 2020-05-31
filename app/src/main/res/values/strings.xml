@@ -13,6 +13,7 @@
     <string name="common_exit_app">再按一次退出APP</string>
     <string name="common_cancel">取消</string>
     <string name="common_ok">确定</string>
+    <string name="common_delete">删除</string>
     <string name="common_please_login">请先登录</string>
 
     <!--文章详情-->
@@ -81,5 +82,12 @@
     <string name="setting_clean_cache">清除缓存</string>
     <string name="setting_night_mode">夜间模式</string>
     <string name="setting_clean_cache_failed">清理缓存失败</string>
+
+    <!--搜索-->
+    <string name="search_hint">输入关键字搜索</string>
+    <string name="search_history">搜索历史</string>
+    <string name="search_clean_history">清空历史</string>
+    <string name="search_dialog_title">清空搜索历史</string>
+    <string name="search_dialog_content">确定要删除搜素历史吗？</string>
 
 </resources>

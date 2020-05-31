@@ -103,4 +103,10 @@ interface ApiServer {
         @Field("password") password: String,
         @Field("repassword") rePassword: String
     ): Observable<Response<UserResponse>>
+
+    /**
+     * 搜索
+     */
+    @POST("/article/query/{pageNum}/json")
+    fun requestSearch(@Path("pageNum") pageNum: Int, @Query("k") k: String): Observable<Response<ArticleResponse>>
 }
