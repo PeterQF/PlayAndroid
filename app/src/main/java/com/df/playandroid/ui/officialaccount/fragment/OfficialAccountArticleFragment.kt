@@ -3,6 +3,8 @@ package com.df.playandroid.ui.officialaccount.fragment
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.df.playandroid.R
+import com.df.playandroid.base.event.BaseEvent
+import com.df.playandroid.base.event.EventManager
 import com.df.playandroid.base.fragment.BaseFragment
 import com.df.playandroid.base.helper.LoadingViewHelper
 import com.df.playandroid.config.Constants
@@ -27,9 +29,15 @@ class OfficialAccountArticleFragment :
 
     private lateinit var mArticleAdapter: OfficialAccountArticleRvAdapter
     private var mArticleItems: MutableList<ArticleInfo> = ArrayList()
+    private val mSearchArticleItems: MutableList<ArticleInfo> by lazy { ArrayList<ArticleInfo>() }
     private var mPage = 1
     private var mIsOver = false
     private var mLastPosition = -1
+    private var mSearchListIsOver = false
+    private var mSearchListLastPosition = -1
+    private var mSearchPageNum = 1
+    private var mIsSearch = false
+    private var mSearchKeyword: String? = null
 
     companion object {
         fun newInstance(id: Int): OfficialAccountArticleFragment {
@@ -55,11 +63,20 @@ class OfficialAccountArticleFragment :
     }
 
     private fun initRefreshAndLoadMore() {
+        mRefreshLayout.setEnableOverScrollDrag(true)
+        mRefreshLayout.setEnableOverScrollBounce(true)
         mRefreshLayout.setOnRefreshListener {
             mId?.let { mPresenter?.getOfficialAccountArticle(it, 1, Constants.LoadType.REFRESH) }
         }
         mRefreshLayout.setOnLoadMoreListener {
-            mId?.let { mPresenter?.getOfficialAccountArticle(it, ++mPage, Constants.LoadType.LOAD_MORE) }
+            if (mIsSearch) {
+                mId?.let { mSearchKeyword?.let { keyword ->
+                    mPresenter?.searchWxArticle(it, ++mSearchPageNum,
+                        keyword, true)
+                } }
+            } else {
+                mId?.let { mPresenter?.getOfficialAccountArticle(it, ++mPage, Constants.LoadType.LOAD_MORE) }
+            }
         }
     }
 
@@ -111,16 +128,43 @@ class OfficialAccountArticleFragment :
         }
     }
 
+    override fun getSearchResult(result: ArticleData, isLoadMore: Boolean) {
+        changeList(true)
+        val searchList = result.datas
+        mSearchListIsOver = result.over
+        if (searchList != null && searchList.isNotEmpty()) {
+            mSearchListLastPosition = if (isLoadMore) {
+                mSearchArticleItems.addAll(searchList)
+                mArticleAdapter.notifyItemInserted(mSearchListLastPosition)
+                mSearchArticleItems.count()
+            } else {
+                mSearchArticleItems.clear()
+                mSearchArticleItems.addAll(searchList)
+                mArticleAdapter.replaceData(mSearchArticleItems)
+                searchList.count()
+            }
+        }
+    }
+
     override fun stopRefresh() {
         mRefreshLayout.finishRefresh(1000)
     }
 
     override fun stopLoadMore() {
-        if (mIsOver) {
-            mRefreshLayout.finishLoadMoreWithNoMoreData()
+        if (mIsSearch) {
+            if (mSearchListIsOver) {
+                mRefreshLayout.finishLoadMoreWithNoMoreData()
+            } else {
+                mRefreshLayout.finishLoadMore()
+            }
         } else {
-            mRefreshLayout.finishLoadMore()
+            if (mIsOver) {
+                mRefreshLayout.finishLoadMoreWithNoMoreData()
+            } else {
+                mRefreshLayout.finishLoadMore()
+            }
         }
+
     }
 
     override fun showLoadingView() {
@@ -136,5 +180,28 @@ class OfficialAccountArticleFragment :
             LoadingViewHelper.instance.dismiss(mOfficialAccountArticleLayout)
         }
         super.onDestroy()
+    }
+
+    override fun hadEventBus() = true
+
+    override fun onMessageEvent(event: BaseEvent) {
+        if (event is EventManager.SearchWxArticleEvent) {
+            mSearchKeyword = event.keyword
+            mId?.let { mPresenter?.searchWxArticle(it, mSearchPageNum, event.keyword, false) }
+        } else if (event is EventManager.CleanWxSearchArticleEvent) {
+            changeList(false)
+        }
+    }
+
+    private fun changeList(isSearch: Boolean) {
+        if (isSearch) {
+            mIsSearch = true
+            mRefreshLayout.setEnableRefresh(false)
+        } else {
+            mSearchArticleItems.clear()
+            mIsSearch = false
+            mRefreshLayout.setEnableRefresh(true)
+            mRefreshLayout.autoRefresh()
+        }
     }
 }

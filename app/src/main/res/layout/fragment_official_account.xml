@@ -6,7 +6,9 @@
     android:orientation="vertical"
     android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:focusable="true">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/mAppBar"
@@ -49,16 +51,23 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="15dp"/>
 
-                <TextView
-                    android:id="@+id/mSearchTv"
+                <EditText
+                    android:id="@+id/mSearchEt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toEndOf="@id/mSearchIv"
                     android:layout_marginStart="@dimen/dp_10"
-                    android:text="@string/official_account_click_to_search"
+                    android:hint="@string/official_account_click_to_search"
                     android:gravity="center_vertical"
                     android:textSize="12sp"
-                    android:textColor="@color/color_main_sub_text"/>
+                    android:background="@null"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:imeOptions="actionSearch"
+                    android:singleLine="true"
+                    android:textCursorDrawable="@drawable/shape_et_cursor"
+                    android:textColorHint="@color/color_main_sub_text"
+                    android:textColor="@color/color_main_text"/>
 
             </RelativeLayout>
 

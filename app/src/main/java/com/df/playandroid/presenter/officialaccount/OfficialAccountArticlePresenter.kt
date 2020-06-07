@@ -67,4 +67,35 @@ class OfficialAccountArticlePresenter(private val context: Context): BasePresent
                 }
             })
     }
+
+    /**
+     * 搜索公众号文章
+     */
+    fun searchWxArticle(id: Int, pageNum: Int, keyword: String, isLoadMore: Boolean = false) {
+        ApiRetrofit
+            .instance
+            .api
+            .requestSearchWxArticle(id, pageNum, keyword)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { if (isLoadMore.not()) getView()?.showLoadingView() }
+            .doFinally {
+                if (isLoadMore) {
+                    getView()?.stopLoadMore()
+                } else {
+                    getView()?.hideLoadingView()
+                }
+            }
+            .subscribe(object : BaseObserver<ArticleResponse>() {
+                override fun onFailed() {}
+
+                override fun onResult(errorCode: Int, errorMsg: String?, result: ArticleResponse) {
+                    getView()?.getSearchResult(result.data, isLoadMore)
+                }
+
+                override fun addDisposable(d: Disposable) {
+                    mDisposables.add(d)
+                }
+            })
+    }
 }

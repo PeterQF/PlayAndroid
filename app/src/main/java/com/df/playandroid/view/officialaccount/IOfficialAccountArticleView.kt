@@ -14,4 +14,5 @@ interface IOfficialAccountArticleView {
     fun stopLoadMore()
     fun getArticleSuccess(result: ArticleData)
     fun loadMoreArticleSuccess(result: ArticleData)
+    fun getSearchResult(result: ArticleData, isLoadMore: Boolean)
 }

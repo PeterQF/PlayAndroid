@@ -29,4 +29,14 @@ object EventManager {
      * 发送搜索热词
      */
     class SendHotWordEvent(val words: List<SearchHotWordData>) : BaseEvent()
+
+    /**
+     * 搜索公众号文章
+     */
+    class SearchWxArticleEvent(val keyword: String): BaseEvent()
+
+    /**
+     * 清空公众号搜索列表
+     */
+    class CleanWxSearchArticleEvent: BaseEvent()
 }

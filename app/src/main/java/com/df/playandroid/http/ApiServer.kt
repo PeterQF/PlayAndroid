@@ -109,4 +109,10 @@ interface ApiServer {
      */
     @POST("/article/query/{pageNum}/json")
     fun requestSearch(@Path("pageNum") pageNum: Int, @Query("k") k: String): Observable<Response<ArticleResponse>>
+
+    /**
+     * 搜索公众号内文章
+     */
+    @GET("/wxarticle/list/{id}/{page}/json")
+    fun requestSearchWxArticle(@Path("id") id: Int, @Path("page") page: Int, @Query("k") k: String): Observable<Response<ArticleResponse>>
 }
