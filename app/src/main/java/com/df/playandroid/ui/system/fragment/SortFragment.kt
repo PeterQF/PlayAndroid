@@ -53,7 +53,7 @@ class SortFragment : BaseFragment<ISortView, SortPresenter>(), ISortView {
     }
 
     override fun onDestroy() {
-        LoadingViewHelper.instance.dismiss(mSortLayout)
+        mSortLayout?.let { LoadingViewHelper.instance.dismiss(it) }
         super.onDestroy()
     }
 }
